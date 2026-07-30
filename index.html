@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Annecy → Beauduc — Carnet de route</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #ECE6D6;
+    --paper-2: #E3DBC6;
+    --ink: #26221B;
+    --forest: #34493A;
+    --water: #1F6478;
+    --rust: #A6461F;
+    --ochre: #C68A2E;
+    --line: #B9AE93;
+    --line-soft: #cfc6a8;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    background-image: radial-gradient(circle at 1px 1px, rgba(38,34,27,0.05) 1px, transparent 0);
+    background-size: 22px 22px;
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px; margin:0 auto; padding:0 24px;}
+
+  header.hero{ padding:56px 0 28px; border-bottom:2px solid var(--ink); }
+  .eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--forest); margin:0 0 14px; }
+  h1.title{ font-family:'Fraunces', serif; font-weight:600; font-size:clamp(36px, 8vw, 60px); line-height:0.98; margin:0 0 6px; letter-spacing:-0.01em; }
+  h1.title em{ font-style:italic; font-weight:500; color:var(--rust); }
+  .tagline{ font-size:16.5px; max-width:52ch; color:#4a4436; margin:14px 0 22px; }
+
+  .hero-photo{ width:100%; aspect-ratio:16/7; object-fit:cover; border:1px solid var(--ink); filter:saturate(0.92) sepia(0.06) contrast(1.02); display:block; }
+  .photo-caption{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:#8a8267; margin:6px 0 24px; }
+
+  .rule-note{ font-size:13.5px; color:#6b6350; max-width:56ch; margin:0 0 28px; padding:10px 14px; border:1px dashed var(--line); background:rgba(255,255,255,0.3); }
+  .rule-note b{color:var(--ink);}
+
+  .legend{ display:flex; gap:0; border:1px solid var(--ink); margin-bottom:6px; flex-wrap:wrap; }
+  .legend button{
+    flex:1 1 33%; font-family:'IBM Plex Sans', sans-serif; font-size:13.5px; font-weight:600; color:var(--ink);
+    background:transparent; border:none; border-right:1px solid var(--ink);
+    padding:14px 10px 12px; cursor:pointer; text-align:left; display:flex; flex-direction:column; gap:8px;
+  }
+  .legend button:last-child{border-right:none;}
+  .legend button .line-icon{width:36px; height:2px; background:var(--ink); position:relative;}
+  .legend button[data-key="eau"] .line-icon{ background:var(--water); }
+  .legend button[data-key="equilibre"] .line-icon{ background-image:repeating-linear-gradient(to right, var(--forest) 0 6px, transparent 6px 10px); height:2px; }
+  .legend button[data-key="calme"] .line-icon{ background-image:radial-gradient(circle, var(--ochre) 1.4px, transparent 1.4px); background-size:6px 2px; background-repeat:repeat-x; height:2px;}
+  .legend button .sub{font-family:'IBM Plex Mono', monospace; font-size:11px; font-weight:400; color:#6b6350;}
+  .legend button.active{ background:var(--ink); color:var(--paper); }
+  .legend button.active .sub{ color:#cfc6a8; }
+  .legend button.active .line-icon{ filter:brightness(1.6); }
+
+  .stat-row{ display:flex; flex-wrap:wrap; gap:0; border-top:1px solid var(--line); margin-top:0;}
+  .stat{ flex:1 1 110px; padding:14px 16px 4px 0; border-right:1px solid var(--line); }
+  .stat:last-child{border-right:none;}
+  .stat .num{ font-family:'IBM Plex Mono', monospace; font-size:20px; color:var(--water); display:block; }
+  .stat .label{ font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:#6b6350; }
+
+  main{position:relative; padding:8px 0 40px;}
+  .spine-line{ position:absolute; left:14px; top:0; bottom:0; width:2px; background:repeating-linear-gradient(to bottom, var(--line) 0 6px, transparent 6px 11px); }
+  @media (max-width:600px){ .spine-line{left:10px;} }
+
+  .day{ position:relative; padding:40px 0 40px 46px; border-bottom:1px dashed var(--line-soft); }
+  .day:last-of-type{border-bottom:none;}
+  .day-marker{ position:absolute; left:0; top:44px; width:30px; height:30px; border-radius:50%; background:var(--paper); border:2px solid var(--forest); display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono', monospace; font-size:11px; font-weight:500; color:var(--forest); }
+  @media (max-width:600px){ .day{padding-left:34px;} .day-marker{width:24px;height:24px;font-size:9px;top:42px;} }
+
+  .day-eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--rust); text-transform:uppercase; letter-spacing:0.1em; margin:0 0 6px; }
+  h2.day-title{ font-family:'Fraunces', serif; font-weight:600; font-size:clamp(22px, 5vw, 30px); margin:0 0 14px; line-height:1.08; }
+
+  .day-photo{ width:100%; aspect-ratio:16/9; object-fit:cover; border:1px solid var(--line); filter:saturate(0.92) sepia(0.06) contrast(1.02); display:block; margin-bottom:6px; max-width:58ch; }
+
+  .elevation-strip{ display:flex; gap:0; margin:14px 0 18px; font-family:'IBM Plex Mono', monospace; font-size:11px; color:#5c5646; flex-wrap:wrap; }
+  .elevation-strip span{ padding:3px 10px 3px 0; border-right:1px solid var(--line); margin-right:10px; }
+  .elevation-strip span:last-child{border-right:none;}
+  .elevation-strip b{color:var(--water); font-weight:500;}
+
+  .tags{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 16px;}
+  .tag{ font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.04em; text-transform:uppercase; padding:4px 10px; border-radius:100px; border:1px solid transparent; }
+  .tag.eau{background:#dcebee; color:var(--water); border-color:#b7d3d9;}
+  .tag.eaulite{background:#e7eff0; color:#3f7a8c; border-color:#cfe0e3;}
+  .tag.rando{background:#e2e8e0; color:var(--forest); border-color:#c3d0c2;}
+  .tag.histoire{background:#f2e6d0; color:var(--ochre); border-color:#e3cd9c;}
+  .tag.nature{background:#eee7d8; color:#7a6a3a; border-color:#ddd0ab;}
+
+  .day p{margin:0 0 14px; max-width:60ch;}
+  .day p strong{color:var(--ink);}
+
+  .callout{ background:var(--paper-2); border-left:3px solid var(--rust); padding:12px 16px; margin:14px 0; font-size:14.5px; max-width:58ch; }
+  .callout .callout-label{ font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:var(--rust); display:block; margin-bottom:4px; }
+
+  .dodo-box{ margin-top:14px; padding:14px 16px; border:1px solid var(--line); background:rgba(255,255,255,0.35); max-width:58ch; }
+  .dodo-box .callout-label{ font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:var(--forest); display:block; margin-bottom:4px; }
+
+  .alt-box{ margin-top:10px; padding:12px 16px; border:1px dashed var(--ochre); background:rgba(198,138,46,0.07); max-width:58ch; }
+  .alt-box .callout-label{ font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:var(--ochre); display:block; margin-bottom:4px; }
+
+  footer{ border-top:2px solid var(--ink); padding:32px 0 60px; }
+  footer h3{ font-family:'Fraunces', serif; font-size:19px; font-weight:600; margin:0 0 12px; }
+  footer .note{ font-size:14px; color:#4a4436; margin:0 0 18px; max-width:60ch; }
+  footer .note b{color:var(--ink);}
+  .end-mark{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:#8a8267; text-align:center; margin-top:26px; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <p class="eyebrow">Carnet de route — Hélo Ïse &amp; Florin</p>
+    <h1 class="title">Annecy <em>→</em> Beauduc</h1>
+    <p class="tagline">Même parcours, des Alpes à la mer — trois dosages différents entre eau, rando, histoire et confort. On choisit ensemble.</p>
+
+    <img class="hero-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Panorama_Lac_d'Annecy_depuis_le_Taillefer_(printemps_2023).JPG?width=1400" alt="Lac d'Annecy">
+    <p class="photo-caption">Le départ — lac d'Annecy · photo : Wikimedia Commons</p>
+
+    <div class="rule-note"><b>Par défaut on dort en van</b> tous les soirs. Les cases "alternative confort" ci-dessous sont juste ça — des alternatives, pas une obligation.</div>
+
+    <div class="legend" role="tablist">
+      <button data-key="eau" class="active">
+        <span class="line-icon"></span>
+        À fond dans l'eau
+        <span class="sub">Eau chaque jour · van chaque nuit</span>
+      </button>
+      <button data-key="equilibre">
+        <span class="line-icon"></span>
+        Équilibré
+        <span class="sub">Eau 1 jour sur 2 · alternatives confort possibles</span>
+      </button>
+      <button data-key="calme">
+        <span class="line-icon"></span>
+        Contemplatif
+        <span class="sub">Rando &amp; histoire · eau occasionnelle</span>
+      </button>
+    </div>
+
+    <div class="stat-row" id="statRow"></div>
+  </header>
+
+  <main>
+    <div class="spine-line" aria-hidden="true"></div>
+    <div id="daysContainer"></div>
+  </main>
+
+  <footer>
+    <h3>À retenir, quelle que soit la version</h3>
+    <p class="note"><b>Réservations :</b> canyoning (Furon) et canoë (Ardèche) se remplissent vite en juillet-août — à réserver avant de partir si on les garde au programme.</p>
+    <p class="note"><b>France Passion :</b> réseau de producteurs (viticulteurs, fermes) qui offrent une nuit gratuite sur leur terrain en échange d'un achat en boutique — pas de commodités, mais 100% légal et souvent le plus beau cadre pour le van.</p>
+    <p class="note"><b>Bivouac en van :</b> toléré sur la plupart des parkings/aires tant qu'on ne sort pas table et chaises, mais explicitement interdit dans les réserves naturelles (ex. cœur des Gorges de l'Ardèche) — on vérifie la signalétique locale.</p>
+    <div class="end-mark">— bonne route à nous deux —</div>
+  </footer>
+</div>
+
+<script>
+const IMG = {
+  combelaval: "https://commons.wikimedia.org/wiki/Special:FilePath/Combe_laval.jpg?width=1000",
+  pontdarc: "https://commons.wikimedia.org/wiki/Special:FilePath/Pont_d'Arc_HDR.jpg?width=1000",
+  avignon: "https://commons.wikimedia.org/wiki/Special:FilePath/Avignon_France_Palace_of_the_Popes_-_Palais_des_Papes.jpg?width=1000",
+  roussillon: "https://commons.wikimedia.org/wiki/Special:FilePath/Carri%C3%A8res_d'Ocre,_Roussillon,_Vaucluse.jpg?width=1000",
+  sorgue: "https://commons.wikimedia.org/wiki/Special:FilePath/La_Sorgue_%C3%A0_Fontaine_de_Vaucluse_(2).JPG?width=1000",
+  arles: "https://commons.wikimedia.org/wiki/Special:FilePath/Arles_-_2017-05-24_-_Roman_Amphitheatre_-_3804.jpg?width=1000",
+  camargue: "https://commons.wikimedia.org/wiki/Special:FilePath/Wild_horses_in_Camargue_National_Park_(6052480863).jpg?width=1000"
+};
+
+const VARIANTS = {
+  eau: {
+    stats: [
+      {num:"5", label:"Jours"},
+      {num:"1350m → 0m", label:"Dénivelé"},
+      {num:"5", label:"Nuits en van"},
+      {num:"Tous les jours", label:"Fréquence eau"}
+    ],
+    days: [
+      {
+        alt:"448m", eyebrow:"Jour 1", title:"Annecy → Vercors", img:IMG.combelaval, imgAlt:"Route de la Combe Laval",
+        elev:[["Annecy","448m"],["Furon (Sassenage)","~250m"],["Combe Laval","~1000m"],["Font d'Urle","~1350m"]],
+        tags:["eau","rando"],
+        text:"Départ vers Grenoble avec un arrêt <strong>canyoning au canyon du Furon</strong> à Sassenage — section aquatique avec sauts et rappels, le plus proche de Grenoble. Fin de journée sur la <strong>route de la Combe Laval</strong>, taillée dans la falaise.",
+        callout:{label:"Attention", text:"Le canyoning se réserve à l'avance en été — les créneaux guidés partent vite en juillet-août."},
+        dodo:{label:"Dodo", text:"Plateau de <strong>Font d'Urle</strong> ou <strong>Col de Rousset</strong> (1254m) — vue à 360°, lever de soleil sur tout le massif."}
+      },
+      {
+        alt:"117m", eyebrow:"Jour 2", title:"Vercors → Gorges de l'Ardèche", img:IMG.pontdarc, imgAlt:"Pont d'Arc, Ardèche",
+        elev:[["Vallon-Pont-d'Arc","117m"],["Plateau des Gras","~200m"]],
+        tags:["eau","rando"],
+        text:"La grosse journée : <strong>descente en canoë de Vallon-Pont-d'Arc à Saint-Martin-d'Ardèche</strong> (24 à 32km, 5 à 6h de pagaie), sous l'Arc naturel. Les loueurs ramènent en bus au point de départ. Pour les plus mordus : via ferrata de Chames juste à côté.",
+        callout:{label:"Attention", text:"Réservez le canoë à l'avance en haute saison. Le niveau d'eau peut restreindre la descente en cas de sécheresse."},
+        dodo:{label:"Dodo", text:"<strong>Plateau des Gras</strong> près de Barjac — causse calcaire tranquille, hors de la réserve naturelle."}
+      },
+      {
+        alt:"23m", eyebrow:"Jour 3", title:"Sautadet → Orange → Avignon", img:IMG.avignon, imgAlt:"Palais des Papes, Avignon",
+        elev:[["Cascades du Sautadet","~60m"],["Grignan","~200m"],["Orange","~50m"],["Avignon","23m"]],
+        tags:["eau","histoire"],
+        text:"Détour matinal aux <strong>Cascades du Sautadet</strong> — vasques et toboggans naturels dans la roche. Puis <strong>Grignan</strong>, village-château perché. <strong>Orange</strong> pour le théâtre antique. Demi-journée à <strong>Avignon</strong> — Palais des Papes.",
+        callout:{label:"Attention", text:"Baignade interdite directement aux cascades — marcher 10 min en aval jusqu'à la « Plage des Cascades »."},
+        dodo:{label:"Dodo", text:"<strong>Châteauneuf-du-Pape</strong> via le réseau <strong>France Passion</strong> — nuit gratuite chez un viticulteur contre un petit achat."}
+      },
+      {
+        alt:"57m", eyebrow:"Jour 4", title:"La Sorgue en kayak → Luberon", img:IMG.sorgue, imgAlt:"La Sorgue à Fontaine-de-Vaucluse",
+        elev:[["Fontaine-de-Vaucluse","84m"],["L'Isle-sur-la-Sorgue","57m"],["Roussillon","~360m"],["Les Baux","~280m"]],
+        tags:["eau","rando","histoire"],
+        text:"<strong>Kayak sur la Sorgue</strong>, de Fontaine-de-Vaucluse à L'Isle-sur-la-Sorgue — eau turquoise, 2 à 3h. L'après-midi, le <strong>Sentier des Ocres</strong> à Roussillon. Coucher de soleil rapide aux <strong>Baux-de-Provence</strong>.",
+        dodo:{label:"Dodo", text:"Un domaine <strong>France Passion</strong> dans le Luberon, du côté de Roussillon ou Apt."}
+      },
+      {
+        alt:"0m", eyebrow:"Jour 5", title:"Arles → Camargue → Beauduc", img:IMG.camargue, imgAlt:"Chevaux de Camargue",
+        elev:[["Arles","13m"],["Salin-de-Giraud","~1m"],["Beauduc","0m"]],
+        tags:["eau","histoire"],
+        text:"<strong>Arles</strong> version courte — amphithéâtre romain. Puis la <strong>Camargue</strong> : cheval dans les marais, ou paddle sur le Petit Rhône. Dernier arrêt <strong>Salin-de-Giraud</strong> avant la piste vers Beauduc.",
+        callout:{label:"Attention", text:"Piste vers Beauduc : 12km sable/argile, limite de hauteur 2,14m — vérifier que le van passe."},
+        dodo:{label:"Arrivée", text:"<strong>Plage de Beauduc</strong> — spot réputé kitesurf. Fin de la route."}
+      }
+    ]
+  },
+  equilibre: {
+    stats: [
+      {num:"5", label:"Jours"},
+      {num:"1350m → 0m", label:"Dénivelé"},
+      {num:"3-4", label:"Nuits en van"},
+      {num:"1 jour sur 2", label:"Fréquence eau"}
+    ],
+    days: [
+      {
+        alt:"448m", eyebrow:"Jour 1", title:"Annecy → Vercors", img:IMG.combelaval, imgAlt:"Route de la Combe Laval",
+        elev:[["Annecy","448m"],["Combe Laval","~1000m"],["Font d'Urle","~1350m"]],
+        tags:["rando"],
+        text:"Pas de canyoning ce jour-ci : la <strong>route de la Combe Laval</strong>, taillée dans la falaise, puis une rando tranquille autour de <strong>Villard-de-Lans</strong> ou des Grands Goulets. Journée d'acclimatation avant le gros morceau du lendemain.",
+        dodo:{label:"Dodo", text:"Plateau de <strong>Font d'Urle</strong> — vue à 360°, van."}
+      },
+      {
+        alt:"117m", eyebrow:"Jour 2", title:"Vercors → Gorges de l'Ardèche", img:IMG.pontdarc, imgAlt:"Pont d'Arc, Ardèche",
+        elev:[["Vallon-Pont-d'Arc","117m"],["Plateau des Gras","~200m"]],
+        tags:["eau","rando"],
+        text:"Le jour eau : <strong>descente en canoë Vallon-Pont-d'Arc → Saint-Martin-d'Ardèche</strong>, sous l'Arc naturel. Accessible, pas besoin de guide, juste un loueur.",
+        callout:{label:"Attention", text:"Réservez le canoë à l'avance en haute saison."},
+        dodo:{label:"Dodo (van)", text:"Plateau des Gras, hors réserve naturelle."},
+        alt_dodo:{label:"Alternative confort — notable", text:"Un <strong>gîte troglodyte</strong> creusé dans la roche calcaire près de Vallon-Pont-d'Arc — vraiment atmosphérique, et un vrai lit après la pagaie. À chercher sur les sites de gîtes de la région."}
+      },
+      {
+        alt:"23m", eyebrow:"Jour 3", title:"Sautadet → Orange → Avignon", img:IMG.avignon, imgAlt:"Palais des Papes, Avignon",
+        elev:[["Cascades du Sautadet","~60m"],["Grignan","~200m"],["Orange","~50m"],["Avignon","23m"]],
+        tags:["eaulite","histoire"],
+        text:"Baignade tranquille à la <strong>Plage des Cascades du Sautadet</strong> (pas les toboggans, juste un bon bain). Puis <strong>Grignan</strong>, <strong>Orange</strong>, et plus de temps à <strong>Avignon</strong> — musées et ruelles, sans se presser.",
+        dodo:{label:"Dodo (van)", text:"Châteauneuf-du-Pape, France Passion."},
+        alt_dodo:{label:"Alternative confort — notable", text:"Une nuit en <strong>hôtel intra-muros à Avignon</strong> — pratique après deux jours de van, pour une vraie douche et l'air conditionné."}
+      },
+      {
+        alt:"57m", eyebrow:"Jour 4", title:"La Sorgue en kayak → Luberon", img:IMG.sorgue, imgAlt:"La Sorgue à Fontaine-de-Vaucluse",
+        elev:[["Fontaine-de-Vaucluse","84m"],["L'Isle-sur-la-Sorgue","57m"],["Roussillon","~360m"]],
+        tags:["eau","rando"],
+        text:"Le deuxième jour eau : <strong>kayak sur la Sorgue</strong>, descente calme et familiale jusqu'à L'Isle-sur-la-Sorgue. L'après-midi, le <strong>Sentier des Ocres</strong> à Roussillon.",
+        dodo:{label:"Dodo (van)", text:"Domaine France Passion dans le Luberon."},
+        alt_dodo:{label:"Alternative confort — notable", text:"Une <strong>cabane perchée</strong> dans les arbres du Luberon — sympa comme parenthèse, à réserver à l'avance en été."}
+      },
+      {
+        alt:"0m", eyebrow:"Jour 5", title:"Arles → Camargue → Beauduc", img:IMG.camargue, imgAlt:"Chevaux de Camargue",
+        elev:[["Arles","13m"],["Salin-de-Giraud","~1m"],["Beauduc","0m"]],
+        tags:["histoire","rando"],
+        text:"<strong>Arles</strong> — amphithéâtre romain. En Camargue, balade à <strong>cheval</strong> dans les marais (pas besoin d'être mouillé pour celle-ci). À Beauduc : baignade et kitesurf en option, sans obligation.",
+        callout:{label:"Attention", text:"Piste vers Beauduc : 12km sable/argile, limite de hauteur 2,14m."},
+        dodo:{label:"Arrivée", text:"<strong>Plage de Beauduc</strong> — fin de la route."}
+      }
+    ]
+  },
+  calme: {
+    stats: [
+      {num:"5", label:"Jours"},
+      {num:"1350m → 0m", label:"Dénivelé"},
+      {num:"2-3", label:"Nuits en van"},
+      {num:"Occasionnelle", label:"Fréquence eau"}
+    ],
+    days: [
+      {
+        alt:"448m", eyebrow:"Jour 1", title:"Annecy → Vercors", img:IMG.combelaval, imgAlt:"Route de la Combe Laval",
+        elev:[["Annecy","448m"],["Combe Laval","~1000m"],["Font d'Urle","~1350m"]],
+        tags:["rando"],
+        text:"Aucune activité eau ce jour : la <strong>Combe Laval</strong> puis une vraie rando en boucle — <strong>Grands Goulets</strong> ou <strong>Pas de l'Aiguille</strong> — pour prendre le temps du massif avant de redescendre.",
+        dodo:{label:"Dodo (van)", text:"Plateau de Font d'Urle."},
+        alt_dodo:{label:"Alternative confort", text:"Un <strong>gîte de montagne</strong> du côté de Villard-de-Lans, si la route a été longue et qu'un vrai lit fait envie dès le premier soir."}
+      },
+      {
+        alt:"117m", eyebrow:"Jour 2", title:"Vercors → Gorges de l'Ardèche", img:IMG.pontdarc, imgAlt:"Pont d'Arc, Ardèche",
+        elev:[["Vallon-Pont-d'Arc","117m"],["Plateau des Gras","~200m"]],
+        tags:["rando","eaulite"],
+        text:"Plutôt que la descente complète en canoë, la <strong>rando des Belvédères</strong> sur les falaises au-dessus des gorges — les mêmes vues, à pied, avec des arrêts baignade dans les gours (vasques naturelles) en chemin. Le canoë reste possible en option si l'envie prend.",
+        dodo:{label:"Dodo (van)", text:"Plateau des Gras."},
+        alt_dodo:{label:"Alternative confort — notable", text:"Un <strong>gîte troglodyte</strong> près de Vallon-Pont-d'Arc — le cadre le plus cohérent avec cette version côté histoire/patrimoine."}
+      },
+      {
+        alt:"23m", eyebrow:"Jour 3", title:"Grignan → Orange → Avignon", img:IMG.avignon, imgAlt:"Palais des Papes, Avignon",
+        elev:[["Grignan","~200m"],["Orange","~50m"],["Avignon","23m"]],
+        tags:["histoire"],
+        text:"Journée histoire à part entière : <strong>Grignan</strong> et son château, <strong>Orange</strong> et son théâtre antique, puis <strong>Avignon</strong> avec le temps de faire le Palais des Papes et les musées sans courir.",
+        dodo:{label:"Dodo (van)", text:"Châteauneuf-du-Pape, France Passion."},
+        alt_dodo:{label:"Alternative confort — notable", text:"Un <strong>hôtel intra-muros à Avignon</strong> — cohérent avec le rythme plus confortable de cette version."}
+      },
+      {
+        alt:"57m", eyebrow:"Jour 4", title:"Luberon — villages et ocres", img:IMG.roussillon, imgAlt:"Carrières d'ocre, Roussillon",
+        elev:[["Gordes","~370m"],["Sénanque","~350m"],["Roussillon","~360m"]],
+        tags:["rando","histoire"],
+        text:"Le Luberon dans le désordre plutôt qu'à la course : <strong>Gordes</strong>, l'Abbaye de <strong>Sénanque</strong>, puis le <strong>Sentier des Ocres</strong> à Roussillon. Kayak sur la Sorgue en option si finalement l'envie d'eau revient.",
+        dodo:{label:"Dodo (van)", text:"Domaine France Passion dans le Luberon."},
+        alt_dodo:{label:"Alternative confort — notable", text:"Un <strong>mas provençal</strong> ou une chambre d'hôte dans la campagne du Luberon — le cadre le plus « carte postale » de tout le voyage."}
+      },
+      {
+        alt:"0m", eyebrow:"Jour 5", title:"Arles → Camargue → Beauduc", img:IMG.arles, imgAlt:"Amphithéâtre romain d'Arles",
+        elev:[["Arles","13m"],["Parc ornithologique","~2m"],["Beauduc","0m"]],
+        tags:["histoire","nature"],
+        text:"<strong>Arles</strong> en profondeur — amphithéâtre, sites Van Gogh. Au <strong>Parc ornithologique de Pont de Gau</strong>, balade calme au milieu des flamants roses. Après-midi tranquille à <strong>Beauduc</strong>, baignade sans chronomètre.",
+        dodo:{label:"Arrivée", text:"<strong>Plage de Beauduc</strong> — fin de la route."}
+      }
+    ]
+  }
+};
+
+function renderStats(stats){
+  document.getElementById('statRow').innerHTML = stats.map(s =>
+    `<div class="stat"><span class="num">${s.num}</span><span class="label">${s.label}</span></div>`
+  ).join('');
+}
+
+function renderDays(days){
+  const html = days.map(d => {
+    const elevHtml = d.elev.map(e => `<span>${e[0]} <b>${e[1]}</b></span>`).join('');
+    const tagsHtml = d.tags.map(t => {
+      const labels = {eau:"Eau", eaulite:"Eau légère", rando:"Rando", histoire:"Histoire", nature:"Nature"};
+      return `<span class="tag ${t}">${labels[t]}</span>`;
+    }).join('');
+    const imgHtml = d.img ? `<img class="day-photo" src="${d.img}" alt="${d.imgAlt}"><p class="photo-caption">${d.imgAlt} · photo : Wikimedia Commons</p>` : '';
+    const calloutHtml = d.callout ? `<div class="callout"><span class="callout-label">${d.callout.label}</span>${d.callout.text}</div>` : '';
+    const dodoHtml = d.dodo ? `<div class="dodo-box"><span class="callout-label">${d.dodo.label}</span>${d.dodo.text}</div>` : '';
+    const altHtml = d.alt_dodo ? `<div class="alt-box"><span class="callout-label">${d.alt_dodo.label}</span>${d.alt_dodo.text}</div>` : '';
+    return `
+      <section class="day">
+        <div class="day-marker">${d.alt}</div>
+        <p class="day-eyebrow">${d.eyebrow}</p>
+        <h2 class="day-title">${d.title}</h2>
+        ${imgHtml}
+        <div class="elevation-strip">${elevHtml}</div>
+        <div class="tags">${tagsHtml}</div>
+        <p>${d.text}</p>
+        ${calloutHtml}
+        ${dodoHtml}
+        ${altHtml}
+      </section>`;
+  }).join('');
+  document.getElementById('daysContainer').innerHTML = html;
+}
+
+function selectVariant(key){
+  document.querySelectorAll('.legend button').forEach(b => b.classList.toggle('active', b.dataset.key === key));
+  renderStats(VARIANTS[key].stats);
+  renderDays(VARIANTS[key].days);
+}
+
+document.querySelectorAll('.legend button').forEach(btn => {
+  btn.addEventListener('click', () => selectVariant(btn.dataset.key));
+});
+
+selectVariant('eau');
+</script>
+</body>
+</html>
