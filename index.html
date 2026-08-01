@@ -80,18 +80,18 @@
   .intensity .dot.on{ background:var(--accent); }
   .intensity .txt{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:#6b6350; text-transform:uppercase; letter-spacing:0.06em; }
 
-  .stops{ display:grid; grid-template-columns:repeat(auto-fit, minmax(190px,1fr)); gap:12px; margin:18px 0 16px; }
+  .stops{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:12px; margin:18px 0 16px; }
   .stop{ border:1px solid var(--line); background:rgba(255,255,255,0.4); overflow:hidden; transition:transform 0.15s, box-shadow 0.15s; }
   .stop:hover{ transform:translateY(-2px); box-shadow:2px 3px 0 rgba(38,34,27,0.12); }
   .stop-photo{ width:100%; aspect-ratio:4/3; object-fit:cover; display:block; filter:saturate(0.95) sepia(0.05) contrast(1.02); border-bottom:1px solid var(--line); }
-  .stop-body{ padding:10px 12px 11px; }
+  .stop-body{ padding:11px 13px 13px; }
   .stop-name{ font-family:'IBM Plex Sans', sans-serif; font-size:13.5px; font-weight:600; color:var(--ink); margin:0 0 2px; }
-  .stop-dur{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:0.05em; margin:0 0 6px; display:inline-block; }
+  .stop-dur{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:0.05em; margin:0 0 7px; display:inline-block; }
   .stop.cat-eau .stop-dur{ color:var(--water); }
   .stop.cat-rando .stop-dur{ color:var(--forest); }
   .stop.cat-histoire .stop-dur{ color:var(--ochre); }
   .stop.cat-aventure .stop-dur{ color:var(--rust); }
-  .stop-desc{ font-family:'IBM Plex Sans', sans-serif; font-size:12px; color:#4a4436; margin:0; line-height:1.4; }
+  .stop-desc{ font-family:'IBM Plex Sans', sans-serif; font-size:12.5px; color:#4a4436; margin:0; line-height:1.5; }
 
   .tags{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 4px;}
   .tag{ font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.04em; text-transform:uppercase; padding:4px 10px; border-radius:100px; border:1px solid transparent; }
@@ -100,13 +100,15 @@
   .tag.histoire{background:#f2e6d0; color:var(--ochre); border-color:#e3cd9c;}
   .tag.aventure{background:#f2ddd2; color:var(--rust); border-color:#e5bfab;}
 
-  .callout{ background:var(--paper-2); border-left:3px solid var(--rust); padding:12px 16px; margin:14px 0; font-size:14px; max-width:62ch; }
+  .callout{ background:var(--paper-2); border-left:3px solid var(--rust); padding:12px 16px; margin:14px 0; font-size:14px; max-width:64ch; }
   .callout .callout-label{ font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:var(--rust); display:block; margin-bottom:4px; }
+  .callout.bonus{ border-left-color:var(--ochre); }
+  .callout.bonus .callout-label{ color:var(--ochre); }
 
-  .dodo-box{ margin-top:6px; padding:14px 16px; border:1px solid var(--line); background:rgba(255,255,255,0.35); max-width:62ch; }
+  .dodo-box{ margin-top:6px; padding:14px 16px; border:1px solid var(--line); background:rgba(255,255,255,0.35); max-width:64ch; }
   .dodo-box .callout-label{ font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:var(--forest); display:block; margin-bottom:4px; }
 
-  .alt-box{ margin-top:10px; padding:12px 16px; border:1px dashed var(--ochre); background:rgba(198,138,46,0.07); max-width:62ch; }
+  .alt-box{ margin-top:10px; padding:12px 16px; border:1px dashed var(--ochre); background:rgba(198,138,46,0.07); max-width:64ch; }
   .alt-box .callout-label{ font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:var(--ochre); display:block; margin-bottom:4px; }
 
   footer{ border-top:2px solid var(--ink); padding:32px 0 60px; }
@@ -126,9 +128,9 @@
   <header class="hero">
     <p class="eyebrow">Carnet de route — Hélo Ïse &amp; Florin</p>
     <h1 class="title">Annecy <em>→</em> Beauduc</h1>
-    <p class="tagline">5 jours des Alpes à la mer. Trois façons différentes de faire la même route — à vous deux de doser.</p>
+    <p class="tagline">5 jours des Alpes à la mer, jusqu'au pied de la plage de Beauduc. Trois façons différentes de faire la même route — à vous deux de doser.</p>
 
-    <div class="rule-note"><b>Par défaut on dort en van</b> tous les soirs. Les cases "alternative confort" sont des options, pas une obligation. <b>Temps de route</b> indiqués par jour sont approximatifs (routes de montagne = plus lent que l'autoroute).</div>
+    <div class="rule-note"><b>Par défaut on dort en van</b> tous les soirs. Les cases "alternative confort" sont des options, pas une obligation. <b>Temps de route</b> par jour, approximatifs.</div>
 
     <div class="legend" role="tablist">
       <button data-key="eau" class="active">
@@ -158,7 +160,7 @@
 
   <footer>
     <h3>À retenir, quelle que soit la version</h3>
-    <p class="note"><b>Pas de canoë dans les Gorges de l'Ardèche :</b> remplacé par rando des Belvédères + baignade dans les gours bleus (vasques naturelles) — mêmes paysages, sans la descente organisée.</p>
+    <p class="note"><b>Pas de canoë dans les Gorges de l'Ardèche :</b> remplacé par la route des Belvédères et la baignade dans les gours bleus (vasques naturelles) — mêmes paysages, sans la descente organisée.</p>
     <p class="note"><b>Réservations :</b> canyoning, via ferrata et escalade se remplissent vite en juillet-août — à réserver avant de partir.</p>
     <p class="note"><b>France Passion :</b> réseau de producteurs (viticulteurs, fermes) qui offrent une nuit gratuite sur leur terrain en échange d'un achat en boutique — pas de commodités, mais 100% légal et souvent le plus beau cadre pour le van.</p>
     <p class="note"><b>Bivouac en van :</b> toléré sur la plupart des parkings/aires tant qu'on ne sort pas table et chaises, mais explicitement interdit dans les réserves naturelles (cœur des Gorges de l'Ardèche) — on vérifie la signalétique locale.</p>
@@ -182,7 +184,10 @@ const IMG = {
   gordes: "https://commons.wikimedia.org/wiki/Special:FilePath/Gordes_Vaucluse_France_Luc_Viatour.JPG?width=700",
   senanque: "https://commons.wikimedia.org/wiki/Special:FilePath/Abbey-of-senanque-provence-gordes.jpg?width=700",
   arles: "https://commons.wikimedia.org/wiki/Special:FilePath/Arles_-_2017-05-24_-_Roman_Amphitheatre_-_3804.jpg?width=700",
-  camargue: "https://commons.wikimedia.org/wiki/Special:FilePath/Wild_horses_in_Camargue_National_Park_(6052480863).jpg?width=700"
+  camargue: "https://commons.wikimedia.org/wiki/Special:FilePath/Wild_horses_in_Camargue_National_Park_(6052480863).jpg?width=700",
+  gours: "https://commons.wikimedia.org/wiki/Special:FilePath/Gours_des_grottes_de_Saint_Marcel_d'Ard%C3%A8che,_France.jpg?width=700",
+  grandsgoulets: "https://commons.wikimedia.org/wiki/Special:FilePath/Entr%C3%A9e_des_Gorges_de_la_Bourne_depuis_Villard-de-Lans.jpg?width=700",
+  flamants: "https://commons.wikimedia.org/wiki/Special:FilePath/Flamants_roses_en_Camargue.jpg?width=700"
 };
 
 const VARIANTS = {
@@ -191,49 +196,49 @@ eau: {
   days: [
     { eyebrow:"Jour 1", title:"Annecy → Vercors", intensity:4, route:"~2h",
       stops:[
-        {img:"furon", name:"Canyoning au Furon", dur:"~3h", cat:"eau", desc:"Sauts et rappels dans les gorges du Furon, près de Grenoble."},
-        {img:"combelaval", name:"Combe Laval", dur:"~1h", cat:"rando", desc:"Route taillée dans la falaise, vue vertigineuse sur le Vercors."}
+        {img:"furon", name:"Canyoning au Furon", dur:"~3h", cat:"eau", desc:"Le canyon du Furon, à Sassenage, est le plus accessible depuis Grenoble : rappels dans une gorge étroite, sauts dans des vasques naturelles. Un moniteur encadre toute la descente, équipement fourni, pas besoin d'expérience préalable."},
+        {img:"combelaval", name:"Combe Laval", dur:"~1h", cat:"rando", desc:"Route taillée à flanc de falaise fin XIXe pour désenclaver le plateau du Vercors. Elle longe le vide sur plusieurs kilomètres, tunnels creusés dans la roche — spectaculaire même juste en voiture, plusieurs arrêts pour la vue."}
       ],
       tags:["eau","rando"],
-      callout:{label:"Attention", text:"Le canyoning se réserve à l'avance en été."},
-      dodo:{label:"Dodo", text:"Plateau de <strong>Font d'Urle</strong> ou <strong>Col de Rousset</strong> (1254m)."}
+      callout:{label:"Attention", text:"Le canyoning se réserve à l'avance en été — les créneaux guidés partent vite."},
+      dodo:{label:"Dodo", text:"Plateau de <strong>Font d'Urle</strong> ou <strong>Col de Rousset</strong> (1254m) — vue à 360°, van."}
     },
     { eyebrow:"Jour 2", title:"Vercors → Ardèche", intensity:4, route:"~4h",
       stops:[
-        {img:"ardeche", name:"Rando des Belvédères", dur:"~2h", cat:"rando", desc:"Les gorges de l'Ardèche vues d'en haut, à pied."},
-        {img:"ardeche", name:"Baignade dans les gours bleus", dur:"~2h", cat:"eau", desc:"Vasques naturelles et eau turquoise — pas de canoë."}
+        {img:"ardeche", name:"Route des Belvédères", dur:"~2h", cat:"rando", desc:"La route touristique des gorges longe la falaise sur près de 30km, avec une dizaine de points de vue qui plongent sur le canyon et Pont d'Arc en contrebas. Certains sentiers descendent directement vers l'eau."},
+        {img:"gours", name:"Baignade dans les gours bleus", dur:"~2h", cat:"eau", desc:"Sans la descente en canoë, ce sont les gours — vasques d'eau calme creusées dans la roche — qui remplacent l'expérience : eau turquoise, parfois assez profonde pour sauter, accessibles à pied depuis la route des gorges."}
       ],
       tags:["eau","rando"],
-      callout:{label:"Route", text:"~4h par les routes de montagne du Vercors — c'est la journée la plus longue du parcours."},
-      dodo:{label:"Dodo", text:"<strong>Plateau des Gras</strong> près de Barjac, hors réserve naturelle."}
+      callout:{label:"Route", text:"~4h par les routes de montagne du Vercors — la journée la plus longue du parcours, mais il n'y a pas de raccourci."},
+      bonus:{label:"Ça vaut le détour", text:"La <strong>Grotte Chauvet 2</strong>, réplique du site orné le plus ancien connu au monde (36 000 ans), est à 10 minutes de Vallon-Pont-d'Arc. L'originale n'est pas accessible au public — celle-ci vaut vraiment la visite (~1h30)."},
+      dodo:{label:"Dodo", text:"<strong>Plateau des Gras</strong> près de Barjac — causse calcaire tranquille, hors de la réserve naturelle."}
     },
     { eyebrow:"Jour 3", title:"Ardèche → Orange → Avignon", intensity:2, route:"~2h15",
       stops:[
-        {img:"grignan", name:"Grignan", dur:"~1h30", cat:"histoire", desc:"Village-château perché, un des plus beaux de France."},
-        {img:"orange", name:"Théâtre antique", dur:"~1h", cat:"histoire", desc:"Orange, un des mieux conservés d'Europe."},
-        {img:"avignon", name:"Palais des Papes", dur:"~2h", cat:"histoire", desc:"Avignon, une demi-journée suffit."}
+        {img:"grignan", name:"Grignan", dur:"~1h30", cat:"histoire", desc:"Ce village perché doit sa notoriété aux lettres que Madame de Sévigné écrivait à sa fille, installée au château. Château Renaissance à visiter, et de belles ruelles en contrebas."},
+        {img:"orange", name:"Théâtre antique", dur:"~1h", cat:"histoire", desc:"Un des trois seuls théâtres antiques au monde à avoir conservé son mur de scène intact — 37 mètres de haut. Classé UNESCO, encore utilisé aujourd'hui pour un festival d'opéra en été."},
+        {img:"avignon", name:"Palais des Papes", dur:"~2h", cat:"histoire", desc:"Le plus grand édifice gothique du Moyen Âge, siège de la papauté au XIVe siècle. Visite avec audioguide inclus ; le reste du temps pour le Pont Saint-Bénézet et les ruelles intra-muros."}
       ],
       tags:["histoire"],
-      dodo:{label:"Dodo", text:"<strong>Châteauneuf-du-Pape</strong> via <strong>France Passion</strong> — nuit gratuite chez un viticulteur."}
+      dodo:{label:"Dodo", text:"<strong>Châteauneuf-du-Pape</strong> via <strong>France Passion</strong> — nuit gratuite chez un viticulteur contre un petit achat."}
     },
     { eyebrow:"Jour 4", title:"La Sorgue en kayak → Luberon", intensity:4, route:"~1h15",
       stops:[
-        {img:"sorgue", name:"Kayak sur la Sorgue", dur:"~2h30", cat:"eau", desc:"Fontaine-de-Vaucluse → L'Isle-sur-la-Sorgue, eau turquoise."},
-        {img:"roussillon", name:"Sentier des Ocres", dur:"~1h30", cat:"rando", desc:"Roussillon, vraie rando dans la falaise d'ocre."},
-        {img:"baux", name:"Les Baux-de-Provence", dur:"~45min", cat:"histoire", desc:"Coucher de soleil sur les ruines."}
+        {img:"sorgue", name:"Kayak sur la Sorgue", dur:"~2h30", cat:"eau", desc:"La Sorgue prend sa source à Fontaine-de-Vaucluse, une des résurgences les plus puissantes d'Europe. Descente en eau calme jusqu'à L'Isle-sur-la-Sorgue, peu de portage, accessible même sans expérience de kayak."},
+        {img:"roussillon", name:"Sentier des Ocres", dur:"~1h30", cat:"rando", desc:"Sentier balisé de 30 à 50 minutes au milieu de falaises et cheminées de sable ocre, vestiges d'anciennes carrières. Couleurs du jaune pâle au rouge profond — plus belles en fin d'après-midi."},
+        {img:"baux", name:"Les Baux-de-Provence", dur:"~45min", cat:"histoire", desc:"Village construit à même la roche, dominé par les ruines d'une forteresse médiévale détruite au XVIIe siècle. Vue à 360° sur les Alpilles, particulièrement belle au coucher du soleil."}
       ],
       tags:["eau","rando","histoire"],
-      dodo:{label:"Dodo", text:"Un domaine <strong>France Passion</strong> dans le Luberon."}
+      dodo:{label:"Dodo", text:"Un domaine <strong>France Passion</strong> dans le Luberon, du côté de Roussillon ou Apt."}
     },
-    { eyebrow:"Jour 5", title:"Arles → Camargue → Beauduc", intensity:3, route:"~2h",
+    { eyebrow:"Jour 5", title:"Arles → Camargue → vers Beauduc", intensity:3, route:"~2h",
       stops:[
-        {img:"arles", name:"Arènes d'Arles", dur:"~1h30", cat:"histoire", desc:"Amphithéâtre romain."},
-        {img:"camargue", name:"Cheval en Camargue", dur:"~2h", cat:"eau", desc:"Balade dans les marais, ou paddle sur le Petit Rhône."},
-        {img:"camargue", name:"Plage de Beauduc", dur:"libre", cat:"eau", desc:"Baignade, kitesurf si le vent est là."}
+        {img:"arles", name:"Arènes d'Arles", dur:"~1h30", cat:"histoire", desc:"Amphithéâtre romain du Ier siècle, encore utilisé aujourd'hui pour des spectacles. On peut monter dans les gradins et la tour pour une vue sur la ville et le Rhône."},
+        {img:"camargue", name:"Cheval en Camargue", dur:"~2h", cat:"eau", desc:"La Camargue se découvre bien à cheval, sur les petits chevaux blancs semi-sauvages typiques de la région, à travers marais et salins. Plusieurs manades proposent des balades encadrées."}
       ],
       tags:["eau","histoire"],
-      callout:{label:"Attention", text:"Piste vers Beauduc : 12km sable/argile, limite de hauteur 2,14m."},
-      dodo:{label:"Arrivée", text:"<strong>Plage de Beauduc</strong> — fin de la route."}
+      callout:{label:"Attention", text:"La piste vers Beauduc fait 12km de sable/argile, avec une limite de hauteur à 2,14m — à vérifier avant de s'engager."},
+      dodo:{label:"Arrivée", text:"Beauduc, en fin de route — la plage elle-même, c'est pour la suite."}
     }
   ]
 },
@@ -242,8 +247,8 @@ aventure: {
   days: [
     { eyebrow:"Jour 1", title:"Annecy → Vercors", intensity:5, route:"~2h",
       stops:[
-        {img:"furon", name:"Via ferrata (Vercors)", dur:"~3h", cat:"aventure", desc:"Falaise équipée près du Furon, sensations garanties."},
-        {img:"combelaval", name:"Combe Laval", dur:"~1h", cat:"rando", desc:"Route en corniche, arrêts photo."}
+        {img:"furon", name:"Via ferrata (Vercors)", dur:"~3h", cat:"aventure", desc:"Une falaise équipée de câbles, échelons et ponts népalais près du Furon — sensations fortes garanties, accessible sans expérience d'escalade mais il ne faut pas avoir le vertige. Équipement en location sur place."},
+        {img:"combelaval", name:"Combe Laval", dur:"~1h", cat:"rando", desc:"Route taillée à flanc de falaise, tunnels dans la roche, vue vertigineuse sur le Vercors — plusieurs arrêts possibles en chemin."}
       ],
       tags:["aventure","rando"],
       callout:{label:"Attention", text:"La via ferrata se réserve à l'avance en été."},
@@ -251,43 +256,44 @@ aventure: {
     },
     { eyebrow:"Jour 2", title:"Vercors → Ardèche", intensity:5, route:"~4h",
       stops:[
-        {img:"ardeche", name:"Canyoning au Chassezac", dur:"~3h", cat:"aventure", desc:"Un canyon voisin de l'Ardèche, moins fréquenté, tout aussi spectaculaire."},
-        {img:"ardeche", name:"Rando courte, Belvédères", dur:"~1h", cat:"rando", desc:"Vue sur les gorges depuis les falaises."}
+        {img:"gours", name:"Canyoning au Chassezac", dur:"~3h", cat:"aventure", desc:"Le Chassezac, affluent de l'Ardèche, offre un canyon moins connu que ceux de Vallon-Pont-d'Arc — toboggans naturels, sauts et rappels dans un cadre plus sauvage, avec moins de monde."},
+        {img:"ardeche", name:"Rando courte, Belvédères", dur:"~1h", cat:"rando", desc:"Un aperçu rapide de la route des gorges et de ses points de vue sur Pont d'Arc, avant de reprendre la route."}
       ],
       tags:["aventure","rando"],
-      callout:{label:"Route", text:"~4h par les routes de montagne — la journée la plus longue."},
+      callout:{label:"Route", text:"~4h par les routes de montagne — la journée la plus longue du parcours."},
+      bonus:{label:"Ça vaut le détour", text:"La <strong>Grotte Chauvet 2</strong> (réplique du site orné le plus ancien connu au monde, 36 000 ans) est à 10 minutes de Vallon-Pont-d'Arc si vous avez une heure et demie à y consacrer."},
       dodo:{label:"Dodo (van)", text:"Plateau des Gras."},
       alt_dodo:{label:"Alternative confort — notable", text:"Un <strong>gîte troglodyte</strong> creusé dans la roche près de Vallon-Pont-d'Arc."}
     },
     { eyebrow:"Jour 3", title:"Ardèche → Orange → Avignon", intensity:3, route:"~2h15",
       stops:[
-        {img:"grignan", name:"Grignan", dur:"~1h", cat:"histoire", desc:"Village-château perché."},
-        {img:"orange", name:"Orange", dur:"~1h", cat:"histoire", desc:"Théâtre antique."},
-        {img:"avignon", name:"Avignon à vélo", dur:"~1h30", cat:"aventure", desc:"Le tour des remparts et le Palais des Papes, en vélo plutôt qu'à pied."}
+        {img:"grignan", name:"Grignan", dur:"~1h", cat:"histoire", desc:"Village-château perché, rendu célèbre par les lettres de Madame de Sévigné à sa fille."},
+        {img:"orange", name:"Orange", dur:"~1h", cat:"histoire", desc:"Théâtre antique classé UNESCO, un des mieux conservés au monde."},
+        {img:"avignon", name:"Avignon à vélo", dur:"~1h30", cat:"aventure", desc:"Les remparts d'Avignon font près de 4,3km — se les faire à vélo permet de voir la ville sous un autre angle avant de terminer au Palais des Papes à pied."}
       ],
       tags:["aventure","histoire"],
       dodo:{label:"Dodo (van)", text:"<strong>Châteauneuf-du-Pape</strong>, France Passion."},
-      alt_dodo:{label:"Alternative confort — notable", text:"Une nuit en <strong>hôtel intra-muros à Avignon</strong>."}
+      alt_dodo:{label:"Alternative confort — notable", text:"Une nuit en <strong>hôtel intra-muros à Avignon</strong> — pratique pour une vraie douche."}
     },
     { eyebrow:"Jour 4", title:"Luberon — escalade à Buoux", intensity:5, route:"~1h15",
       stops:[
-        {img:"buoux", name:"Escalade à Buoux", dur:"~3h", cat:"aventure", desc:"Un des hauts lieux de l'escalade en France, initiation possible."},
-        {img:"roussillon", name:"Sentier des Ocres", dur:"~1h30", cat:"rando", desc:"Roussillon, falaises d'ocre."}
+        {img:"buoux", name:"Escalade à Buoux", dur:"~3h", cat:"aventure", desc:"Buoux est un des berceaux historiques de l'escalade libre en France, plus de 400 voies sur une falaise calcaire de 40m. Initiation possible même sans expérience — vue superbe sur le Luberon depuis le sommet."},
+        {img:"roussillon", name:"Sentier des Ocres", dur:"~1h30", cat:"rando", desc:"Roussillon, falaises et cheminées d'ocre, sentier balisé au milieu des couleurs — un bon contraste après la falaise de Buoux."}
       ],
       tags:["aventure","rando"],
       callout:{label:"Attention", text:"Réserver un moniteur à l'avance si besoin d'initiation."},
       dodo:{label:"Dodo (van)", text:"Un domaine France Passion dans le Luberon."},
       alt_dodo:{label:"Alternative confort — notable", text:"Une <strong>cabane perchée</strong> dans les arbres du Luberon."}
     },
-    { eyebrow:"Jour 5", title:"Arles → Camargue → Beauduc", intensity:4, route:"~2h",
+    { eyebrow:"Jour 5", title:"Arles → Camargue → vers Beauduc", intensity:4, route:"~2h",
       stops:[
-        {img:"arles", name:"Arènes d'Arles", dur:"~1h", cat:"histoire", desc:"Amphithéâtre romain, version courte."},
-        {img:"camargue", name:"Cheval au galop", dur:"~2h", cat:"aventure", desc:"Rythme plus soutenu qu'une balade tranquille."},
-        {img:"camargue", name:"Vélo sur la Digue à la Mer", dur:"~1h30", cat:"aventure", desc:"Piste littorale jusqu'à la Camargue sauvage."}
+        {img:"arles", name:"Arènes d'Arles", dur:"~1h", cat:"histoire", desc:"Amphithéâtre romain, version courte — les gradins et la tour pour une vue sur la ville."},
+        {img:"camargue", name:"Cheval au galop", dur:"~2h", cat:"aventure", desc:"Rythme plus soutenu qu'une balade tranquille — certaines manades proposent des sorties pour cavaliers plus expérimentés, au galop dans les marais."},
+        {img:"flamants", name:"Vélo sur la Digue à la Mer", dur:"~1h30", cat:"aventure", desc:"Une piste cyclable d'environ 8km longe le littoral entre Salin-de-Giraud et la mer, à travers un paysage de marais et de salins typique de la Camargue sauvage."}
       ],
       tags:["aventure","histoire"],
-      callout:{label:"Attention", text:"Piste vers Beauduc : 12km sable/argile, limite de hauteur 2,14m."},
-      dodo:{label:"Arrivée", text:"<strong>Plage de Beauduc</strong> — fin de la route."}
+      callout:{label:"Attention", text:"La piste vers Beauduc fait 12km de sable/argile, avec une limite de hauteur à 2,14m."},
+      dodo:{label:"Arrivée", text:"Beauduc, en fin de route — la plage elle-même, c'est pour la suite."}
     }
   ]
 },
@@ -296,28 +302,29 @@ patrimoine: {
   days: [
     { eyebrow:"Jour 1", title:"Annecy → Vercors", intensity:4, route:"~2h",
       stops:[
-        {img:"combelaval", name:"Grands Goulets / Pas de l'Aiguille", dur:"~4h", cat:"rando", desc:"Grande boucle dans le Vercors."},
-        {img:"combelaval", name:"Combe Laval", dur:"~1h", cat:"rando", desc:"Route en corniche, arrêts photo."}
+        {img:"grandsgoulets", name:"Grands Goulets / Pas de l'Aiguille", dur:"~4h", cat:"rando", desc:"Une des plus belles randonnées du Vercors, à travers des gorges encaissées et des passages taillés dans la roche. Dénivelé modéré mais quelques passages aériens — compter une bonne demi-journée pour la boucle complète."},
+        {img:"combelaval", name:"Combe Laval", dur:"~1h", cat:"rando", desc:"Route en corniche taillée dans la falaise, plusieurs arrêts pour la vue sur la vallée."}
       ],
       tags:["rando"],
       dodo:{label:"Dodo (van)", text:"Plateau de Font d'Urle."},
-      alt_dodo:{label:"Alternative confort", text:"Un <strong>gîte de montagne</strong> du côté de Villard-de-Lans."}
+      alt_dodo:{label:"Alternative confort", text:"Un <strong>gîte de montagne</strong> du côté de Villard-de-Lans, si la route a été longue."}
     },
     { eyebrow:"Jour 2", title:"Vercors → Ardèche", intensity:3, route:"~4h",
       stops:[
-        {img:"ardeche", name:"Rando des Belvédères", dur:"~3h30", cat:"rando", desc:"Les gorges vues d'en haut, à pied."},
-        {img:"ardeche", name:"Baignade dans les gours bleus", dur:"~1h", cat:"eau", desc:"Vasques naturelles en chemin."}
+        {img:"ardeche", name:"Route des Belvédères", dur:"~3h30", cat:"rando", desc:"Randonnée le long de la route touristique des gorges, une dizaine de points de vue sur le canyon et Pont d'Arc, avec possibilité de descendre vers la rivière par endroits."},
+        {img:"gours", name:"Baignade dans les gours bleus", dur:"~1h", cat:"eau", desc:"Vasques naturelles d'eau turquoise en chemin — la pause fraîcheur de la journée, sans canoë."}
       ],
       tags:["rando","eau"],
-      callout:{label:"Route", text:"~4h par les routes de montagne — la journée la plus longue."},
+      callout:{label:"Route", text:"~4h par les routes de montagne — la journée la plus longue du parcours."},
+      bonus:{label:"Ça vaut le détour", text:"La <strong>Grotte Chauvet 2</strong>, réplique du site orné le plus ancien connu au monde (36 000 ans), est à 10 minutes de Vallon-Pont-d'Arc — probablement le meilleur ajout côté patrimoine de toute la journée (~1h30)."},
       dodo:{label:"Dodo (van)", text:"Plateau des Gras."},
       alt_dodo:{label:"Alternative confort — notable", text:"Un <strong>gîte troglodyte</strong> près de Vallon-Pont-d'Arc."}
     },
     { eyebrow:"Jour 3", title:"Ardèche → Orange → Avignon", intensity:3, route:"~2h15",
       stops:[
-        {img:"grignan", name:"Grignan", dur:"~1h30", cat:"histoire", desc:"Village-château perché."},
-        {img:"orange", name:"Orange", dur:"~1h", cat:"histoire", desc:"Théâtre antique."},
-        {img:"avignon", name:"Avignon + remparts à vélo", dur:"~2h30", cat:"histoire", desc:"Palais des Papes puis tour des remparts à vélo."}
+        {img:"grignan", name:"Grignan", dur:"~1h30", cat:"histoire", desc:"Village-château perché, connu pour les lettres de Madame de Sévigné à sa fille qui y vivait."},
+        {img:"orange", name:"Orange", dur:"~1h", cat:"histoire", desc:"Théâtre antique, un des mieux conservés au monde, classé UNESCO."},
+        {img:"avignon", name:"Avignon + remparts à vélo", dur:"~2h30", cat:"histoire", desc:"Palais des Papes avec audioguide, puis tour des remparts (4,3km) à vélo pour voir la ville sous un autre angle."}
       ],
       tags:["histoire"],
       dodo:{label:"Dodo (van)", text:"Châteauneuf-du-Pape, France Passion."},
@@ -325,21 +332,21 @@ patrimoine: {
     },
     { eyebrow:"Jour 4", title:"Luberon — villages et ocres", intensity:3, route:"~1h15",
       stops:[
-        {img:"senanque", name:"Abbaye de Sénanque", dur:"~1h", cat:"histoire", desc:"Lavande et pierre romane."},
-        {img:"gordes", name:"Gordes", dur:"~1h", cat:"histoire", desc:"Village perché emblématique."},
-        {img:"roussillon", name:"Sentier des Ocres", dur:"~1h30", cat:"rando", desc:"Roussillon, vraie rando dans la falaise."}
+        {img:"senanque", name:"Abbaye de Sénanque", dur:"~1h", cat:"histoire", desc:"Abbaye cistercienne du XIIe siècle, encore habitée par des moines. Le champ de lavande devant l'abbaye est célèbre (floraison mi-juin à début août, accès parfois restreint)."},
+        {img:"gordes", name:"Gordes", dur:"~1h", cat:"histoire", desc:"Village construit en pierre sèche à flanc de colline, classé parmi les plus beaux villages de France. Le point de vue depuis la route en contrebas (D15) est le plus photogénique."},
+        {img:"roussillon", name:"Sentier des Ocres", dur:"~1h30", cat:"rando", desc:"Roussillon, vraie rando dans la falaise d'ocre — couleurs du jaune au rouge profond."}
       ],
       tags:["histoire","rando"],
       dodo:{label:"Dodo (van)", text:"Un domaine France Passion dans le Luberon."},
       alt_dodo:{label:"Alternative confort — notable", text:"Un <strong>mas provençal</strong> ou chambre d'hôte dans le Luberon."}
     },
-    { eyebrow:"Jour 5", title:"Arles → Camargue → Beauduc", intensity:3, route:"~2h",
+    { eyebrow:"Jour 5", title:"Arles → Camargue → vers Beauduc", intensity:3, route:"~2h",
       stops:[
-        {img:"arles", name:"Arles", dur:"~2h", cat:"histoire", desc:"Amphithéâtre et sites Van Gogh, en profondeur."},
-        {img:"camargue", name:"Parc ornithologique / Digue à la Mer", dur:"~2h", cat:"rando", desc:"Flamants roses, à pied ou à vélo jusqu'à la Camargue sauvage."}
+        {img:"arles", name:"Arles", dur:"~2h", cat:"histoire", desc:"Au-delà des arènes, Arles conserve un théâtre antique, des thermes romains, et plusieurs lieux liés au séjour de Van Gogh (le pont, l'espace Van Gogh)."},
+        {img:"flamants", name:"Parc ornithologique / Digue à la Mer", dur:"~2h", cat:"rando", desc:"Le Parc ornithologique de Pont de Gau permet d'observer les flamants roses sur des passerelles aménagées. La Digue à la Mer, à pied ou à vélo, prolonge la balade vers la Camargue sauvage."}
       ],
       tags:["histoire","rando"],
-      dodo:{label:"Arrivée", text:"<strong>Plage de Beauduc</strong> — fin de la route."}
+      dodo:{label:"Arrivée", text:"Beauduc, en fin de route — la plage elle-même, c'est pour la suite."}
     }
   ]
 }
@@ -368,6 +375,7 @@ function renderDays(days){
       return `<span class="tag ${t}">${labels[t]}</span>`;
     }).join('');
     const calloutHtml = d.callout ? `<div class="callout"><span class="callout-label">${d.callout.label}</span>${d.callout.text}</div>` : '';
+    const bonusHtml = d.bonus ? `<div class="callout bonus"><span class="callout-label">${d.bonus.label}</span>${d.bonus.text}</div>` : '';
     const dodoHtml = d.dodo ? `<div class="dodo-box"><span class="callout-label">${d.dodo.label}</span>${d.dodo.text}</div>` : '';
     const altHtml = d.alt_dodo ? `<div class="alt-box"><span class="callout-label">${d.alt_dodo.label}</span>${d.alt_dodo.text}</div>` : '';
     return `
@@ -386,6 +394,7 @@ function renderDays(days){
         <div class="tags">${tagsHtml}</div>
         <div class="stops">${stopsHtml}</div>
         ${calloutHtml}
+        ${bonusHtml}
         ${dodoHtml}
         ${altHtml}
       </section>`;
