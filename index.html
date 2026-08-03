@@ -66,11 +66,15 @@
   .day-marker{ position:absolute; left:0; top:42px; width:30px; height:30px; border-radius:50%; background:var(--paper); border:2px solid var(--accent); display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono', monospace; font-size:12px; font-weight:600; color:var(--accent); transition:border-color 0.3s, color 0.3s; }
   @media (max-width:600px){ .day{padding-left:34px;} .day-marker{width:24px;height:24px;font-size:10px;top:40px;} }
 
-  .day-top{ display:flex; align-items:flex-start; justify-content:space-between; gap:14px; flex-wrap:wrap; }
+  .day-top{ display:flex; align-items:flex-start; justify-content:space-between; gap:14px; }
+  .day-heading{ min-width:0; flex:1 1 auto; }
   .day-eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--rust); text-transform:uppercase; letter-spacing:0.1em; margin:0 0 6px; }
-  h2.day-title{ font-family:'Fraunces', serif; font-weight:600; font-size:clamp(21px, 4.5vw, 28px); margin:0 0 6px; line-height:1.08; }
-  .day-route{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:#6b6350; margin:0 0 4px; letter-spacing:0.01em; }
+  h2.day-title{ font-family:'Fraunces', serif; font-weight:600; font-size:clamp(21px, 4.5vw, 28px); margin:0; line-height:1.08; }
+  .day-meta{ flex:0 0 auto; }
+  .day-route{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:#6b6350; margin:8px 0 0; letter-spacing:0.01em; line-height:1.6; }
   .day-route b{ color:var(--ink); font-weight:500; }
+  .gmaps-link{ display:inline-flex; align-items:center; gap:5px; margin-top:8px; font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--water); text-decoration:none; border-bottom:1px solid #b7d3d9; padding-bottom:1px; }
+  .gmaps-link:hover{ color:var(--rust); border-color:var(--rust); }
 
   .day-meta{ display:flex; flex-direction:column; gap:6px; align-items:flex-end; }
   .meta-row{ display:flex; align-items:center; gap:6px; }
@@ -204,7 +208,7 @@ const VARIANTS = {
 eau: {
   stats: [ {num:"5", label:"Jours"}, {num:"5", label:"Nuits en van"}, {num:"Tous les jours", label:"Fréquence eau"} ],
   days: [
-    { eyebrow:"Jour 1", title:"Annecy → Vercors", intensity:4, route:"~2h",
+    { eyebrow:"Jour 1", title:"Annecy → Vercors", gmaps:"https://www.google.com/maps/dir/Annecy,+France/Sassenage,+38360,+France/Saint-Jean-en-Royans,+26190,+France/Font+d'Urle,+26190+Bouvante,+France", intensity:4, route:"~2h",
       routeStops:["Annecy","Sassenage","Saint-Jean-en-Royans","Font d'Urle"],
       stops:[
         {img:"furon", name:"Canyoning au Furon", dur:"~3h", cat:"eau", desc:"Le canyon du Furon, à Sassenage, est le plus accessible depuis Grenoble : rappels dans une gorge étroite, sauts dans des vasques naturelles. Moniteur et équipement inclus.",
@@ -216,7 +220,7 @@ eau: {
       callout:{label:"Attention", text:"Le canyoning se réserve à l'avance en été — les créneaux guidés partent vite."},
       dodo:{label:"Dodo", text:"Plateau de <strong>Font d'Urle</strong> ou <strong>Col de Rousset</strong> (1254m) — vue à 360°, van."}
     },
-    { eyebrow:"Jour 2", title:"Vercors → Ardèche", intensity:4, route:"~4h",
+    { eyebrow:"Jour 2", title:"Vercors → Ardèche", gmaps:"https://www.google.com/maps/dir/Font+d'Urle,+26190+Bouvante,+France/Vallon-Pont-d'Arc,+07150,+France/D290+%26+Route+des+Gorges,+07700+Saint-Rem%C3%A8ze,+France/Plateau+des+Gras,+07230+Chandolas,+France", intensity:4, route:"~4h",
       routeStops:["Font d'Urle","Vallon-Pont-d'Arc","D290 (route des gorges)","Plateau des Gras"],
       stops:[
         {img:"ardeche", name:"Belvédères de la route des Gorges", dur:"~2h", cat:"rando", desc:"La route touristique des gorges (D290) longe la falaise sur près de 30km, une dizaine de points de vue qui plongent sur le canyon et Pont d'Arc.",
@@ -229,8 +233,8 @@ eau: {
       bonus:{label:"Ça vaut le détour", text:"La <strong>Grotte Chauvet 2</strong>, réplique du site orné le plus ancien connu au monde (36 000 ans), est à 10 minutes de Vallon-Pont-d'Arc. L'originale n'est pas accessible au public — celle-ci vaut la visite (~1h30)."},
       dodo:{label:"Dodo", text:"<strong>Plateau des Gras</strong> près de Barjac — causse calcaire tranquille, hors de la réserve naturelle."}
     },
-    { eyebrow:"Jour 3", title:"Ardèche → Orange → Avignon", intensity:2, route:"~2h15",
-      routeStops:["Plateau des Gras","Grignan","Orange","Avignon"],
+    { eyebrow:"Jour 3", title:"Ardèche → Orange → Avignon", gmaps:"https://www.google.com/maps/dir/Plateau+des+Gras,+07230+Chandolas,+France/Grignan,+26230,+France/Orange,+84100+Orange,+France/Avignon,+France", intensity:2, route:"~2h15",
+      routeStops:["Plateau des Gras","Grignan","Orange","Avignon","Châteauneuf-du-Pape"],
       stops:[
         {img:"grignan", name:"Visite du village, Grignan", dur:"~1h30", cat:"histoire", desc:"Village perché connu pour les lettres que Madame de Sévigné écrivait à sa fille, installée au château. Château Renaissance à visiter, ruelles en contrebas."},
         {img:"orange", name:"Théâtre antique d'Orange", dur:"~1h", cat:"histoire", desc:"Un des trois seuls théâtres antiques au monde à avoir conservé son mur de scène intact. Classé UNESCO, encore utilisé pour un festival d'opéra en été."},
@@ -239,7 +243,7 @@ eau: {
       tags:["histoire"],
       dodo:{label:"Dodo", text:"<strong>Châteauneuf-du-Pape</strong> via <strong>France Passion</strong> — nuit gratuite chez un viticulteur contre un petit achat."}
     },
-    { eyebrow:"Jour 4", title:"La Sorgue en kayak → Luberon", intensity:4, route:"~1h15",
+    { eyebrow:"Jour 4", title:"La Sorgue en kayak → Luberon", gmaps:"https://www.google.com/maps/dir/Avignon,+France/Castle+of+Ch%C3%A2teauneuf-du-Pape,+Ch%C3%A2teau+des+Papes,+84230+Ch%C3%A2teauneuf-du-Pape,+France/Fontaine-de-Vaucluse,+84800,+France/L'Isle-sur-la-Sorgue,+84800,+France/Roussillon,+84220,+France/Les+Baux-de-Provence,+13520,+France", intensity:4, route:"~1h15",
       routeStops:["Châteauneuf-du-Pape","Fontaine-de-Vaucluse","L'Isle-sur-la-Sorgue","Roussillon","Les Baux-de-Provence"],
       stops:[
         {img:"sorgue", name:"Kayak sur la Sorgue", dur:"~2h30", cat:"eau", desc:"La Sorgue prend sa source à Fontaine-de-Vaucluse, une des résurgences les plus puissantes d'Europe. Descente en eau calme jusqu'à L'Isle-sur-la-Sorgue, accessible sans expérience."},
@@ -250,7 +254,7 @@ eau: {
       tags:["eau","rando","histoire"],
       dodo:{label:"Dodo", text:"Un domaine <strong>France Passion</strong> dans le Luberon, du côté de Roussillon ou Apt."}
     },
-    { eyebrow:"Jour 5", title:"Arles → Camargue → vers Beauduc", intensity:3, route:"~2h",
+    { eyebrow:"Jour 5", title:"Arles → Camargue → vers Beauduc", gmaps:"https://www.google.com/maps/dir/Les+Baux-de-Provence,+13520,+France/Arles,+France/Saintes-Maries-de-la-Mer,+13460,+France/Salin-de-Giraud,+13129+Arles,+France/Beach+Beauduc,+13129+Saintes-Maries-de-la-Mer,+France", intensity:3, route:"~2h",
       routeStops:["Les Baux-de-Provence","Arles","Saintes-Maries-de-la-Mer / Le Sambuc","Salin-de-Giraud","piste de Beauduc"],
       stops:[
         {img:"arles", name:"Arènes d'Arles", dur:"~1h30", cat:"histoire", desc:"Amphithéâtre romain du Ier siècle, encore utilisé aujourd'hui pour des spectacles. Gradins et tour accessibles pour la vue sur la ville et le Rhône."},
@@ -293,7 +297,7 @@ aventure: {
       alt_dodo:{label:"Alternative confort — notable", text:"Un <strong>gîte troglodyte</strong> creusé dans la roche près de Vallon-Pont-d'Arc."}
     },
     { eyebrow:"Jour 3", title:"Ardèche → Orange → Avignon", intensity:3, route:"~2h15",
-      routeStops:["Plateau des Gras","Grignan","Orange","Avignon"],
+      routeStops:["Plateau des Gras","Grignan","Orange","Avignon","Châteauneuf-du-Pape"],
       stops:[
         {img:"grignan", name:"Visite du village, Grignan", dur:"~1h", cat:"histoire", desc:"Village-château perché, rendu célèbre par les lettres de Madame de Sévigné à sa fille."},
         {img:"orange", name:"Théâtre antique d'Orange", dur:"~1h", cat:"histoire", desc:"Théâtre antique classé UNESCO, un des mieux conservés au monde."},
@@ -362,7 +366,7 @@ patrimoine: {
       alt_dodo:{label:"Alternative confort — notable", text:"Un <strong>gîte troglodyte</strong> près de Vallon-Pont-d'Arc."}
     },
     { eyebrow:"Jour 3", title:"Ardèche → Orange → Avignon", intensity:3, route:"~2h15",
-      routeStops:["Plateau des Gras","Grignan","Orange","Avignon"],
+      routeStops:["Plateau des Gras","Grignan","Orange","Avignon","Châteauneuf-du-Pape"],
       stops:[
         {img:"grignan", name:"Visite du village, Grignan", dur:"~1h30", cat:"histoire", desc:"Village-château perché, connu pour les lettres de Madame de Sévigné à sa fille qui y vivait."},
         {img:"orange", name:"Théâtre antique d'Orange", dur:"~1h", cat:"histoire", desc:"Théâtre antique, un des mieux conservés au monde, classé UNESCO."},
@@ -441,16 +445,16 @@ function renderDays(days){
       <section class="day">
         <div class="day-marker">${i+1}</div>
         <div class="day-top">
-          <div>
+          <div class="day-heading">
             <p class="day-eyebrow">${d.eyebrow}</p>
             <h2 class="day-title">${d.title}</h2>
-            <p class="day-route">${routeLine}</p>
           </div>
           <div class="day-meta">
             <div class="meta-row"><svg class="route-icon" viewBox="0 0 48 48"><use href="#i-route"/></svg><span class="route-val">${d.route} de route</span></div>
             <div class="meta-row intensity"><span class="txt">Intensité</span><span class="dots">${dots}</span></div>
           </div>
         </div>
+        <p class="day-route">${routeLine}${d.gmaps ? ` · <a class="gmaps-link" href="${d.gmaps}" target="_blank" rel="noopener">Ouvrir dans Google Maps ↗</a>` : ''}</p>
         <div class="tags">${tagsHtml}</div>
         <div class="stops">${stopsHtml}</div>
         ${calloutHtml}
