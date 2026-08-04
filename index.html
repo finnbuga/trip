@@ -25,19 +25,20 @@
   .wrap{max-width:820px; margin:0 auto; padding:0 24px;}
 
   header.hero{ padding:48px 0 26px; border-bottom:2px solid var(--ink); }
-  .eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--forest); margin:0 0 14px; }
+  .top-row{ display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; }
+  .eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--forest); margin:0; }
+  .lang-switch{ display:flex; border:1px solid var(--line); border-radius:100px; overflow:hidden; }
+  .lang-switch button{ font-family:'IBM Plex Mono', monospace; font-size:12px; padding:5px 12px; border:none; background:transparent; cursor:pointer; color:#6b6350; }
+  .lang-switch button.active{ background:var(--ink); color:var(--paper); }
   h1.title{ font-family:'Fraunces', serif; font-weight:600; font-size:clamp(34px, 7.5vw, 58px); line-height:0.98; margin:0 0 6px; letter-spacing:-0.01em; }
   h1.title em{ font-style:italic; font-weight:500; color:var(--rust); }
-  .tagline{ font-size:16px; max-width:56ch; color:#4a4436; margin:14px 0 22px; }
-
-  .rule-note{ font-size:13.5px; color:#6b6350; max-width:60ch; margin:0 0 24px; padding:10px 14px; border:1px dashed var(--line); background:rgba(255,255,255,0.3); }
-  .rule-note b{color:var(--ink);}
+  .tagline{ font-size:16px; max-width:56ch; color:#4a4436; margin:14px 0 26px; }
 
   .legend{ display:flex; border:1px solid var(--ink); margin-bottom:6px; flex-wrap:wrap; }
   .legend button{
     flex:1 1 33%; font-family:'IBM Plex Sans', sans-serif; font-size:13.5px; font-weight:600; color:var(--ink);
     background:transparent; border:none; border-right:1px solid var(--ink);
-    padding:14px 10px 12px; cursor:pointer; text-align:left; display:flex; flex-direction:column; gap:8px;
+    padding:14px 14px 12px; cursor:pointer; text-align:left; display:flex; flex-direction:column; gap:8px;
     transition:background 0.2s, color 0.2s;
   }
   .legend button:last-child{border-right:none;}
@@ -51,7 +52,7 @@
   .legend button.active .line-icon{ filter:brightness(1.7); }
 
   .stat-row{ display:flex; flex-wrap:wrap; border-top:1px solid var(--line); }
-  .stat{ flex:1 1 110px; padding:14px 16px 4px 0; border-right:1px solid var(--line); }
+  .stat{ flex:1 1 110px; padding:14px 16px 4px 14px; border-right:1px solid var(--line); }
   .stat:last-child{border-right:none;}
   .stat .num{ font-family:'IBM Plex Mono', monospace; font-size:19px; color:var(--accent); display:block; transition:color 0.3s; }
   .stat .label{ font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:#6b6350; }
@@ -66,27 +67,26 @@
   .day-marker{ position:absolute; left:0; top:42px; width:30px; height:30px; border-radius:50%; background:var(--paper); border:2px solid var(--accent); display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono', monospace; font-size:12px; font-weight:600; color:var(--accent); transition:border-color 0.3s, color 0.3s; }
   @media (max-width:600px){ .day{padding-left:34px;} .day-marker{width:24px;height:24px;font-size:10px;top:40px;} }
 
-  .day-top{ display:flex; align-items:flex-start; justify-content:space-between; gap:14px; }
-  .day-heading{ min-width:0; flex:1 1 auto; }
-  .day-eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--rust); text-transform:uppercase; letter-spacing:0.1em; margin:0 0 6px; }
-  h2.day-title{ font-family:'Fraunces', serif; font-weight:600; font-size:clamp(21px, 4.5vw, 28px); margin:0; line-height:1.08; }
-  .day-meta{ flex:0 0 auto; }
-  .day-route{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:#6b6350; margin:8px 0 0; letter-spacing:0.01em; line-height:1.6; }
-  .day-route b{ color:var(--ink); font-weight:500; }
-  .gmaps-link{ display:inline-flex; align-items:center; gap:5px; margin-top:8px; font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--water); text-decoration:none; border-bottom:1px solid #b7d3d9; padding-bottom:1px; }
-  .gmaps-link:hover{ color:var(--rust); border-color:var(--rust); }
+  .day-topline{ display:flex; justify-content:space-between; align-items:baseline; gap:10px; flex-wrap:wrap; }
+  .day-eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--rust); text-transform:uppercase; letter-spacing:0.1em; margin:0; }
+  h2.day-title{ font-family:'Fraunces', serif; font-weight:600; font-size:clamp(21px, 4.5vw, 28px); margin:4px 0 8px; line-height:1.08; }
 
-  .day-meta{ display:flex; flex-direction:column; gap:6px; align-items:flex-end; }
   .meta-row{ display:flex; align-items:center; gap:6px; }
-  .route-icon{ width:14px; height:14px; color:var(--accent); transition:color 0.3s; }
-  .route-icon path, .route-icon polyline{ fill:none; stroke:currentColor; stroke-width:3; stroke-linecap:round; stroke-linejoin:round; }
-  .route-val{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--ink); }
   .intensity .dots{ display:flex; gap:3px; }
   .intensity .dot{ width:7px; height:7px; border-radius:50%; border:1.5px solid var(--accent); }
   .intensity .dot.on{ background:var(--accent); }
   .intensity .txt{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:#6b6350; text-transform:uppercase; letter-spacing:0.06em; }
 
-  .stops{ display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr)); gap:12px; margin:18px 0 16px; }
+  .day-route{ display:flex; align-items:center; flex-wrap:wrap; gap:6px; font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:#6b6350; margin:0 0 10px; letter-spacing:0.01em; line-height:1.7; }
+  .day-route .route-time{ font-weight:600; color:var(--accent); }
+  .day-route .route-sep{ color:var(--line-soft); }
+  .day-route b{ color:var(--ink); font-weight:500; }
+  .gmaps-icon{ display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; border:1px solid #b7d3d9; color:var(--water); flex-shrink:0; text-decoration:none; transition:color 0.15s, border-color 0.15s, background 0.15s; }
+  .gmaps-icon:hover{ color:var(--rust); border-color:var(--rust); background:rgba(166,70,31,0.08); }
+  .gmaps-icon svg{ width:12px; height:12px; }
+  .gmaps-icon svg path, .gmaps-icon svg circle{ fill:none; stroke:currentColor; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; }
+
+  .stops{ display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr)); gap:12px; margin:14px 0 16px; }
   .stop{ border:1px solid var(--line); background:rgba(255,255,255,0.4); overflow:hidden; transition:transform 0.15s, box-shadow 0.15s; }
   .stop:hover{ transform:translateY(-2px); box-shadow:2px 3px 0 rgba(38,34,27,0.12); }
   .stop-photo{ width:100%; aspect-ratio:4/3; object-fit:cover; display:block; filter:saturate(0.95) sepia(0.05) contrast(1.02); border-bottom:1px solid var(--line); }
@@ -105,62 +105,63 @@
   .stop-where summary::before{ content:"▸ "; }
   .stop-where[open] summary::before{ content:"▾ "; }
   .stop-where .where-body{ margin-top:6px; font-size:12px; color:#4a4436; line-height:1.5; }
-  .stop-where .where-body .gps{ display:block; font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--ink); margin-bottom:3px; }
+  .stop-where .where-body a.gps{ display:block; font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--water); margin-bottom:3px; text-decoration:none; border-bottom:1px dotted #b7d3d9; }
+  .stop-where .where-body a.gps:hover{ color:var(--rust); border-color:var(--rust); }
 
-  .tags{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 4px;}
+  .tags{display:flex; flex-wrap:wrap; gap:8px; justify-content:flex-end; margin:0 0 2px;}
   .tag{ font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.04em; text-transform:uppercase; padding:4px 10px; border-radius:100px; border:1px solid transparent; }
   .tag.eau{background:#dcebee; color:var(--water); border-color:#b7d3d9;}
   .tag.rando{background:#e2e8e0; color:var(--forest); border-color:#c3d0c2;}
   .tag.histoire{background:#f2e6d0; color:var(--ochre); border-color:#e3cd9c;}
   .tag.aventure{background:#f2ddd2; color:var(--rust); border-color:#e5bfab;}
 
-  .callout{ background:var(--paper-2); border-left:3px solid var(--rust); padding:12px 16px; margin:14px 0; font-size:14px; max-width:64ch; }
-  .callout .callout-label{ font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:var(--rust); display:block; margin-bottom:4px; }
+  .info-box{ max-width:64ch; width:100%; margin:14px 0 0; padding:14px 16px; }
+  .info-box .callout-label{ font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; display:block; margin-bottom:4px; }
+  .callout{ background:var(--paper-2); border-left:3px solid var(--rust); border-top:none; border-right:none; border-bottom:none; font-size:14px; }
+  .callout .callout-label{ color:var(--rust); }
   .callout.bonus{ border-left-color:var(--ochre); }
   .callout.bonus .callout-label{ color:var(--ochre); }
-
-  .dodo-box{ margin-top:6px; padding:14px 16px; border:1px solid var(--line); background:rgba(255,255,255,0.35); max-width:64ch; }
-  .dodo-box .callout-label{ font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:var(--forest); display:block; margin-bottom:4px; }
-
-  .alt-box{ margin-top:10px; padding:12px 16px; border:1px dashed var(--ochre); background:rgba(198,138,46,0.07); max-width:64ch; }
-  .alt-box .callout-label{ font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:var(--ochre); display:block; margin-bottom:4px; }
+  .dodo-box{ border:1px solid var(--line); background:rgba(255,255,255,0.35); }
+  .dodo-box .callout-label{ color:var(--forest); }
+  .alt-box{ border:1px dashed var(--ochre); background:rgba(198,138,46,0.07); }
+  .alt-box .callout-label{ color:var(--ochre); }
 
   footer{ border-top:2px solid var(--ink); padding:32px 0 60px; }
   footer h3{ font-family:'Fraunces', serif; font-size:19px; font-weight:600; margin:0 0 12px; }
   footer .note{ font-size:14px; color:#4a4436; margin:0 0 18px; max-width:64ch; }
   footer .note b{color:var(--ink);}
-  .end-mark{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:#8a8267; text-align:center; margin-top:26px; }
+  .end-mark{ font-family:'Fraunces', serif; font-style:italic; font-size:16px; color:#5c5646; text-align:center; margin-top:30px; }
 </style>
 </head>
 <body>
 
-<svg width="0" height="0" style="position:absolute"><defs>
-<symbol id="i-route" viewBox="0 0 48 48"><polyline points="4,40 16,10 28,40"/><polyline points="8,34 14,26 10,22 18,16 16,12"/></symbol>
-</defs></svg>
-
 <div class="wrap">
   <header class="hero">
-    <p class="eyebrow">Carnet de route — Hélo Ïse &amp; Florin</p>
+    <div class="top-row">
+      <p class="eyebrow" id="txt-eyebrow">Carnet de route</p>
+      <div class="lang-switch">
+        <button data-lang="fr" class="active">🇫🇷 FR</button>
+        <button data-lang="en">🇬🇧 EN</button>
+      </div>
+    </div>
     <h1 class="title">Annecy <em>→</em> Beauduc</h1>
-    <p class="tagline">5 jours des Alpes à la mer, jusqu'au pied de la plage de Beauduc. Trois façons différentes de faire la même route — à vous deux de doser.</p>
-
-    <div class="rule-note"><b>Par défaut on dort en van</b> tous les soirs. Sous le titre de chaque journée, la ligne d'itinéraire indique les villes/villages à enchaîner. Cliquez sur <b>Où / Parking</b> dans une case pour le point GPS précis.</div>
+    <p class="tagline" id="txt-tagline"></p>
 
     <div class="legend" role="tablist">
       <button data-key="eau" class="active">
         <span class="line-icon"></span>
-        À fond dans l'eau
-        <span class="sub">Eau chaque jour · van chaque nuit</span>
+        <span class="lg-label"></span>
+        <span class="sub lg-sub"></span>
       </button>
       <button data-key="aventure">
         <span class="line-icon"></span>
-        Terre &amp; Aventure
-        <span class="sub">Ferrata, escalade, VTT · sensations fortes</span>
+        <span class="lg-label"></span>
+        <span class="sub lg-sub"></span>
       </button>
       <button data-key="patrimoine">
         <span class="line-icon"></span>
-        Rando &amp; Patrimoine
-        <span class="sub">Grandes randos · histoire, à pied et à vélo</span>
+        <span class="lg-label"></span>
+        <span class="sub lg-sub"></span>
       </button>
     </div>
 
@@ -173,12 +174,12 @@
   </main>
 
   <footer>
-    <h3>À retenir, quelle que soit la version</h3>
-    <p class="note"><b>Pas de canoë dans les Gorges de l'Ardèche :</b> remplacé par les belvédères de la route des gorges et la baignade à la Plage de Gaud — mêmes paysages, sans la descente organisée.</p>
-    <p class="note"><b>Réservations :</b> canyoning, via ferrata et escalade se remplissent vite en juillet-août — à réserver avant de partir.</p>
-    <p class="note"><b>France Passion :</b> réseau de producteurs (viticulteurs, fermes) qui offrent une nuit gratuite sur leur terrain en échange d'un achat en boutique — pas de commodités, mais 100% légal et souvent le plus beau cadre pour le van.</p>
-    <p class="note"><b>Bivouac en van :</b> toléré sur la plupart des parkings/aires tant qu'on ne sort pas table et chaises, mais explicitement interdit dans les réserves naturelles (cœur des Gorges de l'Ardèche) — on vérifie la signalétique locale.</p>
-    <div class="end-mark">— bonne route à nous deux —</div>
+    <h3 id="txt-footer-h3"></h3>
+    <p class="note" id="txt-note1"></p>
+    <p class="note" id="txt-note2"></p>
+    <p class="note" id="txt-note3"></p>
+    <p class="note" id="txt-note4"></p>
+    <div class="end-mark" id="txt-endmark"></div>
   </footer>
 </div>
 
@@ -204,221 +205,483 @@ const IMG = {
   flamants: "https://commons.wikimedia.org/wiki/Special:FilePath/Flamants_roses_en_Camargue.jpg?width=700"
 };
 
-const VARIANTS = {
-eau: {
-  stats: [ {num:"5", label:"Jours"}, {num:"5", label:"Nuits en van"}, {num:"Tous les jours", label:"Fréquence eau"} ],
+const RESV_FR = "<strong>La Cigale et la Fourmi</strong> \u2014 mar. 18 ao\u00fbt \u2192 mer. 19 ao\u00fbt (arriv\u00e9e 15h00, d\u00e9part avant 11h00).<br><a href='https://www.google.com/maps/search/?api=1&query=La%20Cigale%20et%20la%20Fourmi%2C%20260%20Route%20de%20Cavaillon%2C%2084300%20Les%20Taillades%2C%20France' target='_blank' rel='noopener'>260 Route de Cavaillon, 84300 Les Taillades \u2197</a><br>Confirmation 6920988524 \u00b7 +33 6 33 88 88 21";
+const RESV_EN = "<strong>La Cigale et la Fourmi</strong> \u2014 Tue 18 Aug \u2192 Wed 19 Aug (check-in 15:00, check-out before 11:00).<br><a href='https://www.google.com/maps/search/?api=1&query=La%20Cigale%20et%20la%20Fourmi%2C%20260%20Route%20de%20Cavaillon%2C%2084300%20Les%20Taillades%2C%20France' target='_blank' rel='noopener'>260 Route de Cavaillon, 84300 Les Taillades \u2197</a><br>Confirmation 6920988524 \u00b7 +33 6 33 88 88 21";
+
+const I18N = {
+  fr: {
+    eyebrow: "Carnet de route",
+    tagline: "5 jours des Alpes \u00e0 la mer, jusqu'au pied de la plage de Beauduc. Trois fa\u00e7ons diff\u00e9rentes de faire la m\u00eame route.",
+    legend: {
+      eau: {label:"\u00c0 fond dans l'eau", sub:"Eau chaque jour \u00b7 van chaque nuit"},
+      aventure: {label:"Terre &amp; Aventure", sub:"Ferrata, escalade, VTT \u00b7 sensations fortes"},
+      patrimoine: {label:"Rando &amp; Patrimoine", sub:"Grandes randos \u00b7 histoire, \u00e0 pied et \u00e0 v\u00e9lo"}
+    },
+    statLabels: {jours:"Jours", intensityAvg:"Intensit\u00e9 moyenne", eauFreq:"Fr\u00e9quence eau"},
+    intensite:"Intensit\u00e9", where:"O\u00f9 / Parking", gmaps:"Ouvrir l'itin\u00e9raire dans Google Maps",
+    tags: {eau:"Eau", rando:"Rando", histoire:"Histoire", aventure:"Aventure"},
+    footerH3:"\u00c0 retenir, quelle que soit la version",
+    note1:"<b>Pas de cano\u00eb dans les Gorges de l'Ard\u00e8che :</b> remplac\u00e9 par les belv\u00e9d\u00e8res de la route des gorges et la baignade \u00e0 la Plage de Gaud \u2014 m\u00eames paysages, sans la descente organis\u00e9e.",
+    note2:"<b>R\u00e9servations :</b> canyoning, via ferrata et escalade se remplissent vite en juillet-ao\u00fbt \u2014 \u00e0 r\u00e9server avant de partir.",
+    note3:"<b>France Passion :</b> r\u00e9seau de producteurs (viticulteurs, fermes) qui offrent une nuit gratuite sur leur terrain en \u00e9change d'un achat en boutique \u2014 pas de commodit\u00e9s, mais 100% l\u00e9gal et souvent le plus beau cadre pour le van.",
+    note4:"<b>Bivouac en van :</b> tol\u00e9r\u00e9 sur la plupart des parkings/aires tant qu'on ne sort pas table et chaises, mais explicitement interdit dans les r\u00e9serves naturelles (c\u0153ur des Gorges de l'Ard\u00e8che) \u2014 on v\u00e9rifie la signal\u00e9tique locale.",
+    endmark:"Le plan tient jusqu'au premier virage sympa."
+  },
+  en: {
+    eyebrow: "Road trip notebook",
+    tagline: "5 days from the Alps to the sea, right up to Beauduc beach. Three different ways to do the same route.",
+    legend: {
+      eau: {label:"Full water", sub:"Water every day \u00b7 van every night"},
+      aventure: {label:"Land &amp; Adventure", sub:"Via ferrata, climbing, biking \u00b7 big thrills"},
+      patrimoine: {label:"Hiking &amp; Heritage", sub:"Big hikes \u00b7 history, on foot and by bike"}
+    },
+    statLabels: {jours:"Days", intensityAvg:"Average intensity", eauFreq:"Water frequency"},
+    intensite:"Intensity", where:"Where / Parking", gmaps:"Open route in Google Maps",
+    tags: {eau:"Water", rando:"Hike", histoire:"History", aventure:"Adventure"},
+    footerH3:"Worth knowing, whichever version",
+    note1:"<b>No canoeing in the Gorges de l'Ard\u00e8che:</b> replaced by the gorge-road viewpoints and swimming at Plage de Gaud \u2014 same scenery, without the organised descent.",
+    note2:"<b>Bookings:</b> canyoning, via ferrata and climbing fill up fast in July-August \u2014 book before you leave.",
+    note3:"<b>France Passion:</b> a network of producers (wineries, farms) offering a free night on their land in exchange for a small purchase \u2014 no facilities, but 100% legal and often the nicest van spot of the day.",
+    note4:"<b>Van bivouac:</b> tolerated in most car parks/lay-bys as long as you don't set up table and chairs, but explicitly banned inside nature reserves (the core of the Gorges de l'Ard\u00e8che) \u2014 check local signage.",
+    endmark:"The plan holds until the first good bend in the road."
+  }
+};
+
+const VARIANTS = { fr: {}, en: {} };
+
+VARIANTS.fr.eau = {
+  stats: [ {num:"5", labelKey:"jours"}, {num:"3.4/5", labelKey:"intensityAvg"}, {num:"Tous les jours", labelKey:"eauFreq"} ],
   days: [
-    { eyebrow:"Jour 1", title:"Annecy → Vercors", gmaps:"https://www.google.com/maps/dir/Annecy,+France/Sassenage,+38360,+France/Saint-Jean-en-Royans,+26190,+France/Font+d'Urle,+26190+Bouvante,+France", intensity:4, route:"~2h",
+    { eyebrow:"Jour 1", title:"Annecy \u2192 Vercors", gmaps:"https://www.google.com/maps/dir/Annecy,+France/Sassenage,+38360,+France/Saint-Jean-en-Royans,+26190,+France/Font+d'Urle,+26190+Bouvante,+France", intensity:4, route:"~2h",
       routeStops:["Annecy","Sassenage","Saint-Jean-en-Royans","Font d'Urle"],
       stops:[
-        {img:"furon", name:"Canyoning au Furon", dur:"~3h", cat:"eau", desc:"Le canyon du Furon, à Sassenage, est le plus accessible depuis Grenoble : rappels dans une gorge étroite, sauts dans des vasques naturelles. Moniteur et équipement inclus.",
-         where:"Sassenage (départ canyoning)", parking:"Le prestataire indique le point de rendez-vous exact à la réservation — plusieurs parkings dans le village."},
-        {img:"combelaval", name:"Route panoramique de Combe Laval", dur:"~1h", cat:"rando", desc:"Route taillée à flanc de falaise fin XIXe, tunnels dans la roche — spectaculaire même juste en voiture, plusieurs arrêts pour la vue.",
+        {img:"furon", name:"Canyoning au Furon", dur:"~3h", cat:"eau", desc:"Le canyon du Furon, \u00e0 Sassenage, est le plus accessible depuis Grenoble : rappels dans une gorge \u00e9troite, sauts dans des vasques naturelles. Moniteur et \u00e9quipement inclus.",
+         where:"Sassenage (d\u00e9part canyoning)", parking:"Le prestataire indique le point de rendez-vous exact \u00e0 la r\u00e9servation."},
+        {img:"combelaval", name:"Route panoramique de Combe Laval", dur:"~1h", cat:"rando", desc:"Route taill\u00e9e \u00e0 flanc de falaise fin XIXe, tunnels dans la roche \u2014 spectaculaire m\u00eame juste en voiture, plusieurs arr\u00eats pour la vue.",
          where:"Saint-Jean-en-Royans, direction D76 (route de Combe Laval)", parking:"Plusieurs aires de stationnement le long de la route, aux principaux points de vue."}
       ],
       tags:["eau","rando"],
-      callout:{label:"Attention", text:"Le canyoning se réserve à l'avance en été — les créneaux guidés partent vite."},
-      dodo:{label:"Dodo", text:"Plateau de <strong>Font d'Urle</strong> ou <strong>Col de Rousset</strong> (1254m) — vue à 360°, van."}
+      callout:{label:"Attention", text:"Le canyoning se r\u00e9serve \u00e0 l'avance en \u00e9t\u00e9 \u2014 les cr\u00e9neaux guid\u00e9s partent vite."},
+      dodo:{label:"Dodo", text:"Plateau de <strong>Font d'Urle</strong> ou <strong>Col de Rousset</strong> (1254m) \u2014 vue \u00e0 360\u00b0, van."}
     },
-    { eyebrow:"Jour 2", title:"Vercors → Ardèche", gmaps:"https://www.google.com/maps/dir/Font+d'Urle,+26190+Bouvante,+France/Vallon-Pont-d'Arc,+07150,+France/D290+%26+Route+des+Gorges,+07700+Saint-Rem%C3%A8ze,+France/Plateau+des+Gras,+07230+Chandolas,+France", intensity:4, route:"~4h",
+    { eyebrow:"Jour 2", title:"Vercors \u2192 Ard\u00e8che", gmaps:"https://www.google.com/maps/dir/Font+d'Urle,+26190+Bouvante,+France/Vallon-Pont-d'Arc,+07150,+France/D290+%26+Route+des+Gorges,+07700+Saint-Rem%C3%A8ze,+France/Plateau+des+Gras,+07230+Chandolas,+France", intensity:4, route:"~4h",
       routeStops:["Font d'Urle","Vallon-Pont-d'Arc","D290 (route des gorges)","Plateau des Gras"],
       stops:[
-        {img:"ardeche", name:"Belvédères de la route des Gorges", dur:"~2h", cat:"rando", desc:"La route touristique des gorges (D290) longe la falaise sur près de 30km, une dizaine de points de vue qui plongent sur le canyon et Pont d'Arc.",
-         where:"D290, Belvédère de la Madeleine (entre Vallon-Pont-d'Arc et Saint-Remèze)", parking:"Un parking dédié à chaque belvédère le long de la D290."},
-        {img:"gours", name:"Baignade à la Plage de Gaud", dur:"~2h", cat:"eau", desc:"Une plage de sable et de galets au bord de la rivière, dans la réserve naturelle — le meilleur endroit pour se baigner sans canoë.",
-         where:"Parking de Gaud, D290", parking:"~25-30min de marche depuis le parking jusqu'à la plage."}
+        {img:"ardeche", name:"Belv\u00e9d\u00e8res de la route des Gorges", dur:"~2h", cat:"rando", desc:"La route touristique des gorges (D290) longe la falaise sur pr\u00e8s de 30km, une dizaine de points de vue qui plongent sur le canyon et Pont d'Arc.",
+         where:"D290, Belv\u00e9d\u00e8re de la Madeleine (entre Vallon-Pont-d'Arc et Saint-Rem\u00e8ze)", parking:"Un parking d\u00e9di\u00e9 \u00e0 chaque belv\u00e9d\u00e8re le long de la D290."},
+        {img:"gours", name:"Baignade \u00e0 la Plage de Gaud", dur:"~2h", cat:"eau", desc:"Une plage de sable et de galets au bord de la rivi\u00e8re, dans la r\u00e9serve naturelle \u2014 le meilleur endroit pour se baigner sans cano\u00eb.",
+         where:"Parking de Gaud, D290", parking:"~25-30min de marche depuis le parking jusqu'\u00e0 la plage."}
       ],
       tags:["eau","rando"],
-      callout:{label:"Route", text:"~4h par les routes de montagne du Vercors — la journée la plus longue du parcours."},
-      bonus:{label:"Ça vaut le détour", text:"La <strong>Grotte Chauvet 2</strong>, réplique du site orné le plus ancien connu au monde (36 000 ans), est à 10 minutes de Vallon-Pont-d'Arc. L'originale n'est pas accessible au public — celle-ci vaut la visite (~1h30)."},
-      dodo:{label:"Dodo", text:"<strong>Plateau des Gras</strong> près de Barjac — causse calcaire tranquille, hors de la réserve naturelle."}
+      callout:{label:"Route", text:"~4h par les routes de montagne du Vercors \u2014 la journ\u00e9e la plus longue du parcours."},
+      bonus:{label:"\u00c7a vaut le d\u00e9tour", text:"La <strong>Grotte Chauvet 2</strong>, r\u00e9plique du site orn\u00e9 le plus ancien connu au monde (36 000 ans), est \u00e0 10 minutes de Vallon-Pont-d'Arc. L'originale n'est pas accessible au public \u2014 celle-ci vaut la visite (~1h30)."},
+      dodo:{label:"Dodo", text:"<strong>Plateau des Gras</strong> pr\u00e8s de Barjac \u2014 causse calcaire tranquille, hors de la r\u00e9serve naturelle."}
     },
-    { eyebrow:"Jour 3", title:"Ardèche → Orange → Avignon", gmaps:"https://www.google.com/maps/dir/Plateau+des+Gras,+07230+Chandolas,+France/Grignan,+26230,+France/Orange,+84100+Orange,+France/Avignon,+France", intensity:2, route:"~2h15",
-      routeStops:["Plateau des Gras","Grignan","Orange","Avignon","Châteauneuf-du-Pape"],
+    { eyebrow:"Jour 3", title:"Ard\u00e8che \u2192 Orange \u2192 Avignon", gmaps:"https://www.google.com/maps/dir/Plateau+des+Gras,+07230+Chandolas,+France/Grignan,+26230,+France/Orange,+84100+Orange,+France/Avignon,+France", intensity:2, route:"~2h15",
+      routeStops:["Plateau des Gras","Grignan","Orange","Avignon","Ch\u00e2teauneuf-du-Pape"],
       stops:[
-        {img:"grignan", name:"Visite du village, Grignan", dur:"~1h30", cat:"histoire", desc:"Village perché connu pour les lettres que Madame de Sévigné écrivait à sa fille, installée au château. Château Renaissance à visiter, ruelles en contrebas."},
-        {img:"orange", name:"Théâtre antique d'Orange", dur:"~1h", cat:"histoire", desc:"Un des trois seuls théâtres antiques au monde à avoir conservé son mur de scène intact. Classé UNESCO, encore utilisé pour un festival d'opéra en été."},
-        {img:"avignon", name:"Palais des Papes, Avignon", dur:"~2h", cat:"histoire", desc:"Le plus grand édifice gothique du Moyen Âge, siège de la papauté au XIVe siècle. Audioguide inclus ; le reste du temps pour le Pont Saint-Bénézet et les ruelles."}
+        {img:"grignan", name:"Visite du village, Grignan", dur:"~1h30", cat:"histoire", desc:"Village perch\u00e9 connu pour les lettres que Madame de S\u00e9vign\u00e9 \u00e9crivait \u00e0 sa fille, install\u00e9e au ch\u00e2teau. Ch\u00e2teau Renaissance \u00e0 visiter, ruelles en contrebas."},
+        {img:"orange", name:"Th\u00e9\u00e2tre antique d'Orange", dur:"~1h", cat:"histoire", desc:"Un des trois seuls th\u00e9\u00e2tres antiques au monde \u00e0 avoir conserv\u00e9 son mur de sc\u00e8ne intact. Class\u00e9 UNESCO, encore utilis\u00e9 pour un festival d'op\u00e9ra en \u00e9t\u00e9."},
+        {img:"avignon", name:"Palais des Papes, Avignon", dur:"~2h", cat:"histoire", desc:"Le plus grand \u00e9difice gothique du Moyen \u00c2ge, si\u00e8ge de la papaut\u00e9 au XIVe si\u00e8cle. Audioguide inclus ; le reste du temps pour le Pont Saint-B\u00e9n\u00e9zet et les ruelles."}
       ],
       tags:["histoire"],
-      dodo:{label:"Dodo", text:"<strong>Châteauneuf-du-Pape</strong> via <strong>France Passion</strong> — nuit gratuite chez un viticulteur contre un petit achat."}
+      dodo:{label:"Dodo", text:"<strong>Ch\u00e2teauneuf-du-Pape</strong> via <strong>France Passion</strong> \u2014 nuit gratuite chez un viticulteur contre un petit achat."}
     },
-    { eyebrow:"Jour 4", title:"La Sorgue en kayak → Luberon", gmaps:"https://www.google.com/maps/dir/Avignon,+France/Castle+of+Ch%C3%A2teauneuf-du-Pape,+Ch%C3%A2teau+des+Papes,+84230+Ch%C3%A2teauneuf-du-Pape,+France/Fontaine-de-Vaucluse,+84800,+France/L'Isle-sur-la-Sorgue,+84800,+France/Roussillon,+84220,+France/Les+Baux-de-Provence,+13520,+France", intensity:4, route:"~1h15",
-      routeStops:["Châteauneuf-du-Pape","Fontaine-de-Vaucluse","L'Isle-sur-la-Sorgue","Roussillon","Les Baux-de-Provence"],
+    { eyebrow:"Jour 4", title:"La Sorgue en kayak \u2192 Luberon", gmaps:"https://www.google.com/maps/dir/Avignon,+France/Castle+of+Ch%C3%A2teauneuf-du-Pape,+Ch%C3%A2teau+des+Papes,+84230+Ch%C3%A2teauneuf-du-Pape,+France/Fontaine-de-Vaucluse,+84800,+France/L'Isle-sur-la-Sorgue,+84800,+France/Roussillon,+84220,+France/Les+Baux-de-Provence,+13520,+France", intensity:4, route:"~1h15",
+      routeStops:["Ch\u00e2teauneuf-du-Pape","Fontaine-de-Vaucluse","L'Isle-sur-la-Sorgue","Roussillon","Les Baux-de-Provence"],
       stops:[
-        {img:"sorgue", name:"Kayak sur la Sorgue", dur:"~2h30", cat:"eau", desc:"La Sorgue prend sa source à Fontaine-de-Vaucluse, une des résurgences les plus puissantes d'Europe. Descente en eau calme jusqu'à L'Isle-sur-la-Sorgue, accessible sans expérience."},
-        {img:"roussillon", name:"Sentier des Ocres, Roussillon", dur:"~1h30", cat:"rando", desc:"Sentier balisé au milieu de falaises et cheminées de sable ocre, vestiges d'anciennes carrières. Couleurs du jaune pâle au rouge profond.",
-         where:"Parking du Sentier des Ocres, Roussillon", parking:"Entrée payante, parking dédié sur place."},
-        {img:"baux", name:"Visite des ruines, Les Baux-de-Provence", dur:"~45min", cat:"histoire", desc:"Village construit à même la roche, dominé par les ruines d'une forteresse médiévale. Vue à 360° sur les Alpilles, particulièrement belle au coucher du soleil."}
+        {img:"sorgue", name:"Kayak sur la Sorgue", dur:"~2h30", cat:"eau", desc:"La Sorgue prend sa source \u00e0 Fontaine-de-Vaucluse, une des r\u00e9surgences les plus puissantes d'Europe. Descente en eau calme jusqu'\u00e0 L'Isle-sur-la-Sorgue, accessible sans exp\u00e9rience."},
+        {img:"roussillon", name:"Sentier des Ocres, Roussillon", dur:"~1h30", cat:"rando", desc:"Sentier balis\u00e9 au milieu de falaises et chemin\u00e9es de sable ocre, vestiges d'anciennes carri\u00e8res. Couleurs du jaune p\u00e2le au rouge profond.",
+         where:"Parking du Sentier des Ocres, Roussillon", parking:"Entr\u00e9e payante, parking d\u00e9di\u00e9 sur place."},
+        {img:"baux", name:"Visite des ruines, Les Baux-de-Provence", dur:"~45min", cat:"histoire", desc:"Village construit \u00e0 m\u00eame la roche, domin\u00e9 par les ruines d'une forteresse m\u00e9di\u00e9vale. Vue \u00e0 360\u00b0 sur les Alpilles, particuli\u00e8rement belle au coucher du soleil."}
       ],
       tags:["eau","rando","histoire"],
-      dodo:{label:"Dodo", text:"Un domaine <strong>France Passion</strong> dans le Luberon, du côté de Roussillon ou Apt."}
+      dodo:{label:"Nuit r\u00e9serv\u00e9e", text:RESV_FR}
     },
-    { eyebrow:"Jour 5", title:"Arles → Camargue → vers Beauduc", gmaps:"https://www.google.com/maps/dir/Les+Baux-de-Provence,+13520,+France/Arles,+France/Saintes-Maries-de-la-Mer,+13460,+France/Salin-de-Giraud,+13129+Arles,+France/Beach+Beauduc,+13129+Saintes-Maries-de-la-Mer,+France", intensity:3, route:"~2h",
+    { eyebrow:"Jour 5", title:"Arles \u2192 Camargue \u2192 vers Beauduc", gmaps:"https://www.google.com/maps/dir/Les+Baux-de-Provence,+13520,+France/Arles,+France/Saintes-Maries-de-la-Mer,+13460,+France/Salin-de-Giraud,+13129+Arles,+France/Beach+Beauduc,+13129+Saintes-Maries-de-la-Mer,+France", intensity:3, route:"~2h",
       routeStops:["Les Baux-de-Provence","Arles","Saintes-Maries-de-la-Mer / Le Sambuc","Salin-de-Giraud","piste de Beauduc"],
       stops:[
-        {img:"arles", name:"Arènes d'Arles", dur:"~1h30", cat:"histoire", desc:"Amphithéâtre romain du Ier siècle, encore utilisé aujourd'hui pour des spectacles. Gradins et tour accessibles pour la vue sur la ville et le Rhône."},
-        {img:"camargue", name:"Balade à cheval en Camargue", dur:"~2h", cat:"eau", desc:"Les petits chevaux blancs semi-sauvages typiques de la région, à travers marais et salins, encadrés par une manade.",
-         where:"Manades autour de Saintes-Maries-de-la-Mer ou du Sambuc", parking:"Choisir une manade au moment de réserver — chacune a son propre point de rendez-vous."}
+        {img:"arles", name:"Ar\u00e8nes d'Arles", dur:"~1h30", cat:"histoire", desc:"Amphith\u00e9\u00e2tre romain du Ier si\u00e8cle, encore utilis\u00e9 aujourd'hui pour des spectacles. Gradins et tour accessibles pour la vue sur la ville et le Rh\u00f4ne."},
+        {img:"camargue", name:"Balade \u00e0 cheval en Camargue", dur:"~2h", cat:"eau", desc:"Les petits chevaux blancs semi-sauvages typiques de la r\u00e9gion, \u00e0 travers marais et salins, encadr\u00e9s par une manade.",
+         where:"Manades autour de Saintes-Maries-de-la-Mer ou du Sambuc", parking:"Choisir une manade au moment de r\u00e9server \u2014 chacune a son propre point de rendez-vous."}
       ],
       tags:["eau","histoire"],
-      callout:{label:"Attention", text:"La piste vers Beauduc fait 12km de sable/argile, avec une limite de hauteur à 2,14m — à vérifier avant de s'engager."},
-      dodo:{label:"Arrivée", text:"Beauduc, en fin de route — la plage elle-même, c'est pour la suite."}
+      callout:{label:"Attention", text:"La piste vers Beauduc fait 12km de sable/argile, avec une limite de hauteur \u00e0 2,14m \u2014 \u00e0 v\u00e9rifier avant de s'engager."},
+      dodo:{label:"Arriv\u00e9e", text:"Beauduc, en fin de route \u2014 la plage elle-m\u00eame, c'est pour la suite."}
     }
   ]
-},
-aventure: {
-  stats: [ {num:"5", label:"Jours"}, {num:"3-4", label:"Nuits en van"}, {num:"1 jour sur 5", label:"Fréquence eau"} ],
+};
+
+VARIANTS.fr.aventure = {
+  stats: [ {num:"5", labelKey:"jours"}, {num:"4.4/5", labelKey:"intensityAvg"}, {num:"1 jour sur 5", labelKey:"eauFreq"} ],
   days: [
-    { eyebrow:"Jour 1", title:"Annecy → Vercors", intensity:5, route:"~2h",
+    { eyebrow:"Jour 1", title:"Annecy \u2192 Vercors", intensity:5, route:"~2h",
       routeStops:["Annecy","Rencurel","Saint-Jean-en-Royans","Font d'Urle"],
       stops:[
-        {img:"furon", name:"Via ferrata de la Balme, Rencurel", dur:"~3h", cat:"aventure", desc:"Une falaise équipée de câbles, échelons et ponts népalais — sensations fortes garanties, accessible sans expérience d'escalade mais il ne faut pas avoir le vertige.",
-         where:"Rencurel, via ferrata de la Balme", parking:"Parking au départ du site, indiqué depuis le village."},
-        {img:"combelaval", name:"Route panoramique de Combe Laval", dur:"~1h", cat:"rando", desc:"Route en corniche taillée dans la falaise, tunnels dans la roche, plusieurs arrêts pour la vue.",
+        {img:"furon", name:"Via ferrata de la Balme, Rencurel", dur:"~3h", cat:"aventure", desc:"Une falaise \u00e9quip\u00e9e de c\u00e2bles, \u00e9chelons et ponts n\u00e9palais \u2014 sensations fortes garanties, accessible sans exp\u00e9rience d'escalade mais il ne faut pas avoir le vertige.",
+         where:"Rencurel, via ferrata de la Balme", parking:"Parking au d\u00e9part du site, indiqu\u00e9 depuis le village."},
+        {img:"combelaval", name:"Route panoramique de Combe Laval", dur:"~1h", cat:"rando", desc:"Route en corniche taill\u00e9e dans la falaise, tunnels dans la roche, plusieurs arr\u00eats pour la vue.",
          where:"Saint-Jean-en-Royans, direction D76", parking:"Plusieurs aires de stationnement le long de la route."}
       ],
       tags:["aventure","rando"],
-      callout:{label:"Attention", text:"La via ferrata se réserve à l'avance en été."},
+      callout:{label:"Attention", text:"La via ferrata se r\u00e9serve \u00e0 l'avance en \u00e9t\u00e9."},
       dodo:{label:"Dodo", text:"Plateau de <strong>Font d'Urle</strong>."}
     },
-    { eyebrow:"Jour 2", title:"Vercors → Ardèche", intensity:5, route:"~4h",
+    { eyebrow:"Jour 2", title:"Vercors \u2192 Ard\u00e8che", intensity:5, route:"~4h",
       routeStops:["Font d'Urle","Casteljau (Chassezac)","Vallon-Pont-d'Arc","Plateau des Gras"],
       stops:[
-        {img:"gours", name:"Canyoning au Chassezac", dur:"~3h", cat:"aventure", desc:"Le Chassezac, affluent de l'Ardèche, offre un canyon moins connu que ceux de Vallon-Pont-d'Arc — toboggans naturels, sauts et rappels, avec moins de monde.",
-         where:"Casteljau (départ canyoning Chassezac)", parking:"Le prestataire indique le parking exact à la réservation."},
-        {img:"ardeche", name:"Belvédères de la route des Gorges", dur:"~1h", cat:"rando", desc:"Un aperçu rapide de la route des gorges et de ses points de vue sur Pont d'Arc, avant de reprendre la route.",
-         where:"D290, Belvédère de la Madeleine", parking:"Un parking dédié à chaque belvédère le long de la D290."}
+        {img:"gours", name:"Canyoning au Chassezac", dur:"~3h", cat:"aventure", desc:"Le Chassezac, affluent de l'Ard\u00e8che, offre un canyon moins connu que ceux de Vallon-Pont-d'Arc \u2014 toboggans naturels, sauts et rappels, avec moins de monde.",
+         where:"Casteljau (d\u00e9part canyoning Chassezac)", parking:"Le prestataire indique le parking exact \u00e0 la r\u00e9servation."},
+        {img:"ardeche", name:"Belv\u00e9d\u00e8res de la route des Gorges", dur:"~1h", cat:"rando", desc:"Un aper\u00e7u rapide de la route des gorges et de ses points de vue sur Pont d'Arc, avant de reprendre la route.",
+         where:"D290, Belv\u00e9d\u00e8re de la Madeleine", parking:"Un parking d\u00e9di\u00e9 \u00e0 chaque belv\u00e9d\u00e8re le long de la D290."}
       ],
       tags:["aventure","rando"],
-      callout:{label:"Route", text:"~4h par les routes de montagne — la journée la plus longue du parcours."},
-      bonus:{label:"Ça vaut le détour", text:"La <strong>Grotte Chauvet 2</strong> (réplique du site orné le plus ancien connu au monde, 36 000 ans) est à 10 minutes de Vallon-Pont-d'Arc si vous avez une heure et demie à y consacrer."},
+      callout:{label:"Route", text:"~4h par les routes de montagne \u2014 la journ\u00e9e la plus longue du parcours."},
+      bonus:{label:"\u00c7a vaut le d\u00e9tour", text:"La <strong>Grotte Chauvet 2</strong> (r\u00e9plique du site orn\u00e9 le plus ancien connu au monde, 36 000 ans) est \u00e0 10 minutes de Vallon-Pont-d'Arc si vous avez une heure et demie \u00e0 y consacrer."},
       dodo:{label:"Dodo (van)", text:"Plateau des Gras."},
-      alt_dodo:{label:"Alternative confort — notable", text:"Un <strong>gîte troglodyte</strong> creusé dans la roche près de Vallon-Pont-d'Arc."}
+      alt_dodo:{label:"Alternative confort \u2014 notable", text:"Un <strong>g\u00eete troglodyte</strong> creus\u00e9 dans la roche pr\u00e8s de Vallon-Pont-d'Arc."}
     },
-    { eyebrow:"Jour 3", title:"Ardèche → Orange → Avignon", intensity:3, route:"~2h15",
-      routeStops:["Plateau des Gras","Grignan","Orange","Avignon","Châteauneuf-du-Pape"],
+    { eyebrow:"Jour 3", title:"Ard\u00e8che \u2192 Orange \u2192 Avignon", intensity:3, route:"~2h15",
+      routeStops:["Plateau des Gras","Grignan","Orange","Avignon","Ch\u00e2teauneuf-du-Pape"],
       stops:[
-        {img:"grignan", name:"Visite du village, Grignan", dur:"~1h", cat:"histoire", desc:"Village-château perché, rendu célèbre par les lettres de Madame de Sévigné à sa fille."},
-        {img:"orange", name:"Théâtre antique d'Orange", dur:"~1h", cat:"histoire", desc:"Théâtre antique classé UNESCO, un des mieux conservés au monde."},
-        {img:"avignon", name:"Avignon à vélo", dur:"~1h30", cat:"aventure", desc:"Les remparts d'Avignon font près de 4,3km — se les faire à vélo avant de terminer au Palais des Papes à pied.",
-         where:"Location de vélo près du Palais des Papes", parking:"Plusieurs loueurs en centre-ville, à pied du parking Île Piot (avec navette gratuite)."}
+        {img:"grignan", name:"Visite du village, Grignan", dur:"~1h", cat:"histoire", desc:"Village-ch\u00e2teau perch\u00e9, rendu c\u00e9l\u00e8bre par les lettres de Madame de S\u00e9vign\u00e9 \u00e0 sa fille."},
+        {img:"orange", name:"Th\u00e9\u00e2tre antique d'Orange", dur:"~1h", cat:"histoire", desc:"Th\u00e9\u00e2tre antique class\u00e9 UNESCO, un des mieux conserv\u00e9s au monde."},
+        {img:"avignon", name:"Avignon \u00e0 v\u00e9lo", dur:"~1h30", cat:"aventure", desc:"Les remparts d'Avignon font pr\u00e8s de 4,3km \u2014 se les faire \u00e0 v\u00e9lo avant de terminer au Palais des Papes \u00e0 pied.",
+         where:"Location de v\u00e9lo pr\u00e8s du Palais des Papes", parking:"Plusieurs loueurs en centre-ville, \u00e0 pied du parking \u00cele Piot (avec navette gratuite)."}
       ],
       tags:["aventure","histoire"],
-      dodo:{label:"Dodo (van)", text:"<strong>Châteauneuf-du-Pape</strong>, France Passion."},
-      alt_dodo:{label:"Alternative confort — notable", text:"Une nuit en <strong>hôtel intra-muros à Avignon</strong> — pratique pour une vraie douche."}
+      dodo:{label:"Dodo (van)", text:"<strong>Ch\u00e2teauneuf-du-Pape</strong>, France Passion."},
+      alt_dodo:{label:"Alternative confort \u2014 notable", text:"Une nuit en <strong>h\u00f4tel intra-muros \u00e0 Avignon</strong> \u2014 pratique pour une vraie douche."}
     },
-    { eyebrow:"Jour 4", title:"Luberon — escalade à Buoux", intensity:5, route:"~1h15",
-      routeStops:["Châteauneuf-du-Pape","Buoux","Roussillon"],
+    { eyebrow:"Jour 4", title:"Luberon \u2014 escalade \u00e0 Buoux", intensity:5, route:"~1h15",
+      routeStops:["Ch\u00e2teauneuf-du-Pape","Buoux","Roussillon"],
       stops:[
-        {img:"buoux", name:"Escalade à Buoux", dur:"~3h", cat:"aventure", desc:"Buoux est un des berceaux historiques de l'escalade libre en France, plus de 400 voies sur une falaise calcaire de 40m. Initiation possible même sans expérience.",
-         where:"Parking du Fort de Buoux", parking:"Parking au pied de la falaise, indiqué depuis le village de Buoux."},
-        {img:"roussillon", name:"Sentier des Ocres, Roussillon", dur:"~1h30", cat:"rando", desc:"Falaises et cheminées d'ocre, sentier balisé au milieu des couleurs — un bon contraste après la falaise de Buoux.",
-         where:"Parking du Sentier des Ocres, Roussillon", parking:"Entrée payante, parking dédié sur place."}
+        {img:"buoux", name:"Escalade \u00e0 Buoux", dur:"~3h", cat:"aventure", desc:"Buoux est un des berceaux historiques de l'escalade libre en France, plus de 400 voies sur une falaise calcaire de 40m. Initiation possible m\u00eame sans exp\u00e9rience.",
+         where:"Parking du Fort de Buoux", parking:"Parking au pied de la falaise, indiqu\u00e9 depuis le village de Buoux."},
+        {img:"roussillon", name:"Sentier des Ocres, Roussillon", dur:"~1h30", cat:"rando", desc:"Falaises et chemin\u00e9es d'ocre, sentier balis\u00e9 au milieu des couleurs \u2014 un bon contraste apr\u00e8s la falaise de Buoux.",
+         where:"Parking du Sentier des Ocres, Roussillon", parking:"Entr\u00e9e payante, parking d\u00e9di\u00e9 sur place."}
       ],
       tags:["aventure","rando"],
-      callout:{label:"Attention", text:"Réserver un moniteur à l'avance si besoin d'initiation."},
-      dodo:{label:"Dodo (van)", text:"Un domaine France Passion dans le Luberon."},
-      alt_dodo:{label:"Alternative confort — notable", text:"Une <strong>cabane perchée</strong> dans les arbres du Luberon."}
+      callout:{label:"Attention", text:"R\u00e9server un moniteur \u00e0 l'avance si besoin d'initiation."},
+      dodo:{label:"Nuit r\u00e9serv\u00e9e", text:RESV_FR}
     },
-    { eyebrow:"Jour 5", title:"Arles → Camargue → vers Beauduc", intensity:4, route:"~2h",
+    { eyebrow:"Jour 5", title:"Arles \u2192 Camargue \u2192 vers Beauduc", intensity:4, route:"~2h",
       routeStops:["Roussillon","Arles","Salin-de-Giraud","piste de Beauduc"],
       stops:[
-        {img:"arles", name:"Arènes d'Arles", dur:"~1h", cat:"histoire", desc:"Amphithéâtre romain, version courte — les gradins et la tour pour une vue sur la ville."},
-        {img:"camargue", name:"Cheval au galop, Camargue", dur:"~2h", cat:"aventure", desc:"Rythme plus soutenu qu'une balade tranquille — certaines manades proposent des sorties pour cavaliers plus expérimentés.",
-         where:"Manades autour de Saintes-Maries-de-la-Mer ou du Sambuc", parking:"Choisir une manade au moment de réserver."},
-        {img:"flamants", name:"Vélo sur la Digue à la Mer", dur:"~1h30", cat:"aventure", desc:"Une piste cyclable d'environ 8km longe le littoral entre Salin-de-Giraud et la mer, marais et salins typiques de la Camargue sauvage.",
-         where:"Départ depuis Salin-de-Giraud ou le Phare de la Gacholle", parking:"Un parking à chaque extrémité du sentier."}
+        {img:"arles", name:"Ar\u00e8nes d'Arles", dur:"~1h", cat:"histoire", desc:"Amphith\u00e9\u00e2tre romain, version courte \u2014 les gradins et la tour pour une vue sur la ville."},
+        {img:"camargue", name:"Cheval au galop, Camargue", dur:"~2h", cat:"aventure", desc:"Rythme plus soutenu qu'une balade tranquille \u2014 certaines manades proposent des sorties pour cavaliers plus exp\u00e9riment\u00e9s.",
+         where:"Manades autour de Saintes-Maries-de-la-Mer ou du Sambuc", parking:"Choisir une manade au moment de r\u00e9server."},
+        {img:"flamants", name:"V\u00e9lo sur la Digue \u00e0 la Mer", dur:"~1h30", cat:"aventure", desc:"Une piste cyclable d'environ 8km longe le littoral entre Salin-de-Giraud et la mer, marais et salins typiques de la Camargue sauvage.",
+         where:"D\u00e9part depuis Salin-de-Giraud ou le Phare de la Gacholle", parking:"Un parking \u00e0 chaque extr\u00e9mit\u00e9 du sentier."}
       ],
       tags:["aventure","histoire"],
-      callout:{label:"Attention", text:"La piste vers Beauduc fait 12km de sable/argile, avec une limite de hauteur à 2,14m."},
-      dodo:{label:"Arrivée", text:"Beauduc, en fin de route — la plage elle-même, c'est pour la suite."}
+      callout:{label:"Attention", text:"La piste vers Beauduc fait 12km de sable/argile, avec une limite de hauteur \u00e0 2,14m."},
+      dodo:{label:"Arriv\u00e9e", text:"Beauduc, en fin de route \u2014 la plage elle-m\u00eame, c'est pour la suite."}
     }
   ]
-},
-patrimoine: {
-  stats: [ {num:"5", label:"Jours"}, {num:"1-5", label:"Nuits en van"}, {num:"1 jour sur 5", label:"Fréquence eau"} ],
+};
+
+VARIANTS.fr.patrimoine = {
+  stats: [ {num:"5", labelKey:"jours"}, {num:"3.2/5", labelKey:"intensityAvg"}, {num:"1 jour sur 5", labelKey:"eauFreq"} ],
   days: [
-    { eyebrow:"Jour 1", title:"Annecy → Vercors", intensity:4, route:"~2h",
+    { eyebrow:"Jour 1", title:"Annecy \u2192 Vercors", intensity:4, route:"~2h",
       routeStops:["Annecy","Les Barraques-en-Vercors","Saint-Jean-en-Royans","Font d'Urle"],
       stops:[
-        {img:"grandsgoulets", name:"Randonnée aux Grands Goulets", dur:"~4h", cat:"rando", desc:"Une des plus belles randonnées du Vercors, gorges encaissées et passages taillés dans la roche. Dénivelé modéré mais quelques passages aériens.",
-         where:"Les Barraques-en-Vercors (départ du sentier)", parking:"Parking au hameau, départ du sentier balisé."},
-        {img:"combelaval", name:"Route panoramique de Combe Laval", dur:"~1h", cat:"rando", desc:"Route en corniche taillée dans la falaise, plusieurs arrêts pour la vue sur la vallée.",
+        {img:"grandsgoulets", name:"Randonn\u00e9e aux Grands Goulets", dur:"~4h", cat:"rando", desc:"Une des plus belles randonn\u00e9es du Vercors, gorges encaiss\u00e9es et passages taill\u00e9s dans la roche. D\u00e9nivel\u00e9 mod\u00e9r\u00e9 mais quelques passages a\u00e9riens.",
+         where:"Les Barraques-en-Vercors (d\u00e9part du sentier)", parking:"Parking au hameau, d\u00e9part du sentier balis\u00e9."},
+        {img:"combelaval", name:"Route panoramique de Combe Laval", dur:"~1h", cat:"rando", desc:"Route en corniche taill\u00e9e dans la falaise, plusieurs arr\u00eats pour la vue sur la vall\u00e9e.",
          where:"Saint-Jean-en-Royans, direction D76", parking:"Plusieurs aires de stationnement le long de la route."}
       ],
       tags:["rando"],
       dodo:{label:"Dodo (van)", text:"Plateau de Font d'Urle."},
-      alt_dodo:{label:"Alternative confort", text:"Un <strong>gîte de montagne</strong> du côté de Villard-de-Lans, si la route a été longue."}
+      alt_dodo:{label:"Alternative confort", text:"Un <strong>g\u00eete de montagne</strong> du c\u00f4t\u00e9 de Villard-de-Lans, si la route a \u00e9t\u00e9 longue."}
     },
-    { eyebrow:"Jour 2", title:"Vercors → Ardèche", intensity:3, route:"~4h",
+    { eyebrow:"Jour 2", title:"Vercors \u2192 Ard\u00e8che", intensity:3, route:"~4h",
       routeStops:["Font d'Urle","Vallon-Pont-d'Arc","D290 (route des gorges)","Plateau des Gras"],
       stops:[
-        {img:"ardeche", name:"Belvédères de la route des Gorges", dur:"~3h30", cat:"rando", desc:"Randonnée le long de la route touristique des gorges, points de vue sur le canyon et Pont d'Arc, avec possibilité de descendre vers la rivière par endroits.",
-         where:"D290, Belvédère de la Madeleine", parking:"Un parking dédié à chaque belvédère le long de la D290."},
-        {img:"gours", name:"Baignade à la Plage de Gaud", dur:"~1h", cat:"eau", desc:"Une plage de sable au bord de la rivière, dans la réserve naturelle — la pause fraîcheur de la journée, sans canoë.",
-         where:"Parking de Gaud, D290", parking:"~25-30min de marche depuis le parking jusqu'à la plage."}
+        {img:"ardeche", name:"Belv\u00e9d\u00e8res de la route des Gorges", dur:"~3h30", cat:"rando", desc:"Randonn\u00e9e le long de la route touristique des gorges, points de vue sur le canyon et Pont d'Arc, avec possibilit\u00e9 de descendre vers la rivi\u00e8re par endroits.",
+         where:"D290, Belv\u00e9d\u00e8re de la Madeleine", parking:"Un parking d\u00e9di\u00e9 \u00e0 chaque belv\u00e9d\u00e8re le long de la D290."},
+        {img:"gours", name:"Baignade \u00e0 la Plage de Gaud", dur:"~1h", cat:"eau", desc:"Une plage de sable au bord de la rivi\u00e8re, dans la r\u00e9serve naturelle \u2014 la pause fra\u00eecheur de la journ\u00e9e, sans cano\u00eb.",
+         where:"Parking de Gaud, D290", parking:"~25-30min de marche depuis le parking jusqu'\u00e0 la plage."}
       ],
       tags:["rando","eau"],
-      callout:{label:"Route", text:"~4h par les routes de montagne — la journée la plus longue du parcours."},
-      bonus:{label:"Ça vaut le détour", text:"La <strong>Grotte Chauvet 2</strong>, réplique du site orné le plus ancien connu au monde (36 000 ans), est à 10 minutes de Vallon-Pont-d'Arc — probablement le meilleur ajout côté patrimoine de la journée (~1h30)."},
+      callout:{label:"Route", text:"~4h par les routes de montagne \u2014 la journ\u00e9e la plus longue du parcours."},
+      bonus:{label:"\u00c7a vaut le d\u00e9tour", text:"La <strong>Grotte Chauvet 2</strong>, r\u00e9plique du site orn\u00e9 le plus ancien connu au monde (36 000 ans), est \u00e0 10 minutes de Vallon-Pont-d'Arc \u2014 probablement le meilleur ajout c\u00f4t\u00e9 patrimoine de la journ\u00e9e (~1h30)."},
       dodo:{label:"Dodo (van)", text:"Plateau des Gras."},
-      alt_dodo:{label:"Alternative confort — notable", text:"Un <strong>gîte troglodyte</strong> près de Vallon-Pont-d'Arc."}
+      alt_dodo:{label:"Alternative confort \u2014 notable", text:"Un <strong>g\u00eete troglodyte</strong> pr\u00e8s de Vallon-Pont-d'Arc."}
     },
-    { eyebrow:"Jour 3", title:"Ardèche → Orange → Avignon", intensity:3, route:"~2h15",
-      routeStops:["Plateau des Gras","Grignan","Orange","Avignon","Châteauneuf-du-Pape"],
+    { eyebrow:"Jour 3", title:"Ard\u00e8che \u2192 Orange \u2192 Avignon", intensity:3, route:"~2h15",
+      routeStops:["Plateau des Gras","Grignan","Orange","Avignon","Ch\u00e2teauneuf-du-Pape"],
       stops:[
-        {img:"grignan", name:"Visite du village, Grignan", dur:"~1h30", cat:"histoire", desc:"Village-château perché, connu pour les lettres de Madame de Sévigné à sa fille qui y vivait."},
-        {img:"orange", name:"Théâtre antique d'Orange", dur:"~1h", cat:"histoire", desc:"Théâtre antique, un des mieux conservés au monde, classé UNESCO."},
-        {img:"avignon", name:"Avignon + remparts à vélo", dur:"~2h30", cat:"histoire", desc:"Palais des Papes avec audioguide, puis tour des remparts (4,3km) à vélo pour voir la ville sous un autre angle.",
-         where:"Location de vélo près du Palais des Papes", parking:"Plusieurs loueurs en centre-ville."}
+        {img:"grignan", name:"Visite du village, Grignan", dur:"~1h30", cat:"histoire", desc:"Village-ch\u00e2teau perch\u00e9, connu pour les lettres de Madame de S\u00e9vign\u00e9 \u00e0 sa fille qui y vivait."},
+        {img:"orange", name:"Th\u00e9\u00e2tre antique d'Orange", dur:"~1h", cat:"histoire", desc:"Th\u00e9\u00e2tre antique, un des mieux conserv\u00e9s au monde, class\u00e9 UNESCO."},
+        {img:"avignon", name:"Avignon + remparts \u00e0 v\u00e9lo", dur:"~2h30", cat:"histoire", desc:"Palais des Papes avec audioguide, puis tour des remparts (4,3km) \u00e0 v\u00e9lo pour voir la ville sous un autre angle.",
+         where:"Location de v\u00e9lo pr\u00e8s du Palais des Papes", parking:"Plusieurs loueurs en centre-ville."}
       ],
       tags:["histoire"],
-      dodo:{label:"Dodo (van)", text:"Châteauneuf-du-Pape, France Passion."},
-      alt_dodo:{label:"Alternative confort — notable", text:"Un <strong>hôtel intra-muros à Avignon</strong>."}
+      dodo:{label:"Dodo (van)", text:"Ch\u00e2teauneuf-du-Pape, France Passion."},
+      alt_dodo:{label:"Alternative confort \u2014 notable", text:"Un <strong>h\u00f4tel intra-muros \u00e0 Avignon</strong>."}
     },
-    { eyebrow:"Jour 4", title:"Luberon — villages et ocres", intensity:3, route:"~1h15",
-      routeStops:["Châteauneuf-du-Pape","Sénanque","Gordes","Roussillon"],
+    { eyebrow:"Jour 4", title:"Luberon \u2014 villages et ocres", intensity:3, route:"~1h15",
+      routeStops:["Ch\u00e2teauneuf-du-Pape","S\u00e9nanque","Gordes","Roussillon"],
       stops:[
-        {img:"senanque", name:"Abbaye de Sénanque", dur:"~1h", cat:"histoire", desc:"Abbaye cistercienne du XIIe siècle, encore habitée par des moines. Le champ de lavande devant l'abbaye est célèbre (floraison mi-juin à début août)."},
-        {img:"gordes", name:"Visite du village, Gordes", dur:"~1h", cat:"histoire", desc:"Village construit en pierre sèche à flanc de colline, classé parmi les plus beaux villages de France."},
-        {img:"roussillon", name:"Sentier des Ocres, Roussillon", dur:"~1h30", cat:"rando", desc:"Vraie rando dans la falaise d'ocre — couleurs du jaune au rouge profond.",
-         where:"Parking du Sentier des Ocres, Roussillon", parking:"Entrée payante, parking dédié sur place."}
+        {img:"senanque", name:"Abbaye de S\u00e9nanque", dur:"~1h", cat:"histoire", desc:"Abbaye cistercienne du XIIe si\u00e8cle, encore habit\u00e9e par des moines. Le champ de lavande devant l'abbaye est c\u00e9l\u00e8bre (floraison mi-juin \u00e0 d\u00e9but ao\u00fbt)."},
+        {img:"gordes", name:"Visite du village, Gordes", dur:"~1h", cat:"histoire", desc:"Village construit en pierre s\u00e8che \u00e0 flanc de colline, class\u00e9 parmi les plus beaux villages de France."},
+        {img:"roussillon", name:"Sentier des Ocres, Roussillon", dur:"~1h30", cat:"rando", desc:"Vraie rando dans la falaise d'ocre \u2014 couleurs du jaune au rouge profond.",
+         where:"Parking du Sentier des Ocres, Roussillon", parking:"Entr\u00e9e payante, parking d\u00e9di\u00e9 sur place."}
       ],
       tags:["histoire","rando"],
-      dodo:{label:"Dodo (van)", text:"Un domaine France Passion dans le Luberon."},
-      alt_dodo:{label:"Alternative confort — notable", text:"Un <strong>mas provençal</strong> ou chambre d'hôte dans le Luberon."}
+      dodo:{label:"Nuit r\u00e9serv\u00e9e", text:RESV_FR}
     },
-    { eyebrow:"Jour 5", title:"Arles → Camargue → vers Beauduc", intensity:3, route:"~2h",
+    { eyebrow:"Jour 5", title:"Arles \u2192 Camargue \u2192 vers Beauduc", intensity:3, route:"~2h",
       routeStops:["Roussillon","Arles","Parc ornithologique (Pont de Gau)","piste de Beauduc"],
       stops:[
-        {img:"arles", name:"Visite approfondie d'Arles", dur:"~2h", cat:"histoire", desc:"Au-delà des arènes, Arles conserve un théâtre antique, des thermes romains, et plusieurs lieux liés au séjour de Van Gogh."},
-        {img:"flamants", name:"Parc ornithologique du Pont de Gau", dur:"~2h", cat:"rando", desc:"Observation des flamants roses sur des passerelles aménagées. La Digue à la Mer, à pied ou à vélo, prolonge la balade vers la Camargue sauvage.",
+        {img:"arles", name:"Visite approfondie d'Arles", dur:"~2h", cat:"histoire", desc:"Au-del\u00e0 des ar\u00e8nes, Arles conserve un th\u00e9\u00e2tre antique, des thermes romains, et plusieurs lieux li\u00e9s au s\u00e9jour de Van Gogh."},
+        {img:"flamants", name:"Parc ornithologique du Pont de Gau", dur:"~2h", cat:"rando", desc:"Observation des flamants roses sur des passerelles am\u00e9nag\u00e9es. La Digue \u00e0 la Mer, \u00e0 pied ou \u00e0 v\u00e9lo, prolonge la balade vers la Camargue sauvage.",
          where:"Parc ornithologique du Pont de Gau, D570", parking:"Grand parking gratuit sur place, entre Arles et Saintes-Maries-de-la-Mer."}
       ],
       tags:["histoire","rando"],
-      dodo:{label:"Arrivée", text:"Beauduc, en fin de route — la plage elle-même, c'est pour la suite."}
+      dodo:{label:"Arriv\u00e9e", text:"Beauduc, en fin de route \u2014 la plage elle-m\u00eame, c'est pour la suite."}
     }
   ]
-}
 };
 
+VARIANTS.en.eau = {
+  stats: [ {num:"5", labelKey:"jours"}, {num:"3.4/5", labelKey:"intensityAvg"}, {num:"Every day", labelKey:"eauFreq"} ],
+  days: [
+    { eyebrow:"Day 1", title:"Annecy \u2192 Vercors", gmaps:VARIANTS.fr.eau.days[0].gmaps, intensity:4, route:"~2h",
+      routeStops:["Annecy","Sassenage","Saint-Jean-en-Royans","Font d'Urle"],
+      stops:[
+        {img:"furon", name:"Canyoning at Furon", dur:"~3h", cat:"eau", desc:"The Furon canyon, at Sassenage, is the most accessible from Grenoble: abseiling down a narrow gorge, jumps into natural pools. Guide and gear included.",
+         where:"Sassenage (canyoning meeting point)", parking:"The operator confirms the exact meeting spot when you book."},
+        {img:"combelaval", name:"Combe Laval scenic road", dur:"~1h", cat:"rando", desc:"A road cut into the cliff face in the late 1800s, tunnels through the rock \u2014 spectacular even just from the car, several viewpoints to stop at.",
+         where:"Saint-Jean-en-Royans, toward the D76 (Combe Laval road)", parking:"Several pull-offs along the road at the main viewpoints."}
+      ],
+      tags:["eau","rando"],
+      callout:{label:"Heads up", text:"Canyoning needs booking ahead in summer \u2014 guided slots fill up fast."},
+      dodo:{label:"Sleep", text:"<strong>Font d'Urle</strong> plateau or <strong>Col de Rousset</strong> (1254m) \u2014 360\u00b0 views, van."}
+    },
+    { eyebrow:"Day 2", title:"Vercors \u2192 Ard\u00e8che", gmaps:VARIANTS.fr.eau.days[1].gmaps, intensity:4, route:"~4h",
+      routeStops:["Font d'Urle","Vallon-Pont-d'Arc","D290 (gorge road)","Plateau des Gras"],
+      stops:[
+        {img:"ardeche", name:"Gorge-road viewpoints", dur:"~2h", cat:"rando", desc:"The scenic gorge road (D290) runs along the cliff for nearly 30km, with about ten viewpoints looking down over the canyon and Pont d'Arc.",
+         where:"D290, Belv\u00e9d\u00e8re de la Madeleine (between Vallon-Pont-d'Arc and Saint-Rem\u00e8ze)", parking:"A dedicated car park at each viewpoint along the D290."},
+        {img:"gours", name:"Swimming at Plage de Gaud", dur:"~2h", cat:"eau", desc:"A sand-and-pebble beach on the riverbank, inside the nature reserve \u2014 the best spot to swim without a canoe.",
+         where:"Parking de Gaud, D290", parking:"~25-30min walk from the car park down to the beach."}
+      ],
+      tags:["eau","rando"],
+      callout:{label:"Drive", text:"~4h on the Vercors mountain roads \u2014 the longest driving day of the trip."},
+      bonus:{label:"Worth the detour", text:"<strong>Grotte Chauvet 2</strong>, a replica of the oldest known decorated cave site in the world (36,000 years old), is 10 minutes from Vallon-Pont-d'Arc. The original isn't open to the public \u2014 this one is worth the visit (~1h30)."},
+      dodo:{label:"Sleep", text:"<strong>Plateau des Gras</strong> near Barjac \u2014 a quiet limestone plateau, outside the nature reserve."}
+    },
+    { eyebrow:"Day 3", title:"Ard\u00e8che \u2192 Orange \u2192 Avignon", gmaps:VARIANTS.fr.eau.days[2].gmaps, intensity:2, route:"~2h15",
+      routeStops:["Plateau des Gras","Grignan","Orange","Avignon","Ch\u00e2teauneuf-du-Pape"],
+      stops:[
+        {img:"grignan", name:"Village visit, Grignan", dur:"~1h30", cat:"histoire", desc:"A hilltop village known for the letters Madame de S\u00e9vign\u00e9 wrote to her daughter, who lived in the castle. Renaissance castle to visit, lanes below."},
+        {img:"orange", name:"Orange Roman Theatre", dur:"~1h", cat:"histoire", desc:"One of only three Roman theatres in the world with its stage wall still intact. UNESCO-listed, still used for an opera festival in summer."},
+        {img:"avignon", name:"Palais des Papes, Avignon", dur:"~2h", cat:"histoire", desc:"The largest Gothic building of the Middle Ages, seat of the papacy in the 14th century. Audio guide included; spend the rest of the time on Pont Saint-B\u00e9n\u00e9zet and the old town."}
+      ],
+      tags:["histoire"],
+      dodo:{label:"Sleep", text:"<strong>Ch\u00e2teauneuf-du-Pape</strong> via <strong>France Passion</strong> \u2014 free night at a winery in exchange for a small purchase."}
+    },
+    { eyebrow:"Day 4", title:"Kayaking the Sorgue \u2192 Luberon", gmaps:VARIANTS.fr.eau.days[3].gmaps, intensity:4, route:"~1h15",
+      routeStops:["Ch\u00e2teauneuf-du-Pape","Fontaine-de-Vaucluse","L'Isle-sur-la-Sorgue","Roussillon","Les Baux-de-Provence"],
+      stops:[
+        {img:"sorgue", name:"Kayaking the Sorgue", dur:"~2h30", cat:"eau", desc:"The Sorgue rises at Fontaine-de-Vaucluse, one of Europe's most powerful natural springs. A calm paddle down to L'Isle-sur-la-Sorgue, fine without experience."},
+        {img:"roussillon", name:"Ochre Trail, Roussillon", dur:"~1h30", cat:"rando", desc:"A marked trail through ochre sand cliffs and hoodoos, remains of old quarries. Colours range from pale yellow to deep red.",
+         where:"Sentier des Ocres car park, Roussillon", parking:"Paid entry, dedicated car park on site."},
+        {img:"baux", name:"Ruins visit, Les Baux-de-Provence", dur:"~45min", cat:"histoire", desc:"A village carved straight into the rock, topped by the ruins of a medieval fortress. 360\u00b0 views over the Alpilles, especially good at sunset."}
+      ],
+      tags:["eau","rando","histoire"],
+      dodo:{label:"Booked night", text:RESV_EN}
+    },
+    { eyebrow:"Day 5", title:"Arles \u2192 Camargue \u2192 toward Beauduc", gmaps:VARIANTS.fr.eau.days[4].gmaps, intensity:3, route:"~2h",
+      routeStops:["Les Baux-de-Provence","Arles","Saintes-Maries-de-la-Mer / Le Sambuc","Salin-de-Giraud","Beauduc track"],
+      stops:[
+        {img:"arles", name:"Arles Roman Amphitheatre", dur:"~1h30", cat:"histoire", desc:"A 1st-century Roman amphitheatre, still used for shows today. You can climb the stands and the tower for a view over the town and the Rh\u00f4ne."},
+        {img:"camargue", name:"Horse ride in the Camargue", dur:"~2h", cat:"eau", desc:"The small semi-wild white horses typical of the region, through marshes and salt flats, led by a ranch (manade).",
+         where:"Ranches around Saintes-Maries-de-la-Mer or Le Sambuc", parking:"Pick a ranch when booking \u2014 each has its own meeting point."}
+      ],
+      tags:["eau","histoire"],
+      callout:{label:"Heads up", text:"The track to Beauduc is 12km of sand/clay, with a 2.14m height limit \u2014 check before driving in."},
+      dodo:{label:"Arrival", text:"Beauduc, at the end of the road \u2014 the beach itself is for the day after."}
+    }
+  ]
+};
+
+VARIANTS.en.aventure = {
+  stats: [ {num:"5", labelKey:"jours"}, {num:"4.4/5", labelKey:"intensityAvg"}, {num:"1 day out of 5", labelKey:"eauFreq"} ],
+  days: [
+    { eyebrow:"Day 1", title:"Annecy \u2192 Vercors", intensity:5, route:"~2h",
+      routeStops:["Annecy","Rencurel","Saint-Jean-en-Royans","Font d'Urle"],
+      stops:[
+        {img:"furon", name:"Via ferrata de la Balme, Rencurel", dur:"~3h", cat:"aventure", desc:"A cliff rigged with cables, rungs and Nepalese bridges \u2014 big thrills guaranteed, no climbing experience needed, but no fear of heights either.",
+         where:"Rencurel, via ferrata de la Balme", parking:"Car park at the site entrance, signposted from the village."},
+        {img:"combelaval", name:"Combe Laval scenic road", dur:"~1h", cat:"rando", desc:"A cliffside road cut into the rock, tunnels, several viewpoints to stop at.",
+         where:"Saint-Jean-en-Royans, toward the D76", parking:"Several pull-offs along the road."}
+      ],
+      tags:["aventure","rando"],
+      callout:{label:"Heads up", text:"Via ferrata needs booking ahead in summer."},
+      dodo:{label:"Sleep", text:"<strong>Font d'Urle</strong> plateau."}
+    },
+    { eyebrow:"Day 2", title:"Vercors \u2192 Ard\u00e8che", intensity:5, route:"~4h",
+      routeStops:["Font d'Urle","Casteljau (Chassezac)","Vallon-Pont-d'Arc","Plateau des Gras"],
+      stops:[
+        {img:"gours", name:"Canyoning on the Chassezac", dur:"~3h", cat:"aventure", desc:"The Chassezac, a tributary of the Ard\u00e8che, offers a canyon less known than the ones around Vallon-Pont-d'Arc \u2014 natural slides, jumps and abseils, with fewer crowds.",
+         where:"Casteljau (Chassezac canyoning meeting point)", parking:"The operator confirms the exact car park when you book."},
+        {img:"ardeche", name:"Gorge-road viewpoints", dur:"~1h", cat:"rando", desc:"A quick look at the gorge road and its viewpoints over Pont d'Arc, before getting back on the road.",
+         where:"D290, Belv\u00e9d\u00e8re de la Madeleine", parking:"A dedicated car park at each viewpoint along the D290."}
+      ],
+      tags:["aventure","rando"],
+      callout:{label:"Drive", text:"~4h on mountain roads \u2014 the longest driving day of the trip."},
+      bonus:{label:"Worth the detour", text:"<strong>Grotte Chauvet 2</strong> (a replica of the oldest known decorated cave in the world, 36,000 years old) is 10 minutes from Vallon-Pont-d'Arc if you have an hour and a half to spare."},
+      dodo:{label:"Sleep (van)", text:"Plateau des Gras."},
+      alt_dodo:{label:"Comfort alternative \u2014 notable", text:"A <strong>troglodyte gite</strong> carved into the rock near Vallon-Pont-d'Arc."}
+    },
+    { eyebrow:"Day 3", title:"Ard\u00e8che \u2192 Orange \u2192 Avignon", intensity:3, route:"~2h15",
+      routeStops:["Plateau des Gras","Grignan","Orange","Avignon","Ch\u00e2teauneuf-du-Pape"],
+      stops:[
+        {img:"grignan", name:"Village visit, Grignan", dur:"~1h", cat:"histoire", desc:"A hilltop castle-village, made famous by Madame de S\u00e9vign\u00e9's letters to her daughter."},
+        {img:"orange", name:"Orange Roman Theatre", dur:"~1h", cat:"histoire", desc:"UNESCO-listed Roman theatre, one of the best preserved in the world."},
+        {img:"avignon", name:"Avignon by bike", dur:"~1h30", cat:"aventure", desc:"Avignon's ramparts run nearly 4.3km \u2014 ride them before finishing at the Palais des Papes on foot.",
+         where:"Bike rental near the Palais des Papes", parking:"Several rental shops in the town centre, near the \u00cele Piot car park (free shuttle)."}
+      ],
+      tags:["aventure","histoire"],
+      dodo:{label:"Sleep (van)", text:"<strong>Ch\u00e2teauneuf-du-Pape</strong>, France Passion."},
+      alt_dodo:{label:"Comfort alternative \u2014 notable", text:"A night at a <strong>hotel inside Avignon's walls</strong> \u2014 handy for a real shower."}
+    },
+    { eyebrow:"Day 4", title:"Luberon \u2014 climbing at Buoux", intensity:5, route:"~1h15",
+      routeStops:["Ch\u00e2teauneuf-du-Pape","Buoux","Roussillon"],
+      stops:[
+        {img:"buoux", name:"Climbing at Buoux", dur:"~3h", cat:"aventure", desc:"Buoux is one of the historic birthplaces of free climbing in France, over 400 routes on a 40m limestone cliff. Beginner sessions available.",
+         where:"Fort de Buoux car park", parking:"Car park at the base of the cliff, signposted from Buoux village."},
+        {img:"roussillon", name:"Ochre Trail, Roussillon", dur:"~1h30", cat:"rando", desc:"Ochre cliffs and hoodoos, a marked trail through the colours \u2014 a nice contrast after the Buoux cliff.",
+         where:"Sentier des Ocres car park, Roussillon", parking:"Paid entry, dedicated car park on site."}
+      ],
+      tags:["aventure","rando"],
+      callout:{label:"Heads up", text:"Book an instructor ahead of time if you want a beginner session."},
+      dodo:{label:"Booked night", text:RESV_EN}
+    },
+    { eyebrow:"Day 5", title:"Arles \u2192 Camargue \u2192 toward Beauduc", intensity:4, route:"~2h",
+      routeStops:["Roussillon","Arles","Salin-de-Giraud","Beauduc track"],
+      stops:[
+        {img:"arles", name:"Arles Roman Amphitheatre", dur:"~1h", cat:"histoire", desc:"Roman amphitheatre, short version \u2014 the stands and tower for a view over the town."},
+        {img:"camargue", name:"Galloping horse ride, Camargue", dur:"~2h", cat:"aventure", desc:"A faster pace than a gentle ride \u2014 some ranches offer outings for more experienced riders, at a gallop through the marshes.",
+         where:"Ranches around Saintes-Maries-de-la-Mer or Le Sambuc", parking:"Pick a ranch when booking."},
+        {img:"flamants", name:"Cycling the Digue \u00e0 la Mer", dur:"~1h30", cat:"aventure", desc:"An ~8km cycle path runs along the coast between Salin-de-Giraud and the sea, through marshes and salt flats typical of the wild Camargue.",
+         where:"Starts from Salin-de-Giraud or the Phare de la Gacholle", parking:"A car park at each end of the trail."}
+      ],
+      tags:["aventure","histoire"],
+      callout:{label:"Heads up", text:"The track to Beauduc is 12km of sand/clay, with a 2.14m height limit."},
+      dodo:{label:"Arrival", text:"Beauduc, at the end of the road \u2014 the beach itself is for the day after."}
+    }
+  ]
+};
+
+VARIANTS.en.patrimoine = {
+  stats: [ {num:"5", labelKey:"jours"}, {num:"3.2/5", labelKey:"intensityAvg"}, {num:"1 day out of 5", labelKey:"eauFreq"} ],
+  days: [
+    { eyebrow:"Day 1", title:"Annecy \u2192 Vercors", intensity:4, route:"~2h",
+      routeStops:["Annecy","Les Barraques-en-Vercors","Saint-Jean-en-Royans","Font d'Urle"],
+      stops:[
+        {img:"grandsgoulets", name:"Grands Goulets hike", dur:"~4h", cat:"rando", desc:"One of the finest hikes in the Vercors, through deep gorges and passages cut into the rock. Moderate elevation gain but a few exposed sections.",
+         where:"Les Barraques-en-Vercors (trailhead)", parking:"Car park at the hamlet, start of the marked trail."},
+        {img:"combelaval", name:"Combe Laval scenic road", dur:"~1h", cat:"rando", desc:"A cliffside road cut into the rock, several viewpoints over the valley.",
+         where:"Saint-Jean-en-Royans, toward the D76", parking:"Several pull-offs along the road."}
+      ],
+      tags:["rando"],
+      dodo:{label:"Sleep (van)", text:"Font d'Urle plateau."},
+      alt_dodo:{label:"Comfort alternative", text:"A <strong>mountain gite</strong> around Villard-de-Lans, if the drive has been a long one."}
+    },
+    { eyebrow:"Day 2", title:"Vercors \u2192 Ard\u00e8che", intensity:3, route:"~4h",
+      routeStops:["Font d'Urle","Vallon-Pont-d'Arc","D290 (gorge road)","Plateau des Gras"],
+      stops:[
+        {img:"ardeche", name:"Gorge-road viewpoints", dur:"~3h30", cat:"rando", desc:"A hike along the scenic gorge road, viewpoints over the canyon and Pont d'Arc, with a few spots to drop down to the river.",
+         where:"D290, Belv\u00e9d\u00e8re de la Madeleine", parking:"A dedicated car park at each viewpoint along the D290."},
+        {img:"gours", name:"Swimming at Plage de Gaud", dur:"~1h", cat:"eau", desc:"A sandy beach on the riverbank, inside the nature reserve \u2014 the day's cool-down, no canoe needed.",
+         where:"Parking de Gaud, D290", parking:"~25-30min walk from the car park down to the beach."}
+      ],
+      tags:["rando","eau"],
+      callout:{label:"Drive", text:"~4h on mountain roads \u2014 the longest driving day of the trip."},
+      bonus:{label:"Worth the detour", text:"<strong>Grotte Chauvet 2</strong>, a replica of the oldest known decorated cave in the world (36,000 years old), is 10 minutes from Vallon-Pont-d'Arc \u2014 probably the best heritage addition of the day (~1h30)."},
+      dodo:{label:"Sleep (van)", text:"Plateau des Gras."},
+      alt_dodo:{label:"Comfort alternative \u2014 notable", text:"A <strong>troglodyte gite</strong> near Vallon-Pont-d'Arc."}
+    },
+    { eyebrow:"Day 3", title:"Ard\u00e8che \u2192 Orange \u2192 Avignon", intensity:3, route:"~2h15",
+      routeStops:["Plateau des Gras","Grignan","Orange","Avignon","Ch\u00e2teauneuf-du-Pape"],
+      stops:[
+        {img:"grignan", name:"Village visit, Grignan", dur:"~1h30", cat:"histoire", desc:"A hilltop castle-village, known for Madame de S\u00e9vign\u00e9's letters to the daughter who lived there."},
+        {img:"orange", name:"Orange Roman Theatre", dur:"~1h", cat:"histoire", desc:"Roman theatre, one of the best preserved in the world, UNESCO-listed."},
+        {img:"avignon", name:"Avignon + ramparts by bike", dur:"~2h30", cat:"histoire", desc:"Palais des Papes with audio guide, then the ramparts (4.3km) by bike to see the town from a different angle.",
+         where:"Bike rental near the Palais des Papes", parking:"Several rental shops in the town centre."}
+      ],
+      tags:["histoire"],
+      dodo:{label:"Sleep (van)", text:"Ch\u00e2teauneuf-du-Pape, France Passion."},
+      alt_dodo:{label:"Comfort alternative \u2014 notable", text:"A <strong>hotel inside Avignon's walls</strong>."}
+    },
+    { eyebrow:"Day 4", title:"Luberon \u2014 villages and ochre cliffs", intensity:3, route:"~1h15",
+      routeStops:["Ch\u00e2teauneuf-du-Pape","S\u00e9nanque","Gordes","Roussillon"],
+      stops:[
+        {img:"senanque", name:"S\u00e9nanque Abbey", dur:"~1h", cat:"histoire", desc:"A 12th-century Cistercian abbey, still home to monks. The lavender field in front of it is famous (blooms mid-June to early August)."},
+        {img:"gordes", name:"Village visit, Gordes", dur:"~1h", cat:"histoire", desc:"A dry-stone village built into a hillside, ranked among the most beautiful villages in France."},
+        {img:"roussillon", name:"Ochre Trail, Roussillon", dur:"~1h30", cat:"rando", desc:"A real hike through the ochre cliffs \u2014 colours from yellow to deep red.",
+         where:"Sentier des Ocres car park, Roussillon", parking:"Paid entry, dedicated car park on site."}
+      ],
+      tags:["histoire","rando"],
+      dodo:{label:"Booked night", text:RESV_EN}
+    },
+    { eyebrow:"Day 5", title:"Arles \u2192 Camargue \u2192 toward Beauduc", intensity:3, route:"~2h",
+      routeStops:["Roussillon","Arles","Bird park (Pont de Gau)","Beauduc track"],
+      stops:[
+        {img:"arles", name:"Arles, in depth", dur:"~2h", cat:"histoire", desc:"Beyond the amphitheatre, Arles also has a Roman theatre, Roman baths, and several sites tied to Van Gogh's stay."},
+        {img:"flamants", name:"Pont de Gau bird park", dur:"~2h", cat:"rando", desc:"Watch flamingos from boardwalks. The Digue \u00e0 la Mer, on foot or by bike, extends the walk into the wild Camargue.",
+         where:"Parc ornithologique du Pont de Gau, D570", parking:"Large free car park on site, between Arles and Saintes-Maries-de-la-Mer."}
+      ],
+      tags:["histoire","rando"],
+      dodo:{label:"Arrival", text:"Beauduc, at the end of the road \u2014 the beach itself is for the day after."}
+    }
+  ]
+};
+
+let currentLang = "fr";
+let currentVariant = "eau";
+
+function applyStaticText(){
+  const t = I18N[currentLang];
+  document.getElementById('txt-eyebrow').textContent = t.eyebrow;
+  document.getElementById('txt-tagline').textContent = t.tagline;
+  ['eau','aventure','patrimoine'].forEach(key => {
+    const btn = document.querySelector(`.legend button[data-key="${key}"]`);
+    btn.querySelector('.lg-label').innerHTML = t.legend[key].label;
+    btn.querySelector('.lg-sub').textContent = t.legend[key].sub;
+  });
+  document.getElementById('txt-footer-h3').textContent = t.footerH3;
+  document.getElementById('txt-note1').innerHTML = t.note1;
+  document.getElementById('txt-note2').innerHTML = t.note2;
+  document.getElementById('txt-note3').innerHTML = t.note3;
+  document.getElementById('txt-note4').innerHTML = t.note4;
+  document.getElementById('txt-endmark').textContent = t.endmark;
+  document.documentElement.lang = currentLang;
+}
+
 function renderStats(stats){
+  const t = I18N[currentLang];
   document.getElementById('statRow').innerHTML = stats.map(s =>
-    `<div class="stat"><span class="num">${s.num}</span><span class="label">${s.label}</span></div>`
+    `<div class="stat"><span class="num">${s.num}</span><span class="label">${t.statLabels[s.labelKey]}</span></div>`
   ).join('');
 }
 
 function renderDays(days){
+  const t = I18N[currentLang];
   const html = days.map((d,i) => {
     const dots = Array.from({length:5}, (_,j) => `<span class="dot ${j < d.intensity ? 'on':''}"></span>`).join('');
-    const routeLine = d.routeStops.map((s,j) => j===0 ? `<b>${s}</b>` : s).join(' → ');
+    const routeLine = d.routeStops.map((s,j) => j===0 ? `<b>${s}</b>` : s).join(' \u2192 ');
     const stopsHtml = d.stops.map(s => {
       const whereHtml = s.where ? `
         <details class="stop-where">
-          <summary>Où / Parking</summary>
+          <summary>${t.where}</summary>
           <div class="where-body">
-            <span class="gps">${s.where}</span>
+            <a class="gps" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.where)}" target="_blank" rel="noopener">${s.where} \u2197</a>
             ${s.parking || ''}
           </div>
         </details>` : '';
@@ -433,28 +696,21 @@ function renderDays(days){
         </div>
       </div>`;
     }).join('');
-    const tagsHtml = d.tags.map(t => {
-      const labels = {eau:"Eau", rando:"Rando", histoire:"Histoire", aventure:"Aventure"};
-      return `<span class="tag ${t}">${labels[t]}</span>`;
-    }).join('');
-    const calloutHtml = d.callout ? `<div class="callout"><span class="callout-label">${d.callout.label}</span>${d.callout.text}</div>` : '';
-    const bonusHtml = d.bonus ? `<div class="callout bonus"><span class="callout-label">${d.bonus.label}</span>${d.bonus.text}</div>` : '';
-    const dodoHtml = d.dodo ? `<div class="dodo-box"><span class="callout-label">${d.dodo.label}</span>${d.dodo.text}</div>` : '';
-    const altHtml = d.alt_dodo ? `<div class="alt-box"><span class="callout-label">${d.alt_dodo.label}</span>${d.alt_dodo.text}</div>` : '';
+    const tagsHtml = d.tags.map(tg => `<span class="tag ${tg}">${t.tags[tg]}</span>`).join('');
+    const calloutHtml = d.callout ? `<div class="info-box callout"><span class="callout-label">${d.callout.label}</span>${d.callout.text}</div>` : '';
+    const bonusHtml = d.bonus ? `<div class="info-box callout bonus"><span class="callout-label">${d.bonus.label}</span>${d.bonus.text}</div>` : '';
+    const dodoHtml = d.dodo ? `<div class="info-box dodo-box"><span class="callout-label">${d.dodo.label}</span>${d.dodo.text}</div>` : '';
+    const altHtml = d.alt_dodo ? `<div class="info-box alt-box"><span class="callout-label">${d.alt_dodo.label}</span>${d.alt_dodo.text}</div>` : '';
+    const gmapsIcon = d.gmaps ? `<a class="gmaps-icon" href="${d.gmaps}" target="_blank" rel="noopener" aria-label="${t.gmaps}" title="${t.gmaps}"><svg viewBox="0 0 24 24"><path d="M12 2 C7 2 4 5.5 4 9.5 C4 15 12 22 12 22 C12 22 20 15 20 9.5 C20 5.5 17 2 12 2 Z"/><circle cx="12" cy="9.5" r="2.5"/></svg></a>` : '';
     return `
       <section class="day">
         <div class="day-marker">${i+1}</div>
-        <div class="day-top">
-          <div class="day-heading">
-            <p class="day-eyebrow">${d.eyebrow}</p>
-            <h2 class="day-title">${d.title}</h2>
-          </div>
-          <div class="day-meta">
-            <div class="meta-row"><svg class="route-icon" viewBox="0 0 48 48"><use href="#i-route"/></svg><span class="route-val">${d.route} de route</span></div>
-            <div class="meta-row intensity"><span class="txt">Intensité</span><span class="dots">${dots}</span></div>
-          </div>
+        <div class="day-topline">
+          <p class="day-eyebrow">${d.eyebrow}</p>
+          <div class="meta-row intensity"><span class="txt">${t.intensite}</span><span class="dots">${dots}</span></div>
         </div>
-        <p class="day-route">${routeLine}${d.gmaps ? ` · <a class="gmaps-link" href="${d.gmaps}" target="_blank" rel="noopener">Ouvrir dans Google Maps ↗</a>` : ''}</p>
+        <h2 class="day-title">${d.title}</h2>
+        <p class="day-route"><span class="route-time">${d.route}</span><span class="route-sep">\u00b7</span>${routeLine}${gmapsIcon}</p>
         <div class="tags">${tagsHtml}</div>
         <div class="stops">${stopsHtml}</div>
         ${calloutHtml}
@@ -466,18 +722,24 @@ function renderDays(days){
   document.getElementById('daysContainer').innerHTML = html;
 }
 
-function selectVariant(key){
-  document.querySelectorAll('.legend button').forEach(b => b.classList.toggle('active', b.dataset.key === key));
-  document.documentElement.style.setProperty('--accent', ACCENT[key]);
-  renderStats(VARIANTS[key].stats);
-  renderDays(VARIANTS[key].days);
+function render(){
+  document.documentElement.style.setProperty('--accent', ACCENT[currentVariant]);
+  document.querySelectorAll('.legend button').forEach(b => b.classList.toggle('active', b.dataset.key === currentVariant));
+  document.querySelectorAll('.lang-switch button').forEach(b => b.classList.toggle('active', b.dataset.lang === currentLang));
+  applyStaticText();
+  const data = VARIANTS[currentLang][currentVariant];
+  renderStats(data.stats);
+  renderDays(data.days);
 }
 
 document.querySelectorAll('.legend button').forEach(btn => {
-  btn.addEventListener('click', () => selectVariant(btn.dataset.key));
+  btn.addEventListener('click', () => { currentVariant = btn.dataset.key; render(); });
+});
+document.querySelectorAll('.lang-switch button').forEach(btn => {
+  btn.addEventListener('click', () => { currentLang = btn.dataset.lang; render(); });
 });
 
-selectVariant('eau');
+render();
 </script>
 </body>
 </html>
