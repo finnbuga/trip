@@ -67,9 +67,11 @@
   .day-marker{ position:absolute; left:0; top:42px; width:30px; height:30px; border-radius:50%; background:var(--paper); border:2px solid var(--accent); display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono', monospace; font-size:12px; font-weight:600; color:var(--accent); transition:border-color 0.3s, color 0.3s; }
   @media (max-width:600px){ .day{padding-left:34px;} .day-marker{width:24px;height:24px;font-size:10px;top:40px;} }
 
-  .day-topline{ display:flex; justify-content:space-between; align-items:baseline; gap:10px; flex-wrap:wrap; }
+  .day-top{ display:flex; justify-content:space-between; align-items:flex-end; gap:16px; }
+  .day-heading{ min-width:0; }
   .day-eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--rust); text-transform:uppercase; letter-spacing:0.1em; margin:0; }
-  h2.day-title{ font-family:'Fraunces', serif; font-weight:600; font-size:clamp(21px, 4.5vw, 28px); margin:4px 0 8px; line-height:1.08; }
+  h2.day-title{ font-family:'Fraunces', serif; font-weight:600; font-size:clamp(21px, 4.5vw, 28px); margin:4px 0 0; line-height:1.08; }
+  .day-meta{ flex:0 0 auto; padding-bottom:2px; }
 
   .meta-row{ display:flex; align-items:center; gap:6px; }
   .intensity .dots{ display:flex; gap:3px; }
@@ -77,7 +79,7 @@
   .intensity .dot.on{ background:var(--accent); }
   .intensity .txt{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:#6b6350; text-transform:uppercase; letter-spacing:0.06em; }
 
-  .day-route{ display:flex; align-items:center; flex-wrap:wrap; gap:6px; font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:#6b6350; margin:0 0 10px; letter-spacing:0.01em; line-height:1.7; }
+  .day-route{ display:flex; align-items:center; flex-wrap:wrap; gap:6px; font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:#6b6350; margin:10px 0 10px; letter-spacing:0.01em; line-height:1.7; }
   .day-route .route-time{ font-weight:600; color:var(--accent); }
   .day-route .route-sep{ color:var(--line-soft); }
   .day-route b{ color:var(--ink); font-weight:500; }
@@ -115,9 +117,12 @@
   .tag.histoire{background:#f2e6d0; color:var(--ochre); border-color:#e3cd9c;}
   .tag.aventure{background:#f2ddd2; color:var(--rust); border-color:#e5bfab;}
 
-  .info-box{ max-width:64ch; width:100%; margin:14px 0 0; padding:14px 16px; }
+  .info-box{ max-width:64ch; width:100%; margin:14px 0 0; padding:14px 16px; font-size:14px; }
   .info-box .callout-label{ font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; display:block; margin-bottom:4px; }
-  .callout{ background:var(--paper-2); border-left:3px solid var(--rust); border-top:none; border-right:none; border-bottom:none; font-size:14px; }
+  .info-box a{ color:var(--water); text-decoration:none; border-bottom:1px dotted #b7d3d9; }
+  .info-box a:hover{ color:var(--rust); border-color:var(--rust); }
+  .info-box .resv-meta{ display:inline-block; margin-top:4px; font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:#6b6350; }
+  .callout{ background:var(--paper-2); border-left:3px solid var(--rust); border-top:none; border-right:none; border-bottom:none; }
   .callout .callout-label{ color:var(--rust); }
   .callout.bonus{ border-left-color:var(--ochre); }
   .callout.bonus .callout-label{ color:var(--ochre); }
@@ -142,6 +147,7 @@
       <div class="lang-switch">
         <button data-lang="fr" class="active">🇫🇷 FR</button>
         <button data-lang="en">🇬🇧 EN</button>
+        <button data-lang="ro">🇷🇴 RO</button>
       </div>
     </div>
     <h1 class="title">Annecy <em>→</em> Beauduc</h1>
@@ -205,8 +211,9 @@ const IMG = {
   flamants: "https://commons.wikimedia.org/wiki/Special:FilePath/Flamants_roses_en_Camargue.jpg?width=700"
 };
 
-const RESV_FR = "<strong>La Cigale et la Fourmi</strong> \u2014 mar. 18 ao\u00fbt \u2192 mer. 19 ao\u00fbt (arriv\u00e9e 15h00, d\u00e9part avant 11h00).<br><a href='https://www.google.com/maps/search/?api=1&query=La%20Cigale%20et%20la%20Fourmi%2C%20260%20Route%20de%20Cavaillon%2C%2084300%20Les%20Taillades%2C%20France' target='_blank' rel='noopener'>260 Route de Cavaillon, 84300 Les Taillades \u2197</a><br>Confirmation 6920988524 \u00b7 +33 6 33 88 88 21";
-const RESV_EN = "<strong>La Cigale et la Fourmi</strong> \u2014 Tue 18 Aug \u2192 Wed 19 Aug (check-in 15:00, check-out before 11:00).<br><a href='https://www.google.com/maps/search/?api=1&query=La%20Cigale%20et%20la%20Fourmi%2C%20260%20Route%20de%20Cavaillon%2C%2084300%20Les%20Taillades%2C%20France' target='_blank' rel='noopener'>260 Route de Cavaillon, 84300 Les Taillades \u2197</a><br>Confirmation 6920988524 \u00b7 +33 6 33 88 88 21";
+const RESV_FR = "<strong>La Cigale et la Fourmi</strong> \u2014 mar. 18 ao\u00fbt \u2192 mer. 19 ao\u00fbt (arriv\u00e9e 15h00, d\u00e9part avant 11h00).<br><a href='https://www.google.com/maps/search/?api=1&query=La%20Cigale%20et%20la%20Fourmi%2C%20260%20Route%20de%20Cavaillon%2C%2084300%20Les%20Taillades%2C%20France' target='_blank' rel='noopener'>260 Route de Cavaillon, 84300 Les Taillades \u2197</a><br><span class='resv-meta'>Confirmation 6920988524 \u00b7 +33 6 33 88 88 21</span>";
+const RESV_EN = "<strong>La Cigale et la Fourmi</strong> \u2014 Tue 18 Aug \u2192 Wed 19 Aug (check-in 15:00, check-out before 11:00).<br><a href='https://www.google.com/maps/search/?api=1&query=La%20Cigale%20et%20la%20Fourmi%2C%20260%20Route%20de%20Cavaillon%2C%2084300%20Les%20Taillades%2C%20France' target='_blank' rel='noopener'>260 Route de Cavaillon, 84300 Les Taillades \u2197</a><br><span class='resv-meta'>Confirmation 6920988524 \u00b7 +33 6 33 88 88 21</span>";
+const RESV_RO = "<strong>La Cigale et la Fourmi</strong> \u2014 mar. 18 aug \u2192 mie. 19 aug (check-in 15:00, check-out \u00eenainte de 11:00).<br><a href='https://www.google.com/maps/search/?api=1&query=La%20Cigale%20et%20la%20Fourmi%2C%20260%20Route%20de%20Cavaillon%2C%2084300%20Les%20Taillades%2C%20France' target='_blank' rel='noopener'>260 Route de Cavaillon, 84300 Les Taillades \u2197</a><br><span class='resv-meta'>Confirmare 6920988524 \u00b7 +33 6 33 88 88 21</span>";
 
 const I18N = {
   fr: {
@@ -244,6 +251,24 @@ const I18N = {
     note3:"<b>France Passion:</b> a network of producers (wineries, farms) offering a free night on their land in exchange for a small purchase \u2014 no facilities, but 100% legal and often the nicest van spot of the day.",
     note4:"<b>Van bivouac:</b> tolerated in most car parks/lay-bys as long as you don't set up table and chairs, but explicitly banned inside nature reserves (the core of the Gorges de l'Ard\u00e8che) \u2014 check local signage.",
     endmark:"The plan holds until the first good bend in the road."
+  },
+  ro: {
+    eyebrow: "Jurnal de c\u0103l\u0103torie",
+    tagline: "5 zile de la Alpi p\u00e2n\u0103 la mare, chiar p\u00e2n\u0103 la plaja Beauduc. Trei moduri diferite de a face acela\u0219i traseu.",
+    legend: {
+      eau: {label:"Totul pe ap\u0103", sub:"Ap\u0103 \u00een fiecare zi \u00b7 dormit \u00een van \u00een fiecare noapte"},
+      aventure: {label:"Uscat &amp; Aventur\u0103", sub:"Via ferrata, c\u0103\u021b\u0103rare, mountain bike \u00b7 adrenalin\u0103 pur\u0103"},
+      patrimoine: {label:"Drume\u021bii &amp; Patrimoniu", sub:"Trasee lungi \u00b7 istorie, pe jos \u0219i cu bicicleta"}
+    },
+    statLabels: {jours:"Zile", intensityAvg:"Intensitate medie", eauFreq:"Frecven\u021b\u0103 ap\u0103"},
+    intensite:"Intensitate", where:"Unde / Parcare", gmaps:"Deschide traseul \u00een Google Maps",
+    tags: {eau:"Ap\u0103", rando:"Drume\u021bie", histoire:"Istorie", aventure:"Aventur\u0103"},
+    footerH3:"De re\u021binut, indiferent de versiune",
+    note1:"<b>F\u0103r\u0103 canoe \u00een Gorges de l'Ard\u00e8che:</b> \u00eenlocuit cu punctele de belvedere de pe drumul canionului \u0219i sc\u0103ldat la Plage de Gaud \u2014 acelea\u0219i peisaje, f\u0103r\u0103 coborârea organizat\u0103.",
+    note2:"<b>Rezerv\u0103ri:</b> canyoning, via ferrata \u0219i c\u0103\u021b\u0103rarea se ocup\u0103 repede \u00een iulie-august \u2014 rezerva\u021bi \u00eenainte de plecare.",
+    note3:"<b>France Passion:</b> o re\u021bea de produc\u0103tori (crame, ferme) care ofer\u0103 o noapte gratuit\u0103 pe terenul lor \u00een schimbul unei mici cump\u0103r\u0103turi \u2014 f\u0103r\u0103 facilit\u0103\u021bi, dar 100% legal \u0219i adesea cel mai frumos loc pentru van al zilei.",
+    note4:"<b>Camping \u00een van:</b> tolerat \u00een majoritatea parc\u0103rilor c\u00e2t timp nu scoate\u021bi masa \u0219i scaunele, dar interzis explicit \u00een rezerva\u021biile naturale (inima Gorges de l'Ard\u00e8che) \u2014 verifica\u021bi indicatoarele locale.",
+    endmark:"Planul \u021bine p\u00e2n\u0103 la prima curb\u0103 frumoas\u0103."
   }
 };
 
@@ -643,6 +668,205 @@ VARIANTS.en.patrimoine = {
   ]
 };
 
+VARIANTS.ro = {};
+
+VARIANTS.ro.eau = {
+  stats: [ {num:"5", labelKey:"jours"}, {num:"3.4/5", labelKey:"intensityAvg"}, {num:"\u00cen fiecare zi", labelKey:"eauFreq"} ],
+  days: [
+    { eyebrow:"Ziua 1", title:"Annecy \u2192 Vercors", gmaps:VARIANTS.fr.eau.days[0].gmaps, intensity:4, route:"~2h",
+      routeStops:["Annecy","Sassenage","Saint-Jean-en-Royans","Font d'Urle"],
+      stops:[
+        {img:"furon", name:"Canyoning la Furon", dur:"~3h", cat:"eau", desc:"Canionul Furon, la Sassenage, este cel mai accesibil din Grenoble: cobor\u00e2ri cu coarda \u00eentr-o vale \u00eengust\u0103, s\u0103rituri \u00een bazine naturale. Instructor \u0219i echipament incluse.",
+         where:"Sassenage (punct de plecare canyoning)", parking:"Operatorul confirm\u0103 punctul exact de \u00eent\u00e2lnire la rezervare."},
+        {img:"combelaval", name:"\u0218oseaua panoramic\u0103 Combe Laval", dur:"~1h", cat:"rando", desc:"Drum t\u0103iat \u00een st\u00e2nc\u0103 la sf\u00e2r\u0219itul secolului XIX, tuneluri prin piatr\u0103 \u2014 spectaculos chiar \u0219i doar din ma\u0219in\u0103, mai multe puncte de oprire pentru priveli\u0219te.",
+         where:"Saint-Jean-en-Royans, spre D76 (drumul Combe Laval)", parking:"Mai multe locuri de parcare de-a lungul drumului, la principalele puncte de belvedere."}
+      ],
+      tags:["eau","rando"],
+      callout:{label:"Aten\u021bie", text:"Canyoning-ul trebuie rezervat din timp vara \u2014 locurile ghidate se ocup\u0103 repede."},
+      dodo:{label:"Cazare", text:"Platoul <strong>Font d'Urle</strong> sau <strong>Col de Rousset</strong> (1254m) \u2014 priveli\u0219te 360\u00b0, van."}
+    },
+    { eyebrow:"Ziua 2", title:"Vercors \u2192 Ard\u00e8che", gmaps:VARIANTS.fr.eau.days[1].gmaps, intensity:4, route:"~4h",
+      routeStops:["Font d'Urle","Vallon-Pont-d'Arc","D290 (drumul canionului)","Plateau des Gras"],
+      stops:[
+        {img:"ardeche", name:"Punctele de belvedere de pe drumul canionului", dur:"~2h", cat:"rando", desc:"Drumul turistic al canionului (D290) urmeaz\u0103 st\u00e2nca pe aproape 30km, cu vreo zece puncte de belvedere care privesc canionul \u0219i Pont d'Arc.",
+         where:"D290, Belv\u00e9d\u00e8re de la Madeleine (\u00eentre Vallon-Pont-d'Arc \u0219i Saint-Rem\u00e8ze)", parking:"O parcare dedicat\u0103 la fiecare belvedere de-a lungul D290."},
+        {img:"gours", name:"Sc\u0103ldat la Plage de Gaud", dur:"~2h", cat:"eau", desc:"O plaj\u0103 de nisip \u0219i pietri\u0219 pe malul r\u00e2ului, \u00een rezerva\u021bia natural\u0103 \u2014 cel mai bun loc pentru a \u00eenota f\u0103r\u0103 canoe.",
+         where:"Parcarea Gaud, D290", parking:"~25-30min de mers pe jos de la parcare p\u00e2n\u0103 la plaj\u0103."}
+      ],
+      tags:["eau","rando"],
+      callout:{label:"Drum", text:"~4h pe drumurile de munte din Vercors \u2014 cea mai lung\u0103 zi de condus din traseu."},
+      bonus:{label:"Merit\u0103 ocolul", text:"<strong>Grotte Chauvet 2</strong>, replica celui mai vechi sit decorat cunoscut din lume (36.000 de ani), este la 10 minute de Vallon-Pont-d'Arc. Originalul nu este accesibil publicului \u2014 replica merit\u0103 vizitat\u0103 (~1h30)."},
+      dodo:{label:"Cazare", text:"<strong>Plateau des Gras</strong> l\u00e2ng\u0103 Barjac \u2014 un platou calcaros lini\u0219tit, \u00een afara rezerva\u021biei naturale."}
+    },
+    { eyebrow:"Ziua 3", title:"Ard\u00e8che \u2192 Orange \u2192 Avignon", gmaps:VARIANTS.fr.eau.days[2].gmaps, intensity:2, route:"~2h15",
+      routeStops:["Plateau des Gras","Grignan","Orange","Avignon","Ch\u00e2teauneuf-du-Pape"],
+      stops:[
+        {img:"grignan", name:"Vizit\u0103 sat, Grignan", dur:"~1h30", cat:"histoire", desc:"Un sat pe deal cunoscut pentru scrisorile pe care Madame de S\u00e9vign\u00e9 le scria fiicei sale, care locuia \u00een castel. Castel rena\u0219centist de vizitat, uli\u021be mai jos."},
+        {img:"orange", name:"Teatrul antic din Orange", dur:"~1h", cat:"histoire", desc:"Unul dintre singurele trei teatre romane din lume cu zidul de scen\u0103 intact. Sit UNESCO, folosit \u0219i azi pentru un festival de oper\u0103 vara."},
+        {img:"avignon", name:"Palatul Papilor, Avignon", dur:"~2h", cat:"histoire", desc:"Cea mai mare cl\u0103dire gotic\u0103 din Evul Mediu, sediul papalit\u0103\u021bii \u00een secolul al XIV-lea. Audioghid inclus; restul timpului pentru Pont Saint-B\u00e9n\u00e9zet \u0219i ora\u0219ul vechi."}
+      ],
+      tags:["histoire"],
+      dodo:{label:"Cazare", text:"<strong>Ch\u00e2teauneuf-du-Pape</strong> prin <strong>France Passion</strong> \u2014 noapte gratuit\u0103 la o cram\u0103 \u00een schimbul unei mici cump\u0103r\u0103turi."}
+    },
+    { eyebrow:"Ziua 4", title:"Cu caiacul pe Sorgue \u2192 Luberon", gmaps:VARIANTS.fr.eau.days[3].gmaps, intensity:4, route:"~1h15",
+      routeStops:["Ch\u00e2teauneuf-du-Pape","Fontaine-de-Vaucluse","L'Isle-sur-la-Sorgue","Roussillon","Les Baux-de-Provence"],
+      stops:[
+        {img:"sorgue", name:"Cu caiacul pe Sorgue", dur:"~2h30", cat:"eau", desc:"Sorgue izvor\u0103\u0219te la Fontaine-de-Vaucluse, unul dintre cele mai puternice izvoare naturale din Europa. O cobor\u00e2re lin\u0103 p\u00e2n\u0103 la L'Isle-sur-la-Sorgue, potrivit\u0103 \u0219i f\u0103r\u0103 experien\u021b\u0103."},
+        {img:"roussillon", name:"Traseul Ocrelor, Roussillon", dur:"~1h30", cat:"rando", desc:"Un traseu marcat prin st\u00e2nci \u0219i forme de nisip ocru, r\u0103m\u0103\u0219i\u021be ale vechilor cariere. Culori de la galben pal la ro\u0219u intens.",
+         where:"Parcarea Sentier des Ocres, Roussillon", parking:"Intrare cu plat\u0103, parcare dedicat\u0103 la fa\u021ba locului."},
+        {img:"baux", name:"Vizit\u0103 ruine, Les Baux-de-Provence", dur:"~45min", cat:"histoire", desc:"Un sat s\u0103pat direct \u00een st\u00e2nc\u0103, dominat de ruinele unei fort\u0103re\u021be medievale. Priveli\u0219te 360\u00b0 peste Alpilles, deosebit de frumoas\u0103 la apus."}
+      ],
+      tags:["eau","rando","histoire"],
+      dodo:{label:"Noapte rezervat\u0103", text:RESV_RO}
+    },
+    { eyebrow:"Ziua 5", title:"Arles \u2192 Camargue \u2192 spre Beauduc", gmaps:VARIANTS.fr.eau.days[4].gmaps, intensity:3, route:"~2h",
+      routeStops:["Les Baux-de-Provence","Arles","Saintes-Maries-de-la-Mer / Le Sambuc","Salin-de-Giraud","drumul de nisip spre Beauduc"],
+      stops:[
+        {img:"arles", name:"Amfiteatrul roman din Arles", dur:"~1h30", cat:"histoire", desc:"Un amfiteatru roman din secolul I, folosit \u0219i azi pentru spectacole. Se poate urca pe gradene \u0219i pe turn pentru priveli\u0219te asupra ora\u0219ului \u0219i Ronului."},
+        {img:"camargue", name:"Plimbare c\u0103lare \u00een Camargue", dur:"~2h", cat:"eau", desc:"Micii cai albi semi-s\u0103lbatici tipici regiunii, prin ml\u0103\u0219tini \u0219i saline, sub \u00eendrumarea unei ferme (manade).",
+         where:"Ferme (manade) \u00een jurul Saintes-Maries-de-la-Mer sau Le Sambuc", parking:"Alege\u021bi o manad\u0103 la rezervare \u2014 fiecare are propriul punct de \u00eent\u00e2lnire."}
+      ],
+      tags:["eau","histoire"],
+      callout:{label:"Aten\u021bie", text:"Drumul spre Beauduc are 12km de nisip/argil\u0103, cu o limit\u0103 de \u00een\u0103l\u021bime de 2,14m \u2014 de verificat \u00eenainte de a intra."},
+      dodo:{label:"Sosire", text:"Beauduc, la cap\u0103tul drumului \u2014 plaja \u00een sine e pentru ziua urm\u0103toare."}
+    }
+  ]
+};
+
+VARIANTS.ro.aventure = {
+  stats: [ {num:"5", labelKey:"jours"}, {num:"4.4/5", labelKey:"intensityAvg"}, {num:"1 zi din 5", labelKey:"eauFreq"} ],
+  days: [
+    { eyebrow:"Ziua 1", title:"Annecy \u2192 Vercors", intensity:5, route:"~2h",
+      routeStops:["Annecy","Rencurel","Saint-Jean-en-Royans","Font d'Urle"],
+      stops:[
+        {img:"furon", name:"Via ferrata de la Balme, Rencurel", dur:"~3h", cat:"aventure", desc:"O st\u00e2nc\u0103 echipat\u0103 cu cabluri, trepte \u0219i pun\u021bi nepaleze \u2014 adrenalin\u0103 garantat\u0103, nu e nevoie de experien\u021b\u0103 de c\u0103\u021b\u0103rare, dar nu trebuie s\u0103 v\u0103 fie fric\u0103 de \u00een\u0103l\u021bime.",
+         where:"Rencurel, via ferrata de la Balme", parking:"Parcare la intrarea \u00een sit, indicat\u0103 din sat."},
+        {img:"combelaval", name:"\u0218oseaua panoramic\u0103 Combe Laval", dur:"~1h", cat:"rando", desc:"Drum de coast\u0103 t\u0103iat \u00een st\u00e2nc\u0103, tuneluri, mai multe puncte de oprire pentru priveli\u0219te.",
+         where:"Saint-Jean-en-Royans, spre D76", parking:"Mai multe locuri de parcare de-a lungul drumului."}
+      ],
+      tags:["aventure","rando"],
+      callout:{label:"Aten\u021bie", text:"Via ferrata trebuie rezervat\u0103 din timp vara."},
+      dodo:{label:"Cazare", text:"Platoul <strong>Font d'Urle</strong>."}
+    },
+    { eyebrow:"Ziua 2", title:"Vercors \u2192 Ard\u00e8che", intensity:5, route:"~4h",
+      routeStops:["Font d'Urle","Casteljau (Chassezac)","Vallon-Pont-d'Arc","Plateau des Gras"],
+      stops:[
+        {img:"gours", name:"Canyoning pe Chassezac", dur:"~3h", cat:"aventure", desc:"Chassezac, un afluent al Ard\u00e8che-ului, ofer\u0103 un canion mai pu\u021bin cunoscut dec\u00e2t cele din jurul Vallon-Pont-d'Arc \u2014 tobogane naturale, s\u0103rituri \u0219i cobor\u00e2ri cu coarda, cu mai pu\u021bin\u0103 lume.",
+         where:"Casteljau (punct de plecare canyoning Chassezac)", parking:"Operatorul confirm\u0103 parcarea exact\u0103 la rezervare."},
+        {img:"ardeche", name:"Punctele de belvedere de pe drumul canionului", dur:"~1h", cat:"rando", desc:"O privire rapid\u0103 asupra drumului canionului \u0219i punctele sale de belvedere spre Pont d'Arc, \u00eenainte de a continua drumul.",
+         where:"D290, Belv\u00e9d\u00e8re de la Madeleine", parking:"O parcare dedicat\u0103 la fiecare belvedere de-a lungul D290."}
+      ],
+      tags:["aventure","rando"],
+      callout:{label:"Drum", text:"~4h pe drumurile de munte \u2014 cea mai lung\u0103 zi de condus din traseu."},
+      bonus:{label:"Merit\u0103 ocolul", text:"<strong>Grotte Chauvet 2</strong> (replica celui mai vechi sit decorat cunoscut din lume, 36.000 de ani) este la 10 minute de Vallon-Pont-d'Arc dac\u0103 ave\u021bi o or\u0103 \u0219i jum\u0103tate de r\u0103gaz."},
+      dodo:{label:"Cazare (van)", text:"Plateau des Gras."},
+      alt_dodo:{label:"Alternativ\u0103 de confort \u2014 notabil\u0103", text:"O <strong>cazare troglodit\u0103</strong> s\u0103pat\u0103 \u00een st\u00e2nc\u0103 l\u00e2ng\u0103 Vallon-Pont-d'Arc."}
+    },
+    { eyebrow:"Ziua 3", title:"Ard\u00e8che \u2192 Orange \u2192 Avignon", intensity:3, route:"~2h15",
+      routeStops:["Plateau des Gras","Grignan","Orange","Avignon","Ch\u00e2teauneuf-du-Pape"],
+      stops:[
+        {img:"grignan", name:"Vizit\u0103 sat, Grignan", dur:"~1h", cat:"histoire", desc:"Un sat-castel pe deal, f\u0103cut celebru de scrisorile lui Madame de S\u00e9vign\u00e9 c\u0103tre fiica sa."},
+        {img:"orange", name:"Teatrul antic din Orange", dur:"~1h", cat:"histoire", desc:"Teatru antic sit UNESCO, unul dintre cele mai bine conservate din lume."},
+        {img:"avignon", name:"Avignon cu bicicleta", dur:"~1h30", cat:"aventure", desc:"Zidurile Avignonului au aproape 4,3km \u2014 parcurge\u021bi-le cu bicicleta \u00eenainte de a termina la Palatul Papilor pe jos.",
+         where:"\u00cenchiriere biciclete l\u00e2ng\u0103 Palatul Papilor", parking:"Mai multe puncte de \u00eenchiriere \u00een centru, l\u00e2ng\u0103 parcarea \u00cele Piot (navet\u0103 gratuit\u0103)."}
+      ],
+      tags:["aventure","histoire"],
+      dodo:{label:"Cazare (van)", text:"<strong>Ch\u00e2teauneuf-du-Pape</strong>, France Passion."},
+      alt_dodo:{label:"Alternativ\u0103 de confort \u2014 notabil\u0103", text:"O noapte la un <strong>hotel \u00een interiorul zidurilor din Avignon</strong> \u2014 practic pentru un du\u0219 adev\u0103rat."}
+    },
+    { eyebrow:"Ziua 4", title:"Luberon \u2014 c\u0103\u021b\u0103rare la Buoux", intensity:5, route:"~1h15",
+      routeStops:["Ch\u00e2teauneuf-du-Pape","Buoux","Roussillon"],
+      stops:[
+        {img:"buoux", name:"C\u0103\u021b\u0103rare la Buoux", dur:"~3h", cat:"aventure", desc:"Buoux este unul dintre locurile istorice ale c\u0103\u021b\u0103r\u0103rii libere \u00een Fran\u021ba, peste 400 de trasee pe o st\u00e2nc\u0103 calcaroas\u0103 de 40m. Sesiuni pentru \u00eencep\u0103tori disponibile.",
+         where:"Parcarea Fort de Buoux", parking:"Parcare la baza st\u00e2ncii, indicat\u0103 din satul Buoux."},
+        {img:"roussillon", name:"Traseul Ocrelor, Roussillon", dur:"~1h30", cat:"rando", desc:"St\u00e2nci \u0219i forme de ocru, traseu marcat printre culori \u2014 un contrast pl\u0103cut dup\u0103 st\u00e2nca de la Buoux.",
+         where:"Parcarea Sentier des Ocres, Roussillon", parking:"Intrare cu plat\u0103, parcare dedicat\u0103 la fa\u021ba locului."}
+      ],
+      tags:["aventure","rando"],
+      callout:{label:"Aten\u021bie", text:"Rezerva\u021bi un instructor din timp dac\u0103 dori\u021bi o sesiune pentru \u00eencep\u0103tori."},
+      dodo:{label:"Noapte rezervat\u0103", text:RESV_RO}
+    },
+    { eyebrow:"Ziua 5", title:"Arles \u2192 Camargue \u2192 spre Beauduc", intensity:4, route:"~2h",
+      routeStops:["Roussillon","Arles","Salin-de-Giraud","drumul de nisip spre Beauduc"],
+      stops:[
+        {img:"arles", name:"Amfiteatrul roman din Arles", dur:"~1h", cat:"histoire", desc:"Amfiteatru roman, versiune scurt\u0103 \u2014 gradenele \u0219i turnul pentru o priveli\u0219te asupra ora\u0219ului."},
+        {img:"camargue", name:"C\u0103l\u0103rie \u00een galop, Camargue", dur:"~2h", cat:"aventure", desc:"Un ritm mai sus\u021binut dec\u00e2t o plimbare lini\u0219tit\u0103 \u2014 unele ferme ofer\u0103 ie\u0219iri pentru c\u0103l\u0103re\u021bi mai experimenta\u021bi, \u00een galop prin ml\u0103\u0219tini.",
+         where:"Ferme (manade) \u00een jurul Saintes-Maries-de-la-Mer sau Le Sambuc", parking:"Alege\u021bi o manad\u0103 la rezervare."},
+        {img:"flamants", name:"Cu bicicleta pe Digue \u00e0 la Mer", dur:"~1h30", cat:"aventure", desc:"O pist\u0103 de bicicliet\u0103 de aproximativ 8km urmeaz\u0103 coasta \u00eentre Salin-de-Giraud \u0219i mare, prin ml\u0103\u0219tini \u0219i saline tipice Camarguei s\u0103lbatice.",
+         where:"Plecare din Salin-de-Giraud sau de la Phare de la Gacholle", parking:"O parcare la fiecare cap\u0103t al traseului."}
+      ],
+      tags:["aventure","histoire"],
+      callout:{label:"Aten\u021bie", text:"Drumul spre Beauduc are 12km de nisip/argil\u0103, cu o limit\u0103 de \u00een\u0103l\u021bime de 2,14m."},
+      dodo:{label:"Sosire", text:"Beauduc, la cap\u0103tul drumului \u2014 plaja \u00een sine e pentru ziua urm\u0103toare."}
+    }
+  ]
+};
+
+VARIANTS.ro.patrimoine = {
+  stats: [ {num:"5", labelKey:"jours"}, {num:"3.2/5", labelKey:"intensityAvg"}, {num:"1 zi din 5", labelKey:"eauFreq"} ],
+  days: [
+    { eyebrow:"Ziua 1", title:"Annecy \u2192 Vercors", intensity:4, route:"~2h",
+      routeStops:["Annecy","Les Barraques-en-Vercors","Saint-Jean-en-Royans","Font d'Urle"],
+      stops:[
+        {img:"grandsgoulets", name:"Drume\u021bie la Grands Goulets", dur:"~4h", cat:"rando", desc:"Una dintre cele mai frumoase drume\u021bii din Vercors, prin chei ad\u00e2nci \u0219i pasaje t\u0103iate \u00een st\u00e2nc\u0103. Diferen\u021b\u0103 de nivel moderat\u0103, dar c\u00e2teva por\u021biuni expuse.",
+         where:"Les Barraques-en-Vercors (start traseu)", parking:"Parcare \u00een c\u0103tun, startul traseului marcat."},
+        {img:"combelaval", name:"\u0218oseaua panoramic\u0103 Combe Laval", dur:"~1h", cat:"rando", desc:"Drum de coast\u0103 t\u0103iat \u00een st\u00e2nc\u0103, mai multe puncte de oprire pentru priveli\u0219te asupra v\u0103ii.",
+         where:"Saint-Jean-en-Royans, spre D76", parking:"Mai multe locuri de parcare de-a lungul drumului."}
+      ],
+      tags:["rando"],
+      dodo:{label:"Cazare (van)", text:"Platoul Font d'Urle."},
+      alt_dodo:{label:"Alternativ\u0103 de confort", text:"O <strong>cazare de munte</strong> prin zona Villard-de-Lans, dac\u0103 drumul a fost lung."}
+    },
+    { eyebrow:"Ziua 2", title:"Vercors \u2192 Ard\u00e8che", intensity:3, route:"~4h",
+      routeStops:["Font d'Urle","Vallon-Pont-d'Arc","D290 (drumul canionului)","Plateau des Gras"],
+      stops:[
+        {img:"ardeche", name:"Punctele de belvedere de pe drumul canionului", dur:"~3h30", cat:"rando", desc:"Drume\u021bie de-a lungul drumului turistic al canionului, puncte de belvedere spre canion \u0219i Pont d'Arc, cu posibilitatea de a cobor\u00ee spre r\u00e2u \u00een unele locuri.",
+         where:"D290, Belv\u00e9d\u00e8re de la Madeleine", parking:"O parcare dedicat\u0103 la fiecare belvedere de-a lungul D290."},
+        {img:"gours", name:"Sc\u0103ldat la Plage de Gaud", dur:"~1h", cat:"eau", desc:"O plaj\u0103 de nisip pe malul r\u00e2ului, \u00een rezerva\u021bia natural\u0103 \u2014 pauza r\u0103coroas\u0103 a zilei, f\u0103r\u0103 canoe.",
+         where:"Parcarea Gaud, D290", parking:"~25-30min de mers pe jos de la parcare p\u00e2n\u0103 la plaj\u0103."}
+      ],
+      tags:["rando","eau"],
+      callout:{label:"Drum", text:"~4h pe drumurile de munte \u2014 cea mai lung\u0103 zi de condus din traseu."},
+      bonus:{label:"Merit\u0103 ocolul", text:"<strong>Grotte Chauvet 2</strong>, replica celui mai vechi sit decorat cunoscut din lume (36.000 de ani), este la 10 minute de Vallon-Pont-d'Arc \u2014 probabil cel mai bun ad\u0103ugat de patrimoniu al zilei (~1h30)."},
+      dodo:{label:"Cazare (van)", text:"Plateau des Gras."},
+      alt_dodo:{label:"Alternativ\u0103 de confort \u2014 notabil\u0103", text:"O <strong>cazare troglodit\u0103</strong> l\u00e2ng\u0103 Vallon-Pont-d'Arc."}
+    },
+    { eyebrow:"Ziua 3", title:"Ard\u00e8che \u2192 Orange \u2192 Avignon", intensity:3, route:"~2h15",
+      routeStops:["Plateau des Gras","Grignan","Orange","Avignon","Ch\u00e2teauneuf-du-Pape"],
+      stops:[
+        {img:"grignan", name:"Vizit\u0103 sat, Grignan", dur:"~1h30", cat:"histoire", desc:"Un sat-castel pe deal, cunoscut pentru scrisorile lui Madame de S\u00e9vign\u00e9 c\u0103tre fiica ei care locuia acolo."},
+        {img:"orange", name:"Teatrul antic din Orange", dur:"~1h", cat:"histoire", desc:"Teatru antic, unul dintre cele mai bine conservate din lume, sit UNESCO."},
+        {img:"avignon", name:"Avignon + zidurile cu bicicleta", dur:"~2h30", cat:"histoire", desc:"Palatul Papilor cu audioghid, apoi turul zidurilor (4,3km) cu bicicleta pentru a vedea ora\u0219ul dintr-un alt unghi.",
+         where:"\u00cenchiriere biciclete l\u00e2ng\u0103 Palatul Papilor", parking:"Mai multe puncte de \u00eenchiriere \u00een centru."}
+      ],
+      tags:["histoire"],
+      dodo:{label:"Cazare (van)", text:"Ch\u00e2teauneuf-du-Pape, France Passion."},
+      alt_dodo:{label:"Alternativ\u0103 de confort \u2014 notabil\u0103", text:"Un <strong>hotel \u00een interiorul zidurilor din Avignon</strong>."}
+    },
+    { eyebrow:"Ziua 4", title:"Luberon \u2014 sate \u0219i st\u00e2nci de ocru", intensity:3, route:"~1h15",
+      routeStops:["Ch\u00e2teauneuf-du-Pape","S\u00e9nanque","Gordes","Roussillon"],
+      stops:[
+        {img:"senanque", name:"Abatia S\u00e9nanque", dur:"~1h", cat:"histoire", desc:"O abatie cisterciant\u0103 din secolul al XII-lea, \u00eenc\u0103 locuit\u0103 de c\u0103lug\u0103ri. C\u00e2mpul de lavand\u0103 din fa\u021ba abatiei este celebru (\u00eenflorire de la mijlocul lui iunie p\u00e2n\u0103 la \u00eenceputul lui august)."},
+        {img:"gordes", name:"Vizit\u0103 sat, Gordes", dur:"~1h", cat:"histoire", desc:"Un sat construit din piatr\u0103 seac\u0103 pe o coast\u0103 de deal, clasat printre cele mai frumoase sate din Fran\u021ba."},
+        {img:"roussillon", name:"Traseul Ocrelor, Roussillon", dur:"~1h30", cat:"rando", desc:"O drume\u021bie adev\u0103rat\u0103 prin st\u00e2ncile de ocru \u2014 culori de la galben la ro\u0219u intens.",
+         where:"Parcarea Sentier des Ocres, Roussillon", parking:"Intrare cu plat\u0103, parcare dedicat\u0103 la fa\u021ba locului."}
+      ],
+      tags:["histoire","rando"],
+      dodo:{label:"Noapte rezervat\u0103", text:RESV_RO}
+    },
+    { eyebrow:"Ziua 5", title:"Arles \u2192 Camargue \u2192 spre Beauduc", intensity:3, route:"~2h",
+      routeStops:["Roussillon","Arles","Parcul ornitologic (Pont de Gau)","drumul de nisip spre Beauduc"],
+      stops:[
+        {img:"arles", name:"Arles, \u00een profunzime", dur:"~2h", cat:"histoire", desc:"Dincolo de amfiteatru, Arles p\u0103streaz\u0103 un teatru roman, terme romane \u0219i mai multe locuri legate de \u0219ederea lui Van Gogh."},
+        {img:"flamants", name:"Parcul ornitologic Pont de Gau", dur:"~2h", cat:"rando", desc:"Observarea flamingourilor roz de pe pasarele amenajate. Digue \u00e0 la Mer, pe jos sau cu bicicleta, prelunge\u0219te plimbarea spre Camargue s\u0103lbatic\u0103.",
+         where:"Parcul ornitologic Pont de Gau, D570", parking:"Parcare mare \u0219i gratuit\u0103 la fa\u021ba locului, \u00eentre Arles \u0219i Saintes-Maries-de-la-Mer."}
+      ],
+      tags:["histoire","rando"],
+      dodo:{label:"Sosire", text:"Beauduc, la cap\u0103tul drumului \u2014 plaja \u00een sine e pentru ziua urm\u0103toare."}
+    }
+  ]
+};
+
 let currentLang = "fr";
 let currentVariant = "eau";
 
@@ -705,11 +929,15 @@ function renderDays(days){
     return `
       <section class="day">
         <div class="day-marker">${i+1}</div>
-        <div class="day-topline">
-          <p class="day-eyebrow">${d.eyebrow}</p>
-          <div class="meta-row intensity"><span class="txt">${t.intensite}</span><span class="dots">${dots}</span></div>
+        <div class="day-top">
+          <div class="day-heading">
+            <p class="day-eyebrow">${d.eyebrow}</p>
+            <h2 class="day-title">${d.title}</h2>
+          </div>
+          <div class="day-meta">
+            <div class="meta-row intensity"><span class="txt">${t.intensite}</span><span class="dots">${dots}</span></div>
+          </div>
         </div>
-        <h2 class="day-title">${d.title}</h2>
         <p class="day-route"><span class="route-time">${d.route}</span><span class="route-sep">\u00b7</span>${routeLine}${gmapsIcon}</p>
         <div class="tags">${tagsHtml}</div>
         <div class="stops">${stopsHtml}</div>
